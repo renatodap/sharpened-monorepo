@@ -43,10 +43,13 @@ git push -u origin main
 ```
 Framework Preset: Next.js
 Root Directory: apps/feelsharper
-Build Command: cd ../.. && pnpm install && cd apps/feelsharper && npm run build
+Build Command: pnpm run build
 Output Directory: .next
-Install Command: cd ../.. && pnpm install
+Install Command: npm install -g pnpm && pnpm install
+Development Command: pnpm run dev
 ```
+
+**IMPORTANT**: Make sure to use these EXACT settings or the build will fail!
 
 ### C. Environment Variables
 Click **"Environment Variables"** and add these (even with placeholder values to start):
@@ -98,9 +101,10 @@ RESEND_API_KEY=placeholder
 ```
 Framework Preset: Next.js
 Root Directory: apps/studysharper
-Build Command: cd ../.. && pnpm install && cd apps/studysharper && npm run build
+Build Command: pnpm run build
 Output Directory: .next
-Install Command: cd ../.. && pnpm install
+Install Command: npm install -g pnpm && pnpm install
+Development Command: pnpm run dev
 ```
 
 ### C. Environment Variables
@@ -128,9 +132,10 @@ NEXT_PUBLIC_APP_URL=https://studysharper.vercel.app
 ```
 Framework Preset: Next.js
 Root Directory: apps/website
-Build Command: cd ../.. && pnpm install && cd apps/website && npm run build
+Build Command: pnpm run build
 Output Directory: .next
-Install Command: cd ../.. && pnpm install
+Install Command: npm install -g pnpm && pnpm install
+Development Command: pnpm run dev
 ```
 
 ### C. Environment Variables (Minimal)

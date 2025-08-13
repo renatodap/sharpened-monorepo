@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" rx="19.2" fill="#0B2A4A"/>
+  
+  <!-- Lightning bolt icon representing "sharper" -->
+  <g transform="translate(25.6, 19.2)">
+    <!-- Lightning bolt path -->
+    <path d="M32 0 L12.8 51.2 L25.6 51.2 L19.2 89.6 L44.8 38.4 L32 38.4 L32 0 Z" 
+          fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Feel Sharper branding circle -->
+  <circle cx="96" cy="32" r="10.24" fill="#1F5798" opacity="0.8"/>
+</svg>

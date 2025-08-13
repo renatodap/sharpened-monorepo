@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import FitnessHero from '@/components/home/FitnessHero';
 import SimpleHeader from '@/components/navigation/SimpleHeader';
 import { PricingButton, FreePlanButton } from '@/components/pricing/PricingButtons';
+import { SocialProofSection } from '@/components/onboarding/SocialProofElements';
 
 export const metadata: Metadata = {
   title: 'Feel Sharper | Free Fitness Tracker',
@@ -14,6 +15,13 @@ export default async function HomePage() {
       <SimpleHeader />
       {/* Hero Section */}
       <FitnessHero />
+      
+      {/* Social Proof Section */}
+      <section className="py-12 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div className="max-w-6xl mx-auto">
+          <SocialProofSection variant="full" />
+        </div>
+      </section>
       
       {/* Pricing Section */}
       <section className="py-20 px-4">
@@ -49,7 +57,7 @@ export default async function HomePage() {
                 </li>
               </ul>
               <FreePlanButton className="block w-full py-3 px-6 text-center font-semibold text-text-primary bg-surface-2 border border-border rounded-xl hover:bg-navy hover:text-white transition-all duration-200">
-                Get Started
+                Start Free
               </FreePlanButton>
             </div>
             
@@ -130,16 +138,16 @@ export default async function HomePage() {
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/sign-up" 
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-navy bg-white rounded-xl hover:bg-gray-100 transition-all duration-200"
+              href="/onboarding?entry=quick_win" 
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 rounded-xl transition-all duration-200 shadow-xl hover:shadow-2xl"
             >
-              Sign Up Free
+              Try It Now - Free
             </a>
             <a 
-              href="/today" 
+              href="/onboarding" 
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 rounded-xl hover:bg-white/10 transition-all duration-200"
             >
-              View Demo
+              Full Setup
             </a>
           </div>
         </div>

@@ -1,0 +1,128 @@
+{
+  "name": "Feel Sharper - Your Sharpest Self, Every Day",
+  "short_name": "Feel Sharper",
+  "description": "Your all-in-one performance platform — tracking your workouts, nutrition, and recovery while keeping you motivated through AI-driven coaching and community support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0B2A4A",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["health", "fitness", "lifestyle", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png.svg",
+      "sizes": "72x72",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png.svg",
+      "sizes": "96x96",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png.svg",
+      "sizes": "152x152",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png.svg",
+      "sizes": "384x384",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Log Workout",
+      "short_name": "Workout",
+      "description": "Quickly log your workout",
+      "url": "/log/workout",
+      "icons": [
+        {
+          "src": "/icons/workout-shortcut.png.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Log Meal",
+      "short_name": "Meal",
+      "description": "Quickly log your meal",
+      "url": "/log/meal",
+      "icons": [
+        {
+          "src": "/icons/meal-shortcut.png.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "AI Coach",
+      "short_name": "Coach",
+      "description": "Chat with your AI coach",
+      "url": "/coach",
+      "icons": [
+        {
+          "src": "/icons/coach-shortcut.png.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Today",
+      "short_name": "Today",
+      "description": "View today's progress",
+      "url": "/today",
+      "icons": [
+        {
+          "src": "/icons/today-shortcut.png.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/log/meal",
+    "method": "GET",
+    "params": {
+      "title": "food",
+      "text": "description",
+      "url": "link"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+feelsharper",
+      "url": "/?action=%s"
+    }
+  ]
+}

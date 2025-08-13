@@ -43,15 +43,18 @@ export default function BottomNav() {
               key={href}
               href={href}
               className={cn(
-                "group flex flex-1 flex-col items-center justify-center gap-1 rounded-xl px-2 py-1.5 transition",
+                "group flex flex-1 flex-col items-center justify-center gap-1 rounded-xl transition",
+                "min-w-[44px] min-h-[44px] px-2 py-2", // Ensure minimum 44x44px touch target
+                "active:scale-95 active:bg-slate-200", // Touch feedback
                 active
-                  ? "text-slate-900 bg-slate-100"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                  ? "text-slate-900 bg-slate-100 data-[theme=dark]:text-white data-[theme=dark]:bg-slate-700"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-50 data-[theme=dark]:text-slate-400 data-[theme=dark]:hover:text-white data-[theme=dark]:hover:bg-slate-700"
               )}
               aria-current={active ? "page" : undefined}
+              data-theme={theme}
             >
-              <Icon className={cn("h-5 w-5", active ? "" : "opacity-80")} />
-              <span className="text-[11px] font-semibold leading-none">{name}</span>
+              <Icon className={cn("h-6 w-6", active ? "" : "opacity-80")} />
+              <span className="text-[10px] font-semibold leading-none">{name}</span>
             </Link>
           );
         })}

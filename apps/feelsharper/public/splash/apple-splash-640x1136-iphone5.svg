@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="1136" viewBox="0 0 640 1136" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A0A0A"/>
+      <stop offset="100%" style="stop-color:#161A1F"/>
+    </linearGradient>
+    <radialGradient id="accentGradient" cx="50%" cy="30%">
+      <stop offset="0%" style="stop-color:#1F5798;stop-opacity:0.3"/>
+      <stop offset="70%" style="stop-color:#0B2A4A;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#0A0A0A;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="640" height="1136" fill="url(#bgGradient)"/>
+  <rect width="640" height="1136" fill="url(#accentGradient)"/>
+  
+  <!-- Logo container -->
+  <g transform="translate(272, 520)">
+    <!-- Logo background circle -->
+    <circle cx="48" cy="48" r="43.2" 
+            fill="#0B2A4A" stroke="#1F5798" stroke-width="1.92"/>
+    
+    <!-- Lightning bolt icon -->
+    <g transform="translate(19.200000000000003, 14.399999999999999)">
+      <path d="M24 0 L9.600000000000001 38.400000000000006 L19.200000000000003 38.400000000000006 L14.399999999999999 67.19999999999999 L33.599999999999994 28.799999999999997 L24 28.799999999999997 L24 0 Z" 
+            fill="#FFFFFF"/>
+    </g>
+    
+    <!-- Accent circle -->
+    <circle cx="72" cy="24" r="7.68" 
+            fill="#1F5798" opacity="0.8"/>
+  </g>
+  
+  <!-- App name -->
+  <text x="320" y="644.8" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="25.6" 
+        font-weight="600" 
+        fill="#FFFFFF" 
+        text-anchor="middle">
+    Feel Sharper
+  </text>
+  
+  <!-- Tagline -->
+  <text x="320" y="673.6" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="16" 
+        font-weight="400" 
+        fill="#C7CBD1" 
+        text-anchor="middle">
+    Your Sharpest Self, Every Day
+  </text>
+  
+  <!-- Loading indicator -->
+  <g transform="translate(290, 1016)">
+    <circle cx="30" cy="30" r="20" fill="none" stroke="#1F5798" stroke-width="3" opacity="0.3"/>
+    <circle cx="30" cy="30" r="20" fill="none" stroke="#1F5798" stroke-width="3" 
+            stroke-dasharray="31.416" stroke-dashoffset="31.416" opacity="0.8">
+      <animate attributeName="stroke-dashoffset" 
+               values="31.416;0;31.416" 
+               dur="2s" 
+               repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

@@ -48,7 +48,9 @@
       "Bash(npx tsc:*)",
       "Bash(npm run build:*)",
       "Bash(git push:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(node:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

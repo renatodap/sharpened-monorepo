@@ -58,6 +58,16 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "web-push": "^3.6.7",
+    "@sharpened/analytics": "workspace:*",
+    "@sharpened/payments": "workspace:*",
+    "@sharpened/email": "workspace:*",
+    "@sharpened/privacy": "workspace:*",
+    "@sharpened/database": "workspace:*",
+    "@sharpened/ai-core": "workspace:*",
+    "@sharpened/automation": "workspace:*",
+    "@sharpened/business-intelligence": "workspace:*",
+    "@sharpened/feature-flags": "workspace:*",
+    "@sharpened/test-utils": "workspace:*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

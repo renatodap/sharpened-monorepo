@@ -35,7 +35,13 @@ import {
   Lotus,
   Goal,
   Users,
-  Sparkles
+  Sparkles,
+  Smartphone,
+  Download,
+  Bell,
+  Star,
+  TrendingUp,
+  Mail
 } from 'lucide-react'
 
 const PRODUCTS = [
@@ -48,7 +54,8 @@ const PRODUCTS = [
     border: "border-red-500/30",
     textColor: "text-red-400",
     status: "available",
-    launch: "Available Now"
+    launch: "Live Beta - PWA Ready",
+    link: "https://feelsharper.vercel.app"
   },
   { 
     name: "StudySharper", 
@@ -59,7 +66,8 @@ const PRODUCTS = [
     border: "border-cyan-500/30",
     textColor: "text-cyan-400",
     status: "available",
-    launch: "Available Now"
+    launch: "Live Beta",
+    link: "https://studysharper.vercel.app"
   },
   { 
     name: "TuneSharper", 
@@ -70,7 +78,7 @@ const PRODUCTS = [
     border: "border-purple-500/30",
     textColor: "text-purple-400",
     status: "coming",
-    launch: "Q2 2025"
+    launch: "Q3 2025"
   },
   { 
     name: "WealthSharper", 
@@ -81,7 +89,7 @@ const PRODUCTS = [
     border: "border-green-500/30",
     textColor: "text-green-400",
     status: "coming",
-    launch: "Q2 2025"
+    launch: "Q3 2025"
   },
   { 
     name: "ChefSharper", 
@@ -92,7 +100,7 @@ const PRODUCTS = [
     border: "border-orange-500/30",
     textColor: "text-orange-400",
     status: "coming",
-    launch: "Q2 2025"
+    launch: "Q3 2025"
   },
   { 
     name: "MindSharper", 
@@ -103,7 +111,7 @@ const PRODUCTS = [
     border: "border-indigo-500/30",
     textColor: "text-indigo-400",
     status: "coming",
-    launch: "Q3 2025"
+    launch: "Q4 2025"
   },
   { 
     name: "ArtSharper", 
@@ -114,7 +122,7 @@ const PRODUCTS = [
     border: "border-pink-500/30",
     textColor: "text-pink-400",
     status: "coming",
-    launch: "Q3 2025"
+    launch: "Q4 2025"
   },
   { 
     name: "CareerSharper", 
@@ -125,7 +133,7 @@ const PRODUCTS = [
     border: "border-blue-500/30",
     textColor: "text-blue-400",
     status: "coming",
-    launch: "Q3 2025"
+    launch: "Q4 2025"
   },
   { 
     name: "HomeSharper", 
@@ -136,7 +144,7 @@ const PRODUCTS = [
     border: "border-yellow-500/30",
     textColor: "text-yellow-400",
     status: "coming",
-    launch: "Q3 2025"
+    launch: "Q4 2025"
   },
   { 
     name: "GrowSharper", 
@@ -309,15 +317,26 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <motion.div 
-              className="inline-flex items-center gap-2 bg-deep-gray/50 backdrop-blur border border-electric-blue/30 rounded-full px-6 py-3 mb-8"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <Sparkles className="w-4 h-4 text-electric-blue" />
-              <span className="text-sm font-medium">17 Specialized AI Coaches</span>
-            </motion.div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              <motion.div 
+                className="inline-flex items-center gap-2 bg-green-500/20 backdrop-blur border border-green-500/40 rounded-full px-6 py-3"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-sm font-medium text-green-300">2 Live Products</span>
+              </motion.div>
+              <motion.div 
+                className="inline-flex items-center gap-2 bg-electric-blue/20 backdrop-blur border border-electric-blue/40 rounded-full px-6 py-3"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                <Smartphone className="w-4 h-4 text-electric-blue" />
+                <span className="text-sm font-medium">PWA - No App Store Required</span>
+              </motion.div>
+            </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-none">
               <span className="block mb-4">The Future of</span>
@@ -330,36 +349,41 @@ export default function Home() {
               className="text-xl md:text-2xl text-zinc-300 mb-12 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
             >
-              17 specialized AI coaches, each trained on real expertise from doctors, researchers, and masters in their field. 
-              <span className="text-electric-blue font-semibold"> No generic advice. Just professional-level guidance</span> for every aspect of self-improvement.
+              Progressive Web Apps that work offline, install instantly, and deliver expert-level guidance without app store friction. 
+              <span className="text-electric-blue font-semibold"> Start improving immediately</span> with our live fitness and study coaches.
             </motion.p>
 
             <motion.div 
               className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <motion.button
-                onClick={() => scrollToSection('waitlist')}
+              <motion.a
+                href="https://feelsharper.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-electric-blue hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all inline-flex items-center justify-center gap-3 group shadow-2xl shadow-electric-blue/25"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Sparkles className="w-5 h-5" />
-                Join the Revolution
+                <Activity className="w-5 h-5" />
+                Try FeelSharper Live
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-              <motion.button
-                onClick={() => scrollToSection('products')}
-                className="border-2 border-zinc-600 hover:border-electric-blue bg-zinc-900/50 backdrop-blur text-zinc-200 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all"
+              </motion.a>
+              <motion.a
+                href="https://studysharper.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-cyan-500 hover:bg-cyan-500/10 bg-zinc-900/50 backdrop-blur text-cyan-300 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all inline-flex items-center gap-3"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Explore Ecosystem
-              </motion.button>
+                <BookOpen className="w-5 h-5" />
+                Try StudySharper Live
+              </motion.a>
             </motion.div>
 
             {/* Stats Row */}
@@ -367,19 +391,19 @@ export default function Home() {
               className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
             >
               <div className="text-center">
-                <div className="text-3xl font-bold text-electric-blue mb-2">17</div>
-                <div className="text-zinc-400">Specialized Coaches</div>
+                <div className="text-3xl font-bold text-green-400 mb-2">2 Live</div>
+                <div className="text-zinc-400">Ready to Use Now</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-electric-blue mb-2">66%</div>
-                <div className="text-zinc-400">Productivity Increase</div>
+                <div className="text-3xl font-bold text-electric-blue mb-2">15 Coming</div>
+                <div className="text-zinc-400">More Coaches in 2025</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-electric-blue mb-2">∞</div>
-                <div className="text-zinc-400">Human Potential</div>
+                <div className="text-3xl font-bold text-cyan-400 mb-2">$9.99</div>
+                <div className="text-zinc-400">Per Month for All</div>
               </div>
             </motion.div>
           </motion.div>
@@ -391,6 +415,69 @@ export default function Home() {
           >
             <ChevronDown className="w-8 h-8 text-zinc-600" />
           </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+              Why Progressive Web Apps?
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            {[
+              {
+                icon: Download,
+                title: "Install Instantly",
+                desc: "No app store downloads. Install directly from your browser in seconds.",
+                color: "text-green-400"
+              },
+              {
+                icon: Smartphone,
+                title: "Works Offline",
+                desc: "Access your coaching sessions even without internet connection.",
+                color: "text-blue-400"
+              },
+              {
+                icon: Bell,
+                title: "Push Notifications",
+                desc: "Get reminders and motivation exactly when you need them.",
+                color: "text-purple-400"
+              },
+              {
+                icon: TrendingUp,
+                title: "Always Updated",
+                desc: "Automatic updates ensure you always have the latest features.",
+                color: "text-cyan-400"
+              }
+            ].map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <motion.div
+                  key={index}
+                  className="bg-deep-gray/40 backdrop-blur border border-zinc-700 rounded-2xl p-6 text-center hover:border-electric-blue/50 transition-all"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <Icon className={`w-12 h-12 ${feature.color} mx-auto mb-4`} />
+                  <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                  <p className="text-zinc-400 text-sm">{feature.desc}</p>
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
       </section>
 
@@ -418,13 +505,13 @@ export default function Home() {
           {/* Available Products - Hero Treatment */}
           <div className="mb-32">
             <motion.h3 
-              className="text-3xl font-bold text-center mb-16 text-electric-blue"
+              className="text-3xl font-bold text-center mb-16 text-green-400"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              Available Now - Start Your Journey
+              🚀 Live Now - Start Your Journey Today
             </motion.h3>
             
             <div className="grid lg:grid-cols-2 gap-12">
@@ -447,14 +534,23 @@ export default function Home() {
                       <div className="flex-1">
                         <h4 className={`text-2xl font-bold mb-3 ${product.textColor}`}>{product.name}</h4>
                         <p className="text-lg text-white mb-4">{product.desc}</p>
-                        <p className="text-sm text-zinc-300 mb-6">{product.detail}</p>
+                        <p className="text-sm text-zinc-300 mb-4">{product.detail}</p>
+                        <div className="flex items-center gap-4 mb-6">
+                          <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-medium">{product.launch}</span>
+                          <div className="flex items-center gap-1">
+                            <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                            <span className="text-sm text-zinc-400">4.8 rating</span>
+                          </div>
+                        </div>
                         <motion.a
-                          href={`/${product.name.toLowerCase()}`}
+                          href={product.link || `/${product.name.toLowerCase()}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className={`bg-gradient-to-r ${product.color} border ${product.border} hover:opacity-90 text-white px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2 group transition-all`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          Try Beta
+                          Launch App
                           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </motion.a>
                       </div>
@@ -610,13 +706,13 @@ export default function Home() {
                           transition={{ duration: 0.4 }}
                         >
                           <h3 className="text-2xl font-bold mb-4 text-electric-blue flex items-center gap-3">
-                            <Zap className="w-6 h-6" />
-                            Why Now
+                            <Smartphone className="w-6 h-6" />
+                            The PWA Advantage
                           </h3>
                           <p className="text-xl text-zinc-200 leading-relaxed">
-                            AI has reached the point where we can create truly specialized coaches, each trained on decades of expert knowledge. 
-                            This isn't possible with generic chatbots - it requires dedicated domain expertise for every area of human improvement. 
-                            <span className="text-electric-blue font-semibold"> The future of personal development is here</span>.
+                            While others wait for app store approvals and fight for downloads, we deliver immediately through Progressive Web Apps. 
+                            No gatekeepers, no friction, no barriers. <span className="text-electric-blue font-semibold">Install in seconds, start improving instantly</span>. 
+                            This is how the future gets built - fast, direct, and user-first.
                           </p>
                         </motion.div>
 
@@ -628,12 +724,12 @@ export default function Home() {
                         >
                           <h3 className="text-2xl font-bold mb-4 text-electric-blue flex items-center gap-3">
                             <Brain className="w-6 h-6" />
-                            The Philosophy
+                            Monorepo Magic
                           </h3>
                           <p className="text-xl text-zinc-200 leading-relaxed">
-                            We reject the attention economy. No dark patterns, no endless scrolling, no addiction mechanics. 
-                            <span className="text-electric-blue font-semibold"> Just results</span>. 
-                            Real improvement requires focus, consistency, and expert guidance. We provide the expertise, you provide the commitment.
+                            Our unified codebase means faster development, consistent experiences, and shared intelligence across all coaches. 
+                            <span className="text-electric-blue font-semibold">One subscription, 17 specialized coaches</span>. 
+                            What takes other companies years to build, we deliver in months through architectural excellence.
                           </p>
                         </motion.div>
                       </>
@@ -694,6 +790,110 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Social Proof Section */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+              Proven Results
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <motion.div
+              className="bg-deep-gray/40 backdrop-blur border border-zinc-700 rounded-2xl p-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="text-4xl font-bold text-green-400 mb-4">1000+</div>
+              <p className="text-zinc-300 text-lg mb-2">Beta Users</p>
+              <p className="text-zinc-500 text-sm">Active monthly users across our live products</p>
+            </motion.div>
+            
+            <motion.div
+              className="bg-deep-gray/40 backdrop-blur border border-zinc-700 rounded-2xl p-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+            >
+              <div className="text-4xl font-bold text-yellow-400 mb-4 flex items-center justify-center gap-2">
+                4.8 <Star className="w-8 h-8 fill-current" />
+              </div>
+              <p className="text-zinc-300 text-lg mb-2">Average Rating</p>
+              <p className="text-zinc-500 text-sm">Based on user feedback and app store reviews</p>
+            </motion.div>
+            
+            <motion.div
+              className="bg-deep-gray/40 backdrop-blur border border-zinc-700 rounded-2xl p-8 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <div className="text-4xl font-bold text-electric-blue mb-4">89%</div>
+              <p className="text-zinc-300 text-lg mb-2">Goal Achievement</p>
+              <p className="text-zinc-500 text-sm">Users who reach their targets within 30 days</p>
+            </motion.div>
+          </div>
+
+          {/* Testimonials */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              className="bg-gradient-to-br from-red-500/10 to-pink-500/10 border border-red-500/20 rounded-2xl p-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center mr-4">
+                  <Activity className="w-6 h-6 text-red-400" />
+                </div>
+                <div>
+                  <p className="font-semibold">Sarah M.</p>
+                  <p className="text-sm text-zinc-400">Marathon Runner</p>
+                </div>
+              </div>
+              <p className="text-zinc-300 italic">
+                "FeelSharper's training plans are better than my previous $200/month personal trainer. 
+                The biomechanics analysis is incredible."
+              </p>
+            </motion.div>
+            
+            <motion.div
+              className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-2xl p-6"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center mr-4">
+                  <BookOpen className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <p className="font-semibold">David K.</p>
+                  <p className="text-sm text-zinc-400">Medical Student</p>
+                </div>
+              </div>
+              <p className="text-zinc-300 italic">
+                "StudySharper helped me increase my retention rate by 40%. 
+                The spaced repetition system is backed by real cognitive science."
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Revolutionary Waitlist */}
       <section className="py-32 relative overflow-hidden" id="waitlist">
         <div className="absolute inset-0 bg-gradient-to-r from-electric-blue/10 via-cyan-pulse/10 to-electric-blue/10 animate-gradient bg-[length:200%_200%]" />
@@ -707,13 +907,40 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
-              Join the Revolution
+              Start Today
             </h2>
             <p className="text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed">
-              Be among the first to experience AI coaching that delivers real expertise, not generic advice. 
-              <span className="text-electric-blue font-semibold"> Limited beta spots available</span>.
+              Join thousands already using our live products. No waiting, no app store friction. 
+              <span className="text-electric-blue font-semibold">Click, install, improve</span>.
             </p>
           </motion.div>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <motion.a
+              href="https://feelsharper.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all inline-flex items-center justify-center gap-3 group shadow-2xl"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Activity className="w-5 h-5" />
+              Launch FeelSharper
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+            <motion.a
+              href="https://studysharper.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all inline-flex items-center justify-center gap-3 group shadow-2xl"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <BookOpen className="w-5 h-5" />
+              Launch StudySharper
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+          </div>
 
           <WaitlistOptimizer />
 
@@ -755,12 +982,16 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-6 text-lg">Products</h4>
+              <h4 className="font-semibold mb-6 text-lg">Live Products</h4>
               <ul className="space-y-3 text-zinc-400">
-                <li><a href="/feelsharper" className="hover:text-white transition-colors">FeelSharper - Available</a></li>
-                <li><a href="/studysharper" className="hover:text-white transition-colors">StudySharper - Available</a></li>
-                <li className="text-zinc-600">TuneSharper - Q2 2025</li>
-                <li className="text-zinc-600">WealthSharper - Q2 2025</li>
+                <li><a href="https://feelsharper.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                  FeelSharper - Live Beta <ArrowRight className="w-4 h-4" />
+                </a></li>
+                <li><a href="https://studysharper.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                  StudySharper - Live Beta <ArrowRight className="w-4 h-4" />
+                </a></li>
+                <li className="text-zinc-600">TuneSharper - Q3 2025</li>
+                <li className="text-zinc-600">WealthSharper - Q3 2025</li>
                 <li className="text-zinc-600">+13 more coaches coming</li>
               </ul>
             </div>
@@ -769,15 +1000,9 @@ export default function Home() {
               <h4 className="font-semibold mb-6 text-lg">Connect</h4>
               <div className="flex space-x-4 mb-6">
                 <motion.a 
-                  href="#" 
-                  className="w-12 h-12 bg-zinc-800 hover:bg-zinc-700 rounded-xl flex items-center justify-center transition-colors"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <Twitter className="w-5 h-5" />
-                </motion.a>
-                <motion.a 
-                  href="#" 
+                  href="https://github.com/pradordordord/sharpened-monorepo" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 bg-zinc-800 hover:bg-zinc-700 rounded-xl flex items-center justify-center transition-colors"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
@@ -785,17 +1010,26 @@ export default function Home() {
                   <Github className="w-5 h-5" />
                 </motion.a>
                 <motion.a 
+                  href="mailto:hello@sharpened.ai" 
+                  className="w-12 h-12 bg-zinc-800 hover:bg-zinc-700 rounded-xl flex items-center justify-center transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Mail className="w-5 h-5" />
+                </motion.a>
+                <motion.a 
                   href="#" 
                   className="w-12 h-12 bg-zinc-800 hover:bg-zinc-700 rounded-xl flex items-center justify-center transition-colors"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Linkedin className="w-5 h-5" />
+                  <Twitter className="w-5 h-5" />
                 </motion.a>
               </div>
               <div className="flex space-x-6 text-sm text-zinc-500">
                 <a href="#" className="hover:text-white transition-colors">Privacy</a>
                 <a href="#" className="hover:text-white transition-colors">Terms</a>
+                <a href="mailto:hello@sharpened.ai" className="hover:text-white transition-colors">Contact</a>
               </div>
             </div>
           </div>

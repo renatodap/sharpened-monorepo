@@ -1,0 +1,11 @@
+{
+  "name": "@sharpened/config",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "exports": {
+    "./eslint": "./eslint.config.js",
+    "./tsconfig": "./tsconfig.json",
+    "./prettier": "./prettier.config.js"
+  }
+}

@@ -6,7 +6,7 @@ export const runtime = 'edge';
 // POST /api/squads/[id]/join - Join a squad
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = await createSupabaseServer();
@@ -17,7 +17,7 @@ export async function POST(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const squadId = params.id;
+    const { id: squadId } = await params;
     const body = await request.json();
     const { join_code } = body;
 
@@ -120,7 +120,7 @@ export async function POST(
 // DELETE /api/squads/[id]/join - Leave a squad
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = await createSupabaseServer();
@@ -131,7 +131,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const squadId = params.id;
+    const { id: squadId } = await params;
 
     // Check if user is a member
     const { data: membership, error: memberError } = await supabase

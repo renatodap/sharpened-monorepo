@@ -6,7 +6,7 @@ export const runtime = 'edge';
 // GET /api/squads/[id] - Get squad details
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = await createSupabaseServer();
@@ -17,7 +17,7 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const squadId = params.id;
+    const { id: squadId } = await params;
 
     // Get squad details
     const { data: squad, error: squadError } = await supabase
@@ -92,7 +92,7 @@ export async function GET(
 // PATCH /api/squads/[id] - Update squad (owner only)
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = await createSupabaseServer();
@@ -103,7 +103,7 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const squadId = params.id;
+    const { id: squadId } = await params;
     const body = await request.json();
 
     // Check if user is owner
@@ -149,7 +149,7 @@ export async function PATCH(
 // DELETE /api/squads/[id] - Delete squad (owner only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabase = await createSupabaseServer();
@@ -160,7 +160,7 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const squadId = params.id;
+    const { id: squadId } = await params;
 
     // Check if user is owner
     const { data: squad, error: squadError } = await supabase

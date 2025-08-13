@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Apple, Plus, Calendar, TrendingUp, ChefHat, BookTemplate } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -157,12 +158,12 @@ export default function FoodPage() {
                   <BookTemplate className="w-6 h-6 text-success" />
                   <h3 className="text-lg font-semibold">Templates</h3>
                 </div>
-                <a
+                <Link
                   href="/food/templates"
                   className="text-navy hover:underline text-sm"
                 >
                   View all
-                </a>
+                </Link>
               </div>
               <div className="space-y-3">
                 <div className="py-8 text-center">

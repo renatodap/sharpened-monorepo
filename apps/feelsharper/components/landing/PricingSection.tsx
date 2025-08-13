@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Check, X, Zap, Crown, Star, ArrowRight } from 'lucide-react';
+import { Check, X, Zap, Crown, Star, ArrowRight, Shield } from 'lucide-react';
 import { PricingButton, FreePlanButton } from '@/components/pricing/PricingButtons';
 
 interface PricingTier {

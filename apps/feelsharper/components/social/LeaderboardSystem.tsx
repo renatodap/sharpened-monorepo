@@ -21,7 +21,10 @@ import {
   ChevronDown,
   Star,
   Zap,
-  Award
+  Award,
+  Dumbbell,
+  Brain,
+  Plus
 } from 'lucide-react';
 
 interface User {

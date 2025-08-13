@@ -1,0 +1,26 @@
+{
+  "name": "@sharpened/automation",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sharpened/database": "workspace:*",
+    "@sharpened/ai-core": "workspace:*",
+    "@sharpened/email": "workspace:*",
+    "@sharpened/analytics": "workspace:*",
+    "cron-parser": "^4.9.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.10",
+    "@types/node-cron": "^3.0.11",
+    "typescript": "^5"
+  }
+}

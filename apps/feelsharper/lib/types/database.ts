@@ -895,3 +895,43 @@ export interface ExerciseSet {
   rest_seconds?: number
   completed: boolean
 }
+
+// Business Intelligence Types
+export interface UserMetrics {
+  totalUsers: number;
+  activeUsers: number;
+  newUsers: number;
+  churnedUsers: number;
+  retentionRate: number;
+  avgSessionDuration: number;
+  avgDailySessions: number;
+}
+
+export interface RevenueMetrics {
+  mrr: number; // Monthly Recurring Revenue
+  arr: number; // Annual Recurring Revenue
+  arpu: number; // Average Revenue Per User
+  ltv: number; // Lifetime Value
+  cac: number; // Customer Acquisition Cost
+  churnRate: number;
+  growthRate: number;
+}
+
+export interface ProductMetrics {
+  dau: number; // Daily Active Users
+  wau: number; // Weekly Active Users
+  mau: number; // Monthly Active Users
+  stickiness: number; // DAU/MAU ratio
+  featureAdoption: Record<string, number>;
+  timeToValue: number; // Days to first value
+}
+
+export interface HealthMetrics {
+  workoutsLogged: number;
+  avgWorkoutsPerUser: number;
+  foodEntriesLogged: number;
+  avgFoodEntriesPerUser: number;
+  weightEntriesLogged: number;
+  activeStreaks: number;
+  avgStreakLength: number;
+}

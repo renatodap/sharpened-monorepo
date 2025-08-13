@@ -29,8 +29,9 @@ export default function WorkoutDashboardPage() {
         if (programs.length > 0) {
           const program = programs[0];
           setActiveProgram(program);
+          const weeklyCompletions = await calculateWeeklyCompletions(program, program.current_week || 1);
           setWeeklyProgress({
-            completed: 0, // TODO: Calculate from actual workout completions
+            completed: weeklyCompletions,
             total: program.workout_programs?.sessions_per_week || 0,
             currentWeek: program.current_week || 1
           });
@@ -45,6 +46,19 @@ export default function WorkoutDashboardPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const calculateWeeklyCompletions = async (program: UserProgramWithDetails, week: number): Promise<number> => {
+    try {
+      const response = await fetch(`/api/workouts?program_id=${program.id}&week=${week}&completed=true`);
+      if (response.ok) {
+        const data = await response.json();
+        return data.workouts?.length || 0;
+      }
+    } catch (error) {
+      console.error('Error calculating weekly completions:', error);
+    }
+    return 0;
   };
 
   const findTodaysWorkout = (program: UserProgramWithDetails) => {

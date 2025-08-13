@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Crimson_Text, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { UpgradeBanner } from "@/components/premium/UpgradePrompt";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -81,6 +82,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${crimson.variable} ${jetbrainsMono.variable} scroll-smooth`}>
       <body className="font-sans antialiased min-h-screen bg-bg text-text-primary">
         <ThemeProvider>
+          <UpgradeBanner />
           {children}
         </ThemeProvider>
       </body>

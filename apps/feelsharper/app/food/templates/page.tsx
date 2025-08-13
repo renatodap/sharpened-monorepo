@@ -311,8 +311,7 @@ export default function MealTemplatesPage() {
                       size="sm" 
                       className="flex-1"
                       onClick={() => {
-                        // TODO: Open template editor/viewer
-                        console.log('Edit template:', template.id);
+                        window.location.href = `/food/templates/${template.id}`;
                       }}
                     >
                       View

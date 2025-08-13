@@ -1,0 +1,24 @@
+{
+  "name": "@sharpened/email",
+  "version": "1.0.0",
+  "description": "Email service and templates for Sharpened apps",
+  "main": "resend-config.ts",
+  "dependencies": {
+    "resend": "^3.0.0",
+    "@react-email/components": "^0.0.12",
+    "@react-email/render": "^0.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "scripts": {
+    "preview": "email dev",
+    "build": "email build",
+    "export": "email export"
+  }
+}

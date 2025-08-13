@@ -45,7 +45,7 @@ export default function FitnessHero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
           </span>
-          <span className="text-sm font-medium text-text-secondary">Free fitness tracking that works</span>
+          <span className="text-sm font-medium text-text-secondary">Freemium fitness tracking that works</span>
         </div>
 
         {/* Main Heading */}
@@ -59,7 +59,7 @@ export default function FitnessHero() {
         {/* Subheading */}
         <p className={`text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           Track food, workouts, and weight. <br className="hidden md:block" />
-          See progress with clean graphs. Completely free.
+          See progress with clean graphs. Free forever with premium upgrades.
         </p>
 
         {/* CTA Buttons */}
@@ -115,11 +115,11 @@ export default function FitnessHero() {
 
         {/* Trust Badge */}
         <div className={`mt-20 flex items-center justify-center gap-8 transition-all duration-1000 delay-600 ${mounted ? 'opacity-60' : 'opacity-0'}`}>
-          <p className="text-sm text-text-muted font-medium">No subscriptions</p>
+          <p className="text-sm text-text-muted font-medium">Free forever</p>
+          <p className="text-sm text-text-muted font-medium">•</p>
+          <p className="text-sm text-text-muted font-medium">Premium features</p>
           <p className="text-sm text-text-muted font-medium">•</p>
           <p className="text-sm text-text-muted font-medium">No ads</p>
-          <p className="text-sm text-text-muted font-medium">•</p>
-          <p className="text-sm text-text-muted font-medium">Just fitness tracking</p>
         </div>
       </div>
     </section>

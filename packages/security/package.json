@@ -1,0 +1,25 @@
+{
+  "name": "@sharpened/security",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "express-rate-limit": "^7.1.5",
+    "express-slow-down": "^2.0.1",
+    "csrf": "^3.1.0",
+    "xss": "^1.0.14"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/bcryptjs": "^2.4.6",
+    "typescript": "^5.3.3"
+  }
+}

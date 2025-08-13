@@ -1,0 +1,16 @@
+{
+  "name": "@sharpened/payments",
+  "version": "1.0.0",
+  "description": "LemonSqueezy payment processing for Sharpened apps",
+  "main": "lemonsqueezy-config.ts",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  }
+}

@@ -40,25 +40,35 @@ sharpened-monorepo/
 
 ## 📚 Documentation
 
-### Core Documents
-- [Vision & Mission](./docs/VISION.md) - Why we exist and where we're going
-- [Operating Principles](./docs/OPERATING_PRINCIPLES.md) - How we make decisions
-- [Architecture Overview](./docs/ARCHITECTURE_OVERVIEW.md) - Technical foundation
+### [📖 Complete Documentation Hub](./docs/)
+Comprehensive documentation organized by domain - architecture, business, development, operations, research, reports, and strategy.
 
-### Product & Growth
-- [Feel Sharper PRD](./docs/PRODUCT_PRD_feelsharper.md) - Product requirements
-- [Market Research](./docs/MARKET_RESEARCH.md) - Market analysis and insights
-- [Growth Plan](./docs/GROWTH_PLAN.md) - User acquisition strategy
+### Quick Links by Role
 
-### Operations
-- [Financial Model](./docs/FINANCIAL_MODEL.md) - Unit economics and projections
-- [Security & Privacy](./docs/SECURITY_AND_PRIVACY.md) - Data protection
-- [HR & Organization](./docs/HR_ORG.md) - Team building plans
-- [Legal Checklist](./docs/LEGAL_CHECKLIST.md) - Compliance requirements
+#### 🏗️ [Architecture & Technical](./docs/architecture/)
+- [Architecture Overview](./docs/architecture/ARCHITECTURE_OVERVIEW.md)
+- [API Documentation](./docs/architecture/API_DOCUMENTATION.md)
+- [Security & Privacy](./docs/architecture/SECURITY_AND_PRIVACY.md)
 
-### Owner Actions
-- [Decisions Pending](./docs/OWNER/DECISIONS_PENDING.md) 🔐 - Awaiting approval
-- [Actions Required](./docs/OWNER/ACTIONS_TODO.md) 📋 - Owner todo list
+#### 💼 [Business & Strategy](./docs/business/)
+- [Market Research](./docs/business/MARKET_RESEARCH.md)
+- [Financial Model](./docs/business/FINANCIAL_MODEL.md)
+- [Growth Plan](./docs/business/GROWTH_PLAN.md)
+
+#### ⚙️ [Development](./docs/development/)
+- [Development Playbook](./docs/development/DEVELOPMENT_PLAYBOOK.md)
+- [Product Ecosystem](./docs/development/SHARPENED_PRODUCT_ECOSYSTEM.md)
+- [FeelSharper PRD](./docs/development/PRODUCT_PRD_feelsharper.md)
+
+#### 🎯 [Strategy & Vision](./docs/strategy/)
+- [Vision & Mission](./docs/strategy/VISION.md)
+- [Unified Strategy](./docs/strategy/UNIFIED_STRATEGY.md)
+- [Execution Roadmap](./docs/strategy/EXECUTION_ROADMAP_2025.md)
+
+#### 👤 [Owner Actions](./docs/OWNER/)
+- [Immediate Actions](./docs/OWNER/IMMEDIATE.md) 🚨
+- [Decisions Pending](./docs/OWNER/DECISIONS_PENDING.md) 🔐
+- [Actions TODO](./docs/OWNER/ACTIONS_TODO.md) 📋
 
 ## 🛠 Technology Stack
 
@@ -155,8 +165,10 @@ We use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## 🔗 Links
 
-- [Changelog](./docs/CHANGELOG.md)
+- [Documentation Hub](./docs/) - All documentation
+- [Changelog](./docs/development/CHANGELOG.md)
 - [Migration Notes](./MIGRATION.md)
+- [Current Status](./docs/reports/STATUS.md)
 
 ## 📄 License
 

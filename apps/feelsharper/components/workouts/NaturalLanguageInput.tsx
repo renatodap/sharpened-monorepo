@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Loader2, Zap, Edit3, Check, X } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { Textarea } from '@/components/ui/textarea';
+import { PremiumGate, FeatureUsageIndicator } from '@/components/premium/PremiumGate';
+import { trackFeatureUsage } from '@/lib/hooks/useFeatureAccess';
 import type { Exercise, WorkoutTypeEnum } from '@/lib/types/database';
 
 interface ParseResult {
@@ -66,6 +68,12 @@ export default function NaturalLanguageInput({
       
       if (result.success && result.workout) {
         setShowPreview(true);
+        // Track usage for billing/limits
+        await trackFeatureUsage('workout_parse', {
+          exercise_count: result.workout.exercises.length,
+          confidence: result.workout.confidence,
+          original_text: input.trim(),
+        });
       }
     } catch (error) {
       console.error('Failed to parse workout:', error);
@@ -103,11 +111,15 @@ export default function NaturalLanguageInput({
 
   return (
     <div className={`space-y-4 ${className}`}>
-      {/* Input Section */}
-      <div className="space-y-2">
-        <label className="text-sm font-medium text-text-primary">
-          Describe your workout
-        </label>
+      <PremiumGate feature="workout_parse">
+        {/* Input Section */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <label className="text-sm font-medium text-text-primary">
+              Describe your workout
+            </label>
+            <FeatureUsageIndicator feature="workout_parse" />
+          </div>
         <div className="flex gap-2">
           <Textarea
             value={input}
@@ -276,6 +288,7 @@ export default function NaturalLanguageInput({
           </div>
         </div>
       )}
+      </PremiumGate>
     </div>
   );
 }

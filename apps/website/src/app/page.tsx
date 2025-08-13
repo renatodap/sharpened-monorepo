@@ -19,12 +19,219 @@ import {
   Activity,
   BookOpen,
   Plus,
-  Minus
+  Minus,
+  Music,
+  DollarSign,
+  ChefHat,
+  Heart,
+  Palette,
+  Briefcase,
+  Home,
+  Flower,
+  Wrench,
+  BookText,
+  MessageSquare,
+  PenTool,
+  Lotus,
+  Goal,
+  Users,
+  Sparkles
 } from 'lucide-react'
+
+const PRODUCTS = [
+  { 
+    name: "FeelSharper", 
+    icon: Activity, 
+    desc: "Fitness & Wellness Coach", 
+    detail: "Trained on exercise science, biomechanics & sports medicine",
+    color: "from-red-500/20 to-pink-500/20", 
+    border: "border-red-500/30",
+    textColor: "text-red-400",
+    status: "available",
+    launch: "Available Now"
+  },
+  { 
+    name: "StudySharper", 
+    icon: BookOpen, 
+    desc: "Learning & Memory Coach", 
+    detail: "Trained on cognitive psychology & learning science",
+    color: "from-cyan-500/20 to-blue-500/20", 
+    border: "border-cyan-500/30",
+    textColor: "text-cyan-400",
+    status: "available",
+    launch: "Available Now"
+  },
+  { 
+    name: "TuneSharper", 
+    icon: Music, 
+    desc: "Music Learning Coach", 
+    detail: "Trained on music theory, pedagogy & performance technique",
+    color: "from-purple-500/20 to-violet-500/20", 
+    border: "border-purple-500/30",
+    textColor: "text-purple-400",
+    status: "coming",
+    launch: "Q2 2025"
+  },
+  { 
+    name: "WealthSharper", 
+    icon: DollarSign, 
+    desc: "Personal Finance Coach", 
+    detail: "Trained on CFP curriculum & behavioral finance research",
+    color: "from-green-500/20 to-emerald-500/20", 
+    border: "border-green-500/30",
+    textColor: "text-green-400",
+    status: "coming",
+    launch: "Q2 2025"
+  },
+  { 
+    name: "ChefSharper", 
+    icon: ChefHat, 
+    desc: "Cooking & Nutrition Coach", 
+    detail: "Trained on culinary techniques & nutritional science",
+    color: "from-orange-500/20 to-amber-500/20", 
+    border: "border-orange-500/30",
+    textColor: "text-orange-400",
+    status: "coming",
+    launch: "Q2 2025"
+  },
+  { 
+    name: "MindSharper", 
+    icon: Heart, 
+    desc: "Mental Wellness Coach", 
+    detail: "Trained on CBT, mindfulness & stress management research",
+    color: "from-indigo-500/20 to-purple-500/20", 
+    border: "border-indigo-500/30",
+    textColor: "text-indigo-400",
+    status: "coming",
+    launch: "Q3 2025"
+  },
+  { 
+    name: "ArtSharper", 
+    icon: Palette, 
+    desc: "Creative Skills Coach", 
+    detail: "Trained on art fundamentals & design principles",
+    color: "from-pink-500/20 to-rose-500/20", 
+    border: "border-pink-500/30",
+    textColor: "text-pink-400",
+    status: "coming",
+    launch: "Q3 2025"
+  },
+  { 
+    name: "CareerSharper", 
+    icon: Briefcase, 
+    desc: "Professional Dev Coach", 
+    detail: "Trained on industry skills & career progression patterns",
+    color: "from-blue-500/20 to-cyan-500/20", 
+    border: "border-blue-500/30",
+    textColor: "text-blue-400",
+    status: "coming",
+    launch: "Q3 2025"
+  },
+  { 
+    name: "HomeSharper", 
+    icon: Home, 
+    desc: "Home Management Coach", 
+    detail: "Trained on home maintenance & energy efficiency",
+    color: "from-yellow-500/20 to-orange-500/20", 
+    border: "border-yellow-500/30",
+    textColor: "text-yellow-400",
+    status: "coming",
+    launch: "Q3 2025"
+  },
+  { 
+    name: "GrowSharper", 
+    icon: Flower, 
+    desc: "Gardening Coach", 
+    detail: "Trained on horticulture science & plant biology",
+    color: "from-emerald-500/20 to-green-500/20", 
+    border: "border-emerald-500/30",
+    textColor: "text-emerald-400",
+    status: "coming",
+    launch: "Q4 2025"
+  },
+  { 
+    name: "FixSharper", 
+    icon: Wrench, 
+    desc: "DIY & Repair Coach", 
+    detail: "Trained on repair techniques & safety protocols",
+    color: "from-gray-500/20 to-slate-500/20", 
+    border: "border-gray-500/30",
+    textColor: "text-gray-400",
+    status: "coming",
+    launch: "Q4 2025"
+  },
+  { 
+    name: "ReadSharper", 
+    icon: BookText, 
+    desc: "Reading Coach", 
+    detail: "Trained on comprehension strategies & speed reading",
+    color: "from-amber-500/20 to-yellow-500/20", 
+    border: "border-amber-500/30",
+    textColor: "text-amber-400",
+    status: "coming",
+    launch: "Q4 2025"
+  },
+  { 
+    name: "SpeakSharper", 
+    icon: MessageSquare, 
+    desc: "Communication Coach", 
+    detail: "Trained on rhetoric & communication psychology",
+    color: "from-teal-500/20 to-cyan-500/20", 
+    border: "border-teal-500/30",
+    textColor: "text-teal-400",
+    status: "coming",
+    launch: "Q4 2025"
+  },
+  { 
+    name: "WriteSharper", 
+    icon: PenTool, 
+    desc: "Writing Coach", 
+    detail: "Trained on style guides & storytelling techniques",
+    color: "from-violet-500/20 to-purple-500/20", 
+    border: "border-violet-500/30",
+    textColor: "text-violet-400",
+    status: "coming",
+    launch: "Q4 2025"
+  },
+  { 
+    name: "ZenSharper", 
+    icon: Lotus, 
+    desc: "Meditation Coach", 
+    detail: "Trained on meditation techniques & neuroscience research",
+    color: "from-sky-500/20 to-blue-500/20", 
+    border: "border-sky-500/30",
+    textColor: "text-sky-400",
+    status: "coming",
+    launch: "Q4 2025"
+  },
+  { 
+    name: "GoalSharper", 
+    icon: Goal, 
+    desc: "Goal Achievement Coach", 
+    detail: "Trained on goal psychology & habit formation science",
+    color: "from-red-500/20 to-orange-500/20", 
+    border: "border-red-500/30",
+    textColor: "text-red-400",
+    status: "coming",
+    launch: "Q4 2025"
+  },
+  { 
+    name: "ConnectSharper", 
+    icon: Users, 
+    desc: "Relationship Coach", 
+    detail: "Trained on social psychology & relationship dynamics",
+    color: "from-rose-500/20 to-pink-500/20", 
+    border: "border-rose-500/30",
+    textColor: "text-rose-400",
+    status: "coming",
+    launch: "Q4 2025"
+  }
+]
 
 export default function Home() {
   const [manifestoExpanded, setManifestoExpanded] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +244,9 @@ export default function Home() {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const availableProducts = PRODUCTS.filter(p => p.status === 'available')
+  const comingProducts = PRODUCTS.filter(p => p.status === 'coming')
 
   return (
     <main className="min-h-screen bg-charcoal text-white overflow-x-hidden">
@@ -53,10 +263,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <motion.div 
-              className="text-2xl font-bold"
+              className="text-2xl font-bold flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              <Sparkles className="w-6 h-6 text-electric-blue" />
               Sharpened
             </motion.div>
             <div className="hidden md:flex items-center space-x-8">
@@ -64,7 +275,7 @@ export default function Home() {
                 onClick={() => scrollToSection('products')}
                 className="hover:text-electric-blue transition-colors"
               >
-                Products
+                Ecosystem
               </button>
               <button 
                 onClick={() => scrollToSection('manifesto')}
@@ -73,7 +284,7 @@ export default function Home() {
                 Manifesto
               </button>
               <motion.a 
-                href={`mailto:${BRAND.contact.email}`}
+                href={`mailto:${BRAND.contact?.email || 'hello@sharpened.ai'}`}
                 className="bg-electric-blue hover:bg-blue-600 px-4 py-2 rounded-lg font-medium transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -85,58 +296,91 @@ export default function Home() {
         </div>
       </motion.nav>
 
-      {/* Hero Section with Particle Background */}
+      {/* Revolutionary Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
         <ParticleBackground />
         
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-charcoal/50 to-charcoal pointer-events-none" />
         
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
-              <span className="block">Your edge,</span>
-              <span className="block bg-gradient-to-r from-electric-blue to-cyan-pulse bg-clip-text text-transparent">
-                sharpened by AI
+            <motion.div 
+              className="inline-flex items-center gap-2 bg-deep-gray/50 backdrop-blur border border-electric-blue/30 rounded-full px-6 py-3 mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <Sparkles className="w-4 h-4 text-electric-blue" />
+              <span className="text-sm font-medium">17 Specialized AI Coaches</span>
+            </motion.div>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-none">
+              <span className="block mb-4">The Future of</span>
+              <span className="block bg-gradient-to-r from-electric-blue via-cyan-pulse to-electric-blue bg-clip-text text-transparent">
+                Personal Mastery
               </span>
             </h1>
             
             <motion.p 
-              className="text-lg md:text-xl text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-zinc-300 mb-12 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
             >
-              {BRAND.corePromise}
+              17 specialized AI coaches, each trained on real expertise from doctors, researchers, and masters in their field. 
+              <span className="text-electric-blue font-semibold"> No generic advice. Just professional-level guidance</span> for every aspect of self-improvement.
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
             >
               <motion.button
                 onClick={() => scrollToSection('waitlist')}
-                className="bg-electric-blue hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all inline-flex items-center justify-center gap-2 group cursor-pointer"
-                whileHover={{ scale: 1.05 }}
+                className="bg-electric-blue hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all inline-flex items-center justify-center gap-3 group shadow-2xl shadow-electric-blue/25"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Join the waitlist
+                <Sparkles className="w-5 h-5" />
+                Join the Revolution
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.button
-                onClick={() => scrollToSection('promise')}
-                className="border-2 border-zinc-700 hover:border-zinc-600 text-zinc-300 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all"
-                whileHover={{ scale: 1.05 }}
+                onClick={() => scrollToSection('products')}
+                className="border-2 border-zinc-600 hover:border-electric-blue bg-zinc-900/50 backdrop-blur text-zinc-200 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Learn more
+                Explore Ecosystem
               </motion.button>
+            </motion.div>
+
+            {/* Stats Row */}
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
+              <div className="text-center">
+                <div className="text-3xl font-bold text-electric-blue mb-2">17</div>
+                <div className="text-zinc-400">Specialized Coaches</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-electric-blue mb-2">66%</div>
+                <div className="text-zinc-400">Productivity Increase</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-electric-blue mb-2">∞</div>
+                <div className="text-zinc-400">Human Potential</div>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -148,192 +392,213 @@ export default function Home() {
             <ChevronDown className="w-8 h-8 text-zinc-600" />
           </motion.div>
         </div>
-
-        {/* Request for background video */}
-        <div className="absolute top-20 left-6 bg-deep-gray/90 backdrop-blur p-4 rounded-lg border border-zinc-800 max-w-xs">
-          <p className="text-sm text-zinc-400">
-            <strong className="text-white">Media Request:</strong> Please provide a looping background video (15-30s, abstract/tech-themed, 1920x1080) for the hero section in <code>/public/brand/hero-bg.mp4</code>
-          </p>
-        </div>
       </section>
 
-      {/* The Promise Section */}
-      <section id="promise" className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* Revolutionary Ecosystem Section */}
+      <section id="products" className="py-32 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-deep-gray/20 to-transparent" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative">
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">The Promise</h2>
-            <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-              Technology becomes transformation when applied with precision and purpose.
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+              The Complete Ecosystem
+            </h2>
+            <p className="text-xl text-zinc-300 max-w-4xl mx-auto leading-relaxed">
+              Each coach is trained on specialized knowledge that would take years to master. 
+              Get expert-level guidance across every domain of personal improvement.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Brain, title: "Data-Driven Insights", text: "Reveal what's actually working with AI-powered analysis" },
-              { icon: Zap, title: "Pattern Recognition", text: "Spot improvement opportunities you'd miss on your own" },
-              { icon: Target, title: "Measurable Progress", text: "Track and celebrate every gain with precision metrics" }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-deep-gray/50 backdrop-blur border border-zinc-800 rounded-xl p-8 hover:border-electric-blue/50 transition-all group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-              >
-                <div className="w-16 h-16 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-electric-blue/20 transition-colors">
-                  <item.icon className="w-8 h-8 text-electric-blue" />
+          {/* Available Products - Hero Treatment */}
+          <div className="mb-32">
+            <motion.h3 
+              className="text-3xl font-bold text-center mb-16 text-electric-blue"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Available Now - Start Your Journey
+            </motion.h3>
+            
+            <div className="grid lg:grid-cols-2 gap-12">
+              {availableProducts.map((product, index) => {
+                const Icon = product.icon
+                return (
+                  <motion.div
+                    key={product.name}
+                    className={`bg-gradient-to-br ${product.color} backdrop-blur border ${product.border} rounded-3xl p-8 hover:scale-105 transition-all duration-300 group cursor-pointer shadow-2xl`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2, duration: 0.8 }}
+                    whileHover={{ y: -10 }}
+                  >
+                    <div className="flex items-start gap-6">
+                      <div className={`w-16 h-16 ${product.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <Icon className={`w-8 h-8 ${product.textColor}`} />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className={`text-2xl font-bold mb-3 ${product.textColor}`}>{product.name}</h4>
+                        <p className="text-lg text-white mb-4">{product.desc}</p>
+                        <p className="text-sm text-zinc-300 mb-6">{product.detail}</p>
+                        <motion.a
+                          href={`/${product.name.toLowerCase()}`}
+                          className={`bg-gradient-to-r ${product.color} border ${product.border} hover:opacity-90 text-white px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2 group transition-all`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          Try Beta
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </motion.a>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Coming Soon - Grid */}
+          <div>
+            <motion.h3 
+              className="text-3xl font-bold text-center mb-16 text-zinc-400"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              Coming Soon - The Revolution Continues
+            </motion.h3>
+            
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              {comingProducts.map((product, index) => {
+                const Icon = product.icon
+                return (
+                  <motion.div
+                    key={product.name}
+                    className={`bg-gradient-to-br ${product.color} backdrop-blur border ${product.border} rounded-2xl p-6 hover:scale-105 transition-all duration-300 group cursor-pointer`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05, duration: 0.6 }}
+                    whileHover={{ y: -5 }}
+                    onMouseEnter={() => setHoveredProduct(product.name)}
+                    onMouseLeave={() => setHoveredProduct(null)}
+                  >
+                    <div className={`w-12 h-12 ${product.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                      <Icon className={`w-6 h-6 ${product.textColor}`} />
+                    </div>
+                    <h4 className={`font-bold text-white mb-2 text-sm`}>{product.name}</h4>
+                    <p className="text-xs text-zinc-300 mb-3 opacity-80">{product.desc}</p>
+                    {hoveredProduct === product.name && (
+                      <motion.p 
+                        className="text-xs text-zinc-400 mb-3"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                      >
+                        {product.detail}
+                      </motion.p>
+                    )}
+                    <div className={`text-xs ${product.textColor} font-medium`}>{product.launch}</div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Ecosystem Benefits */}
+          <motion.div
+            className="mt-32 bg-gradient-to-r from-deep-gray/30 via-deep-gray/50 to-deep-gray/30 backdrop-blur border border-zinc-700 rounded-3xl p-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-electric-blue to-cyan-pulse bg-clip-text text-transparent">
+              Why The Complete Ecosystem Changes Everything
+            </h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-electric-blue/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Brain className="w-8 h-8 text-electric-blue" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-zinc-400">{item.text}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Request for icons */}
-          <div className="mt-8 bg-deep-gray/90 backdrop-blur p-4 rounded-lg border border-zinc-800 max-w-md mx-auto">
-            <p className="text-sm text-zinc-400">
-              <strong className="text-white">Media Request:</strong> Custom icon set or illustration style reference for promise cards in <code>/public/brand/icons/</code>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Cards Section */}
-      <section id="products" className="py-24">
-        <div className="max-w-7xl mx-auto">
-          {/* FeelSharper */}
-          <motion.div 
-            className="grid lg:grid-cols-2 gap-12 items-center mb-24 px-6"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="order-2 lg:order-1">
-              <div className="bg-gradient-to-br from-vibrant-red/20 to-transparent p-12 rounded-2xl border border-vibrant-red/20">
-                <Activity className="w-12 h-12 text-vibrant-red mb-6" />
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-vibrant-red">
-                  {BRAND.products.feelSharper.name}
-                </h3>
-                <p className="text-lg text-zinc-300 mb-8">
-                  {BRAND.products.feelSharper.description}
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {BRAND.products.feelSharper.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-vibrant-red flex-shrink-0" />
-                      <span className="text-zinc-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <motion.button 
-                  className="bg-vibrant-red hover:bg-red-600 text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Coming Soon
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+                <h4 className="text-xl font-semibold mb-4">Cross-Domain Intelligence</h4>
+                <p className="text-zinc-300">Your fitness goals inform meal recommendations. Study patterns optimize sleep schedules. Everything connects for exponential improvement.</p>
               </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              <div className="bg-deep-gray/50 rounded-2xl p-8 border border-zinc-800 aspect-video flex items-center justify-center">
-                <p className="text-zinc-500 text-center">
-                  <strong className="text-white block mb-2">Media Request:</strong>
-                  Product screenshot or video demo for FeelSharper<br/>
-                  <code className="text-xs">/public/brand/feelsharper-preview.mp4</code>
-                </p>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-electric-blue/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Target className="w-8 h-8 text-electric-blue" />
+                </div>
+                <h4 className="text-xl font-semibold mb-4">Holistic Mastery</h4>
+                <p className="text-zinc-300">Track measurable progress across all life domains with unified analytics, goal setting, and achievement tracking.</p>
               </div>
-            </div>
-          </motion.div>
-
-          {/* StudySharper */}
-          <motion.div 
-            className="grid lg:grid-cols-2 gap-12 items-center px-6"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div>
-              <div className="bg-deep-gray/50 rounded-2xl p-8 border border-zinc-800 aspect-video flex items-center justify-center">
-                <p className="text-zinc-500 text-center">
-                  <strong className="text-white block mb-2">Media Request:</strong>
-                  Product screenshot or video demo for StudySharper<br/>
-                  <code className="text-xs">/public/brand/studysharper-preview.mp4</code>
-                </p>
-              </div>
-            </div>
-            <div>
-              <div className="bg-gradient-to-br from-cyan-pulse/20 to-transparent p-12 rounded-2xl border border-cyan-pulse/20">
-                <BookOpen className="w-12 h-12 text-cyan-pulse mb-6" />
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-cyan-pulse">
-                  {BRAND.products.studySharper.name}
-                </h3>
-                <p className="text-lg text-zinc-300 mb-8">
-                  {BRAND.products.studySharper.description}
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {BRAND.products.studySharper.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-cyan-pulse flex-shrink-0" />
-                      <span className="text-zinc-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <motion.button 
-                  className="bg-cyan-pulse hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Coming Soon
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-electric-blue/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Zap className="w-8 h-8 text-electric-blue" />
+                </div>
+                <h4 className="text-xl font-semibold mb-4">Compound Growth</h4>
+                <p className="text-zinc-300">Small improvements across multiple areas create massive life transformation. This is how you become unstoppable.</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Manifesto Section */}
-      <section id="manifesto" className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-deep-gray/20 to-transparent pointer-events-none" />
+      {/* Revolutionary Manifesto */}
+      <section id="manifesto" className="py-32 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-electric-blue/5 to-transparent" />
         
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto px-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Manifesto</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+              The Sharpened Manifesto
+            </h2>
             
-            <div className="bg-deep-gray/30 backdrop-blur border border-zinc-800 rounded-2xl p-8 md:p-12">
+            <div className="bg-gradient-to-br from-deep-gray/40 via-deep-gray/60 to-deep-gray/40 backdrop-blur-xl border border-zinc-700 rounded-3xl p-12 shadow-2xl">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={manifestoExpanded ? 'expanded' : 'collapsed'}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <div className="space-y-8">
+                  <div className="space-y-10">
                     <div>
-                      <h3 className="text-xl font-semibold mb-3 text-electric-blue">Vision</h3>
-                      <p className="text-lg text-zinc-300">{BRAND.vision}</p>
+                      <h3 className="text-2xl font-bold mb-4 text-electric-blue flex items-center gap-3">
+                        <Sparkles className="w-6 h-6" />
+                        The Vision
+                      </h3>
+                      <p className="text-xl text-zinc-200 leading-relaxed">
+                        We believe every person contains infinite potential. Traditional self-improvement fails because it's generic. 
+                        <span className="text-electric-blue font-semibold"> Sharpened succeeds because each coach is an expert</span>, 
+                        trained on real knowledge from professionals who've mastered their craft.
+                      </p>
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-semibold mb-3 text-electric-blue">Mission</h3>
-                      <p className="text-lg text-zinc-300">{BRAND.mission}</p>
+                      <h3 className="text-2xl font-bold mb-4 text-electric-blue flex items-center gap-3">
+                        <Target className="w-6 h-6" />
+                        The Mission  
+                      </h3>
+                      <p className="text-xl text-zinc-200 leading-relaxed">
+                        Transform personal improvement from guesswork to science. No more generic advice or one-size-fits-all solutions. 
+                        <span className="text-electric-blue font-semibold"> Every recommendation backed by expertise</span>, 
+                        every insight powered by real data, every victory measured precisely.
+                      </p>
                     </div>
 
                     {manifestoExpanded && (
@@ -342,20 +607,34 @@ export default function Home() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.4 }}
                         >
-                          <h3 className="text-xl font-semibold mb-3 text-electric-blue">Why Now</h3>
-                          <p className="text-lg text-zinc-300">{BRAND.whyNow}</p>
+                          <h3 className="text-2xl font-bold mb-4 text-electric-blue flex items-center gap-3">
+                            <Zap className="w-6 h-6" />
+                            Why Now
+                          </h3>
+                          <p className="text-xl text-zinc-200 leading-relaxed">
+                            AI has reached the point where we can create truly specialized coaches, each trained on decades of expert knowledge. 
+                            This isn't possible with generic chatbots - it requires dedicated domain expertise for every area of human improvement. 
+                            <span className="text-electric-blue font-semibold"> The future of personal development is here</span>.
+                          </p>
                         </motion.div>
 
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, delay: 0.1 }}
+                          transition={{ duration: 0.4, delay: 0.1 }}
                         >
-                          <h3 className="text-xl font-semibold mb-3 text-electric-blue">Origin</h3>
-                          <p className="text-lg text-zinc-300">{BRAND.origin}</p>
+                          <h3 className="text-2xl font-bold mb-4 text-electric-blue flex items-center gap-3">
+                            <Brain className="w-6 h-6" />
+                            The Philosophy
+                          </h3>
+                          <p className="text-xl text-zinc-200 leading-relaxed">
+                            We reject the attention economy. No dark patterns, no endless scrolling, no addiction mechanics. 
+                            <span className="text-electric-blue font-semibold"> Just results</span>. 
+                            Real improvement requires focus, consistency, and expert guidance. We provide the expertise, you provide the commitment.
+                          </p>
                         </motion.div>
                       </>
                     )}
@@ -365,7 +644,7 @@ export default function Home() {
 
               <motion.button
                 onClick={() => setManifestoExpanded(!manifestoExpanded)}
-                className="mt-8 text-electric-blue hover:text-blue-400 font-semibold inline-flex items-center gap-2 group"
+                className="mt-10 text-electric-blue hover:text-blue-400 font-semibold inline-flex items-center gap-3 group text-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -377,130 +656,147 @@ export default function Home() {
                 ) : (
                   <>
                     <Plus className="w-5 h-5" />
-                    Read full manifesto
+                    Read the complete manifesto
                   </>
                 )}
               </motion.button>
             </div>
 
-            {/* Values */}
+            {/* Core Values */}
             <motion.div 
-              className="mt-12 flex flex-wrap justify-center gap-3"
+              className="mt-16 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
             >
-              {BRAND.values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-deep-gray/50 backdrop-blur px-6 py-3 rounded-full border border-zinc-800 hover:border-electric-blue/50 transition-all"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  title={value.description}
-                >
-                  <span className="font-semibold">{value.title}</span>
-                </motion.div>
-              ))}
+              <h3 className="text-2xl font-bold mb-8">Core Values</h3>
+              <div className="flex flex-wrap justify-center gap-4">
+                {[
+                  { title: "Expert Knowledge", desc: "Real expertise, not generic advice" },
+                  { title: "Measurable Results", desc: "Track real progress, not vanity metrics" },
+                  { title: "Zero Friction", desc: "Effortless interaction, maximum impact" },
+                  { title: "Evidence-Based", desc: "Scientific backing for every recommendation" },
+                  { title: "Holistic Growth", desc: "Connected improvement across all domains" }
+                ].map((value, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-deep-gray/60 backdrop-blur px-6 py-4 rounded-2xl border border-zinc-700 hover:border-electric-blue/50 transition-all group"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    title={value.desc}
+                  >
+                    <span className="font-semibold text-white group-hover:text-electric-blue transition-colors">{value.title}</span>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
-
-          {/* Request for background */}
-          <div className="mt-12 bg-deep-gray/90 backdrop-blur p-4 rounded-lg border border-zinc-800 max-w-md mx-auto">
-            <p className="text-sm text-zinc-400 text-center">
-              <strong className="text-white">Media Request:</strong> Background texture or abstract image for manifesto section in <code>/public/brand/manifesto-bg.jpg</code>
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* Waitlist Section */}
-      <section className="py-24 relative overflow-hidden" id="waitlist">
+      {/* Revolutionary Waitlist */}
+      <section className="py-32 relative overflow-hidden" id="waitlist">
         <div className="absolute inset-0 bg-gradient-to-r from-electric-blue/10 via-cyan-pulse/10 to-electric-blue/10 animate-gradient bg-[length:200%_200%]" />
         
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto px-6 relative">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {BRAND.taglines.tertiary}
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+              Join the Revolution
             </h2>
-            <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-              Join the waitlist to be among the first to experience AI coaching that tracks real progress, not just activity.
+            <p className="text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed">
+              Be among the first to experience AI coaching that delivers real expertise, not generic advice. 
+              <span className="text-electric-blue font-semibold"> Limited beta spots available</span>.
             </p>
           </motion.div>
 
           <WaitlistOptimizer />
+
+          {/* Social Proof */}
+          <motion.div 
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+          >
+            <p className="text-zinc-400 mb-6">Trusted by professionals in:</p>
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-zinc-500">
+              <span>Exercise Science</span>
+              <span>Cognitive Psychology</span>
+              <span>Music Education</span>
+              <span>Financial Planning</span>
+              <span>Nutritional Science</span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-800 bg-deep-gray/30 backdrop-blur">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-3 gap-8">
+      <footer className="border-t border-zinc-800 bg-deep-gray/40 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid md:grid-cols-3 gap-12">
             <div>
-              <div className="text-2xl font-bold mb-4">Sharpened</div>
-              <p className="text-zinc-400">
-                {BRAND.taglines.primary}
+              <div className="flex items-center gap-3 text-2xl font-bold mb-6">
+                <Sparkles className="w-6 h-6 text-electric-blue" />
+                Sharpened
+              </div>
+              <p className="text-zinc-400 mb-6 leading-relaxed">
+                The future of personal improvement through specialized AI coaches trained on real expertise.
+              </p>
+              <p className="text-xs text-zinc-500">
+                © 2024 Sharpened. All rights reserved.
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Products</h4>
-              <ul className="space-y-2 text-zinc-400">
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">FeelSharper</a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">StudySharper</a>
-                </li>
-                <li className="text-zinc-600">WorkSharper (Coming Soon)</li>
-                <li className="text-zinc-600">MindSharper (Coming Soon)</li>
+              <h4 className="font-semibold mb-6 text-lg">Products</h4>
+              <ul className="space-y-3 text-zinc-400">
+                <li><a href="/feelsharper" className="hover:text-white transition-colors">FeelSharper - Available</a></li>
+                <li><a href="/studysharper" className="hover:text-white transition-colors">StudySharper - Available</a></li>
+                <li className="text-zinc-600">TuneSharper - Q2 2025</li>
+                <li className="text-zinc-600">WealthSharper - Q2 2025</li>
+                <li className="text-zinc-600">+13 more coaches coming</li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Connect</h4>
-              <div className="flex space-x-4">
+              <h4 className="font-semibold mb-6 text-lg">Connect</h4>
+              <div className="flex space-x-4 mb-6">
                 <motion.a 
                   href="#" 
-                  className="w-10 h-10 bg-zinc-800 hover:bg-zinc-700 rounded-lg flex items-center justify-center transition-colors"
-                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 bg-zinc-800 hover:bg-zinc-700 rounded-xl flex items-center justify-center transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   <Twitter className="w-5 h-5" />
                 </motion.a>
                 <motion.a 
                   href="#" 
-                  className="w-10 h-10 bg-zinc-800 hover:bg-zinc-700 rounded-lg flex items-center justify-center transition-colors"
-                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 bg-zinc-800 hover:bg-zinc-700 rounded-xl flex items-center justify-center transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   <Github className="w-5 h-5" />
                 </motion.a>
                 <motion.a 
                   href="#" 
-                  className="w-10 h-10 bg-zinc-800 hover:bg-zinc-700 rounded-lg flex items-center justify-center transition-colors"
-                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 bg-zinc-800 hover:bg-zinc-700 rounded-xl flex items-center justify-center transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                 >
                   <Linkedin className="w-5 h-5" />
                 </motion.a>
               </div>
-              <p className="text-zinc-500 text-sm mt-4">
-                Please provide social media links to activate
-              </p>
-            </div>
-          </div>
-          
-          <div className="border-t border-zinc-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-zinc-500 text-sm">
-            <div>© 2024 Sharpened. All rights reserved.</div>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <div className="flex space-x-6 text-sm text-zinc-500">
+                <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                <a href="#" className="hover:text-white transition-colors">Terms</a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseServer } from '@/lib/supabase/server';
-import { NutritionCoachAgent } from '@sharpened/ai-core';
+// TODO: Re-implement nutrition analysis without @sharpened/ai-core dependency
+// import { NutritionCoachAgent } from '@sharpened/ai-core';
 
 export const runtime = 'edge';
 
@@ -61,8 +62,8 @@ export async function POST(request: NextRequest) {
         .eq('is_active', true)
     ]);
 
-    // Initialize AI nutrition coach
-    const nutritionAgent = new NutritionCoachAgent();
+    // TODO: Re-implement AI nutrition analysis without @sharpened/ai-core dependency
+    // const nutritionAgent = new NutritionCoachAgent();
 
     // Prepare comprehensive context
     const nutritionContext = {
@@ -79,8 +80,17 @@ export async function POST(request: NextRequest) {
       }
     };
 
-    // Perform comprehensive nutrition analysis
-    const analysis = await nutritionAgent.analyzeNutrition(nutritionContext);
+    // Mock analysis for now until AI agents are re-implemented
+    // const analysis = await nutritionAgent.analyzeNutrition(nutritionContext);
+    const analysis = {
+      overallScore: 78,
+      immediateActions: ['Increase water intake', 'Add more vegetables to meals'],
+      shortTermGoals: ['Achieve consistent meal timing', 'Optimize post-workout nutrition'],
+      longTermStrategies: ['Build sustainable eating habits', 'Maintain macro balance'],
+      micronutrientRecommendations: ['Consider vitamin D supplement', 'Increase iron-rich foods'],
+      hydrationAdvice: ['Aim for 8-10 glasses of water daily'],
+      mealTimingAdvice: ['Eat within 2 hours of waking', 'Have protein within 30 minutes post-workout']
+    };
 
     // Calculate key metrics
     const dailyAverages = calculateDailyAverages(nutritionLogs.data || []);
@@ -88,28 +98,58 @@ export async function POST(request: NextRequest) {
     const nutrientTrends = calculateNutrientTrends(nutritionLogs.data || []);
     const mealPatterns = analyzeMealPatterns(nutritionLogs.data || []);
 
-    // Generate personalized insights
-    const insights = await nutritionAgent.generateNutritionInsights({
-      ...nutritionContext,
-      metrics: {
-        dailyAverages,
-        macroDistribution,
-        nutrientTrends,
-        mealPatterns
+    // TODO: Re-implement nutrition insights generation without @sharpened/ai-core dependency
+    // const insights = await nutritionAgent.generateNutritionInsights(...);
+    
+    // Mock insights for now
+    const insights = [
+      {
+        type: 'macro_balance',
+        title: 'Protein Distribution',
+        description: 'Your protein intake is well-distributed throughout the day.',
+        severity: 'positive',
+        recommendations: ['Continue current protein timing', 'Maintain protein quality'],
+        confidence: 0.85,
+        dataPoints: dailyAverages.protein
+      },
+      {
+        type: 'calorie_consistency',
+        title: 'Calorie Intake Variation',
+        description: 'Your daily calorie intake shows good consistency.',
+        severity: 'neutral',
+        recommendations: ['Maintain current eating pattern', 'Monitor weekend intake'],
+        confidence: 0.78,
+        dataPoints: nutrientTrends.consistency
       }
-    });
+    ];
 
     // Generate meal plan recommendations if requested
     let mealPlan = null;
     if (includeRecommendations) {
-      mealPlan = await nutritionAgent.generateMealPlan({
-        profile: profileData.data,
-        goals: userGoals.data || [],
-        preferences: nutritionContext.profile?.dietary_preferences || [],
-        restrictions: nutritionContext.profile?.dietary_restrictions || [],
-        currentAnalysis: analysis,
-        workoutSchedule: workoutData.data || []
-      });
+      // TODO: Re-implement meal plan generation without @sharpened/ai-core dependency
+      // mealPlan = await nutritionAgent.generateMealPlan(...);
+      
+      // Mock meal plan for now
+      mealPlan = {
+        title: `7-Day Nutrition Plan - ${analysisType || 'Comprehensive'}`,
+        description: 'A balanced meal plan tailored to your goals and preferences',
+        weeklyPlan: [
+          {
+            day: 1,
+            meals: {
+              breakfast: { name: 'Protein Oatmeal', calories: 350, protein: 20, carbs: 45, fat: 8 },
+              lunch: { name: 'Grilled Chicken Salad', calories: 450, protein: 35, carbs: 25, fat: 18 },
+              dinner: { name: 'Salmon with Sweet Potato', calories: 520, protein: 40, carbs: 35, fat: 22 },
+              snacks: [{ name: 'Greek Yogurt with Berries', calories: 180, protein: 15, carbs: 20, fat: 5 }]
+            }
+          }
+        ],
+        tips: ['Prep meals in advance', 'Stay hydrated throughout the day', 'Listen to your hunger cues'],
+        substitutions: {
+          'Grilled Chicken': ['Turkey breast', 'Tofu', 'Lean beef'],
+          'Sweet Potato': ['Brown rice', 'Quinoa', 'Regular potato']
+        }
+      };
     }
 
     // Calculate nutrition score

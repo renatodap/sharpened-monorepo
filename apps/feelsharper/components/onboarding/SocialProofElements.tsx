@@ -194,7 +194,9 @@ export function RecentAchievements() {
           className="flex items-center gap-3 p-3 bg-white/50 rounded-lg border border-slate-200"
         >
           <div className={`w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center`}>
-            <achievements[currentIndex].icon className={`w-4 h-4 ${achievements[currentIndex].color}`} />
+            {React.createElement(achievements[currentIndex].icon, { 
+              className: `w-4 h-4 ${achievements[currentIndex].color}` 
+            })}
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-slate-800 truncate">

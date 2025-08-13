@@ -16,7 +16,8 @@ const customJestConfig = {
   ],
   moduleNameMapping: {
     '^@/(.*)$': '<rootDir>/$1',
-    '^@sharpened/(.*)$': '<rootDir>/../../packages/$1/src',
+    // TODO: Re-implement package mappings when workspace dependencies are restored
+    // '^@sharpened/(.*)$': '<rootDir>/../../packages/$1/src',
     '^@/test-utils/(.*)$': '<rootDir>/../../packages/test-utils/src/$1',
   },
   collectCoverageFrom: [

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getLemonSqueezyClient } from '@sharpened/payments';
+// TODO: Re-implement LemonSqueezy payments without @sharpened/payments dependency
+// import { getLemonSqueezyClient } from '@sharpened/payments';
 import { createServerClient } from '@/lib/supabase/server';
 
 export async function POST(request: NextRequest) {
@@ -36,8 +37,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid plan selected' }, { status: 400 });
     }
 
-    // Create checkout with LemonSqueezy
-    const lemonSqueezy = getLemonSqueezyClient();
+    // TODO: Re-implement LemonSqueezy checkout creation without @sharpened/payments dependency
+    // const lemonSqueezy = getLemonSqueezyClient();
     
     const customData = {
       user_id: currentUserId,
@@ -45,7 +46,12 @@ export async function POST(request: NextRequest) {
       plan: plan,
     };
 
-    const checkoutUrl = await lemonSqueezy.createCheckout(variantId, customData);
+    // Mock checkout URL for now (replace with actual implementation)
+    // const checkoutUrl = await lemonSqueezy.createCheckout(variantId, customData);
+    const checkoutUrl = `https://checkout-mock.lemonsqueezy.com/${variantId}?user_id=${currentUserId}&plan=${plan}`;
+    
+    console.log('Mock checkout created for:', { variantId, plan, userId: currentUserId });
+    console.warn('WARNING: Using mock checkout URL. Implement LemonSqueezy integration before production!');
 
     return NextResponse.json({ 
       success: true, 

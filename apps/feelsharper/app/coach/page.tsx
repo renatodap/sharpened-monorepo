@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs';
 import { Suspense } from 'react';
 import AICoach from '@/components/coach/AICoach';
 import { AdvancedCoachInterface } from '@/components/coach/AdvancedCoachInterface';

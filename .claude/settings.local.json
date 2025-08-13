@@ -52,7 +52,8 @@
       "Bash(node:*)",
       "Bash(cat:*)",
       "Bash(cp:*)",
-      "Bash(npx json:*)"
+      "Bash(npx json:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []

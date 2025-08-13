@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/client';
-import { FitnessCoachAgent, NutritionCoachAgent, StudyCoachAgent } from '@sharpened/ai-core';
+// TODO: Re-implement AI coaching agents without @sharpened/ai-core dependency
+// import { FitnessCoachAgent, NutritionCoachAgent, StudyCoachAgent } from '@sharpened/ai-core';
 
 export interface CoachingContext {
   userId: string;
@@ -39,15 +40,16 @@ export interface NutritionAnalysisRequest {
 }
 
 export class AICoachingService {
-  private fitnessAgent: FitnessCoachAgent;
-  private nutritionAgent: NutritionCoachAgent;
-  private studyAgent: StudyCoachAgent;
+  // TODO: Re-implement AI coaching agents without @sharpened/ai-core dependency
+  // private fitnessAgent: FitnessCoachAgent;
+  // private nutritionAgent: NutritionCoachAgent;
+  // private studyAgent: StudyCoachAgent;
   private supabase: ReturnType<typeof createClient>;
 
   constructor() {
-    this.fitnessAgent = new FitnessCoachAgent();
-    this.nutritionAgent = new NutritionCoachAgent();
-    this.studyAgent = new StudyCoachAgent();
+    // this.fitnessAgent = new FitnessCoachAgent();
+    // this.nutritionAgent = new NutritionCoachAgent();
+    // this.studyAgent = new StudyCoachAgent();
     this.supabase = createClient();
   }
 
@@ -95,45 +97,42 @@ export class AICoachingService {
     try {
       const recommendations: CoachingRecommendation[] = [];
 
-      // Generate fitness recommendations
-      const fitnessRecs = await this.fitnessAgent.generateRecommendations({
-        userProfile: context.userProfile,
-        recentWorkouts: context.recentWorkouts,
-        goals: context.goals.filter(g => g.goal_type === 'fitness'),
-        bodyWeightHistory: context.bodyWeightHistory
-      });
+      // TODO: Re-implement AI recommendations without @sharpened/ai-core dependency
+      // Generate mock fitness recommendations for now
+      const mockFitnessRecs = [
+        {
+          id: `fitness_${Date.now()}_${Math.random()}`,
+          type: 'workout' as const,
+          priority: 'high' as const,
+          title: 'Increase Workout Frequency',
+          description: 'Based on your recent activity, consider adding one more workout per week.',
+          actionItems: ['Schedule additional workout day', 'Focus on compound movements'],
+          expectedOutcome: 'Improved strength and consistency',
+          timeframe: '2-4 weeks',
+          confidence: 0.8
+        }
+      ];
+      recommendations.push(...mockFitnessRecs);
 
-      recommendations.push(...fitnessRecs.map(rec => ({
-        id: `fitness_${Date.now()}_${Math.random()}`,
-        type: 'workout' as const,
-        priority: rec.priority,
-        title: rec.title,
-        description: rec.description,
-        actionItems: rec.actionItems,
-        expectedOutcome: rec.expectedOutcome,
-        timeframe: rec.timeframe,
-        confidence: rec.confidence
-      })));
+      // Generate mock nutrition recommendations
+      const mockNutritionRecs = [
+        {
+          id: `nutrition_${Date.now()}_${Math.random()}`,
+          type: 'nutrition' as const,
+          priority: 'medium' as const,
+          title: 'Optimize Protein Intake',
+          description: 'Increase protein consumption to support your fitness goals.',
+          actionItems: ['Add protein source to each meal', 'Consider post-workout protein'],
+          expectedOutcome: 'Better recovery and muscle development',
+          timeframe: '1-2 weeks',
+          confidence: 0.75
+        }
+      ];
+      recommendations.push(...mockNutritionRecs);
 
-      // Generate nutrition recommendations
-      const nutritionRecs = await this.nutritionAgent.generateRecommendations({
-        userProfile: context.userProfile,
-        recentNutrition: context.recentNutrition,
-        goals: context.goals.filter(g => g.goal_type === 'nutrition'),
-        activityLevel: this.calculateActivityLevel(context.recentWorkouts)
-      });
-
-      recommendations.push(...nutritionRecs.map(rec => ({
-        id: `nutrition_${Date.now()}_${Math.random()}`,
-        type: 'nutrition' as const,
-        priority: rec.priority,
-        title: rec.title,
-        description: rec.description,
-        actionItems: rec.actionItems,
-        expectedOutcome: rec.expectedOutcome,
-        timeframe: rec.timeframe,
-        confidence: rec.confidence
-      })));
+      // Original AI agent code commented out:
+      // const fitnessRecs = await this.fitnessAgent.generateRecommendations(...);
+      // const nutritionRecs = await this.nutritionAgent.generateRecommendations(...);
 
       // Generate lifestyle recommendations
       const lifestyleRecs = await this.generateLifestyleRecommendations(context);
@@ -171,7 +170,27 @@ export class AICoachingService {
         }
       };
 
-      const workoutPlan = await this.fitnessAgent.generateWorkoutPlan(planContext);
+      // TODO: Re-implement workout plan generation without @sharpened/ai-core dependency
+      // const workoutPlan = await this.fitnessAgent.generateWorkoutPlan(planContext);
+      
+      // Mock workout plan for now
+      const workoutPlan = {
+        title: `${options.planType} Plan - ${options.duration} weeks`,
+        description: `A ${options.intensity} level ${options.planType} program designed for ${options.frequency} days per week`,
+        phases: [
+          {
+            name: 'Foundation',
+            startWeek: 1,
+            endWeek: Math.ceil(options.duration / 2),
+            focus: 'Building base fitness',
+            intensity: 'moderate',
+            exercises: ['squats', 'deadlifts', 'bench press', 'rows']
+          }
+        ],
+        recommendations: ['Start with lighter weights', 'Focus on form'],
+        expectedOutcomes: ['Increased strength', 'Better technique'],
+        confidence: 0.8
+      };
 
       // Save plan to database
       const { data: savedPlan, error } = await this.supabase
@@ -227,28 +246,42 @@ export class AICoachingService {
         timeframe: request.timeframe
       };
 
-      const analysis = await this.nutritionAgent.analyzeNutrition(analysisContext);
+      // TODO: Re-implement nutrition analysis without @sharpened/ai-core dependency
+      // const analysis = await this.nutritionAgent.analyzeNutrition(analysisContext);
+      
+      // Mock analysis for now
+      const analysis = {
+        overallScore: 75,
+        recommendations: ['Increase vegetable intake', 'Maintain consistent meal timing'],
+        insights: ['Good protein distribution', 'Could improve fiber intake']
+      };
 
       // Calculate key metrics
       const metrics = this.calculateNutritionMetrics(context.recentNutrition);
       
-      // Generate insights
-      const insights = await this.nutritionAgent.generateNutritionInsights({
-        ...analysisContext,
-        metrics
-      });
+      // TODO: Re-implement nutrition insights without @sharpened/ai-core dependency
+      // const insights = await this.nutritionAgent.generateNutritionInsights(...);
+      
+      // Mock insights for now
+      const insights = [
+        { type: 'positive', message: 'Consistent calorie intake', confidence: 0.8 },
+        { type: 'suggestion', message: 'Consider adding more vegetables', confidence: 0.7 }
+      ];
 
       // Generate meal plan if requested
       let mealPlan = null;
       if (request.includeRecommendations) {
-        mealPlan = await this.nutritionAgent.generateMealPlan({
-          profile: context.userProfile,
-          goals: context.goals,
-          preferences: context.preferences.dietary || [],
-          restrictions: context.preferences.restrictions || [],
-          currentAnalysis: analysis,
-          workoutSchedule: context.recentWorkouts
-        });
+        // TODO: Re-implement meal plan generation without @sharpened/ai-core dependency
+        // mealPlan = await this.nutritionAgent.generateMealPlan(...);
+        
+        // Mock meal plan for now
+        mealPlan = {
+          title: '7-Day Meal Plan',
+          meals: [
+            { day: 1, breakfast: 'Oatmeal with berries', lunch: 'Grilled chicken salad', dinner: 'Salmon with vegetables' }
+          ],
+          notes: ['Focus on whole foods', 'Stay hydrated']
+        };
       }
 
       // Save analysis results
@@ -320,13 +353,17 @@ export class AICoachingService {
         conversationHistory = messages || [];
       }
 
-      // Generate response using appropriate agent
-      const response = await agent.generateResponse({
-        userMessage: message,
-        conversationHistory,
-        userContext: context,
-        includePersonalData: true
-      });
+      // TODO: Re-implement chat response generation without @sharpened/ai-core dependency
+      // const response = await agent.generateResponse(...);
+      
+      // Mock response for now
+      const response = {
+        content: `Thanks for your question: "${message}". I'm currently in development mode and will provide more personalized responses soon.`,
+        conversationId: conversationId || `conv_${Date.now()}`,
+        confidence: 0.5,
+        actionItems: ['Continue tracking your progress'],
+        recommendations: ['Stay consistent with your routine']
+      };
 
       // Save conversation
       await this.saveConversation(context.userId, conversationId, message, response);
@@ -478,25 +515,27 @@ export class AICoachingService {
   }
 
   private selectBestAgent(message: string) {
+    // TODO: Re-implement agent selection logic without @sharpened/ai-core dependency
     const lowerMessage = message.toLowerCase();
     
+    // Return agent type instead of actual agent for now
     if (lowerMessage.includes('workout') || lowerMessage.includes('exercise') || 
         lowerMessage.includes('strength') || lowerMessage.includes('training')) {
-      return this.fitnessAgent;
+      return 'fitness';
     }
     
     if (lowerMessage.includes('food') || lowerMessage.includes('nutrition') || 
         lowerMessage.includes('meal') || lowerMessage.includes('diet')) {
-      return this.nutritionAgent;
+      return 'nutrition';
     }
     
     if (lowerMessage.includes('study') || lowerMessage.includes('learn') || 
         lowerMessage.includes('focus') || lowerMessage.includes('productivity')) {
-      return this.studyAgent;
+      return 'study';
     }
     
-    // Default to fitness agent for general queries
-    return this.fitnessAgent;
+    // Default to fitness for general queries
+    return 'fitness';
   }
 
   private async saveConversation(userId: string, conversationId: string | undefined, userMessage: string, response: any) {

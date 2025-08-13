@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Loader2, Zap, Edit3, Check, X } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import { Textarea } from '@/components/ui/textarea';
 import type { Exercise, WorkoutTypeEnum } from '@/lib/types/database';
 

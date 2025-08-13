@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Moon, Zap, Brain, Dumbbell, Heart, Target } from 'lucide-react';
-import Card from '@/components/ui/Card';
+import { Card } from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import { Heading, Subheading, Body } from '@/components/ui/Typography';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 
 /**
  * Feature grid showcasing core wellness categories

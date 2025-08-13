@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Plus, Trash2, Clock, Users, Save, Search } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import type { Food, CustomFood } from '@/lib/types/database';
 

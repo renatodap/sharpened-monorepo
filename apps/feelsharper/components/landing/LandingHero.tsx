@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Play, Check } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 
 interface LandingHeroProps {
   variant: 'fitness-tracker' | 'ai-coach' | 'natural-language' | 'social' | 'transform';

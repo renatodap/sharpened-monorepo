@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { TrendingUp, Target, Calendar, Zap, Brain, Moon } from 'lucide-react';
-import Card from '@/components/ui/Card';
+import { Card } from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import { Heading, Subheading, Body } from '@/components/ui/Typography';
-import Button from '@/components/ui/Button';
-import Badge from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
 
 /**
  * Feel Tracker teaser component showcasing habit tracking and optimization

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Users, DollarSign, Activity, TrendingUp, Settings, Flag, Database, BarChart3 } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import type { UserMetrics, RevenueMetrics, ProductMetrics, HealthMetrics } from '@/lib/types/database';
 
 export default function AdminDashboard() {

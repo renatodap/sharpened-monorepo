@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ArrowLeft, Edit, Trash2, Coffee, Sun, Moon, Cookie, Star, CheckCircle } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import type { MealTemplateWithItems } from '@/lib/types/database';
 
 const MEAL_TYPE_ICONS = {

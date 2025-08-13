@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Flag, Plus, Edit, Trash2, ToggleLeft, ToggleRight, Settings, Users, Calendar } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 
 interface FeatureFlag {
   key: string;

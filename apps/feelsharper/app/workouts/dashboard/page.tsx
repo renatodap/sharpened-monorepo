@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Play, Calendar, TrendingUp, Trophy, Plus, Clock, Target } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import type { UserProgramWithDetails } from '@/lib/types/database';
 
 export default function WorkoutDashboardPage() {

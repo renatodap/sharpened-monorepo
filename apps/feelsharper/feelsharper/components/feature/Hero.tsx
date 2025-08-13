@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { Sparkles, ArrowRight, MessageCircle } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import Container from '@/components/ui/Container';
 import { Heading, Body } from '@/components/ui/Typography';
-import Badge from '@/components/ui/Badge';
+import { Badge } from '@/components/ui/Badge';
 
 /**
  * Modern hero section that emphasizes the AI assistant

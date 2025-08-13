@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Plus, Trash2, Save, Search, Star, StarOff, Coffee, Sun, Moon, Cookie } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import type { Food, CustomFood, Recipe } from '@/lib/types/database';
 

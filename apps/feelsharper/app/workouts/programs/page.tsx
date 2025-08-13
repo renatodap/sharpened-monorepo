@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Dumbbell, Plus, Search, Filter, Clock, Users, Target, Zap } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import type { WorkoutProgramWithTemplates } from '@/lib/types/database';
 
 const GOAL_TYPES = [

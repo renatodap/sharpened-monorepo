@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Clock, Calendar } from 'lucide-react';
-import Card from '@/components/ui/Card';
+import { Card } from '@/components/ui/Card';
 import Container from '@/components/ui/Container';
 import { Heading, Subheading, Body, Caption } from '@/components/ui/Typography';
-import Badge from '@/components/ui/Badge';
-import Button from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 
 import { BlogPost } from '@/lib/blog-data';
 

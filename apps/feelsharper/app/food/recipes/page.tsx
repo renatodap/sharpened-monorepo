@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ChefHat, Plus, Search, Clock, Users, Star, StarOff } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import RecipeBuilder from '@/components/food/RecipeBuilder';
 import type { Recipe } from '@/lib/types/database';
 

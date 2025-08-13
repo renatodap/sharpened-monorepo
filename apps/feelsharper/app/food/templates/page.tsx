@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { BookTemplate, Plus, Search, Coffee, Sun, Moon, Cookie, Star, StarOff } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import MealTemplateCreator from '@/components/food/MealTemplateCreator';
 import type { MealTemplateWithItems } from '@/lib/types/database';
 

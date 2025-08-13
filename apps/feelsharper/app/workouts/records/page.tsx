@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Trophy, Plus, Search, TrendingUp, Calendar, Target } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/Button';
 import type { PersonalRecord } from '@/lib/types/database';
 
 const RECORD_TYPES = [

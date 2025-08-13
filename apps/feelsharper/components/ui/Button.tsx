@@ -17,7 +17,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
  * Supports all interactive states, WCAG AA+ contrast, and consistent behavior
  * Fixed: Proper event handling, accessible focus states, and reliable styling
  */
-export default function Button({ 
+export function Button({ 
   variant = 'primary', 
   size = 'md', 
   className, 

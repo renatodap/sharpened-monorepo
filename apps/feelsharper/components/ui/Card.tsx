@@ -11,7 +11,7 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
  * Modern card component with subtle shadows and clean borders
  * Provides consistent container styling across the application
  */
-export default function Card({ 
+export function Card({ 
   children, 
   className,
   variant = 'default',

@@ -79,14 +79,14 @@ export default function AdminDashboard() {
           </div>
           <div className="flex gap-3">
             <Button
-              variant={selectedTimeframe === 'week' ? 'default' : 'outline'}
+              variant={selectedTimeframe === 'week' ? 'primary' : 'outline'}
               onClick={() => setSelectedTimeframe('week')}
               size="sm"
             >
               Week
             </Button>
             <Button
-              variant={selectedTimeframe === 'month' ? 'default' : 'outline'}
+              variant={selectedTimeframe === 'month' ? 'primary' : 'outline'}
               onClick={() => setSelectedTimeframe('month')}
               size="sm"
             >

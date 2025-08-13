@@ -53,7 +53,9 @@
       "Bash(cat:*)",
       "Bash(cp:*)",
       "Bash(npx json:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm add:*)"
     ],
     "deny": [],
     "ask": []

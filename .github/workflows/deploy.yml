@@ -14,12 +14,13 @@ jobs:
     name: Deploy Feel Sharper
     runs-on: ubuntu-latest
     environment: production
+    if: false # Temporarily disabled - using Vercel direct deployment
     steps:
       - uses: actions/checkout@v4
       
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
           
       - uses: actions/setup-node@v4
         with:
@@ -27,7 +28,13 @@ jobs:
           cache: 'pnpm'
           
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            pnpm install --frozen-lockfile
+          else
+            echo "No lockfile found, installing without frozen lockfile"
+            pnpm install --no-frozen-lockfile
+          fi
         
       - name: Build Feel Sharper
         run: pnpm run build --filter=feelsharper
@@ -50,12 +57,13 @@ jobs:
     name: Deploy Marketing Website
     runs-on: ubuntu-latest
     environment: production
+    if: false # Temporarily disabled - using Vercel direct deployment
     steps:
       - uses: actions/checkout@v4
       
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
           
       - uses: actions/setup-node@v4
         with:
@@ -63,7 +71,13 @@ jobs:
           cache: 'pnpm'
           
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            pnpm install --frozen-lockfile
+          else
+            echo "No lockfile found, installing without frozen lockfile"
+            pnpm install --no-frozen-lockfile
+          fi
         
       - name: Build Website
         run: pnpm run build --filter=website
@@ -87,7 +101,7 @@ jobs:
       
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
           
       - uses: actions/setup-node@v4
         with:
@@ -95,7 +109,13 @@ jobs:
           cache: 'pnpm'
           
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            pnpm install --frozen-lockfile
+          else
+            echo "No lockfile found, installing without frozen lockfile"
+            pnpm install --no-frozen-lockfile
+          fi
         
       - name: Build Study Sharper
         run: pnpm run build --filter=studysharper

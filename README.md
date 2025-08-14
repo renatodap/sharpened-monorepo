@@ -26,16 +26,16 @@ pnpm typecheck
 ```
 sharpened-monorepo/
 ├── apps/
-│   ├── website/          # Marketing and landing site
-│   ├── feelsharper/      # Fitness tracking app (flagship)
-│   └── studysharper/     # Study and learning tools
+│   ├── website/          # Marketing site (needs content)
+│   ├── feelsharper/      # Fitness app (ready for deployment)
+│   ├── studysharper/     # Study platform (needs deployment)
+│   └── sharplens/        # Computer vision (prototype only)
 ├── packages/
-│   ├── ui/              # Shared UI components
-│   ├── config/          # Shared configurations
-│   └── prompts/         # AI agent specifications
-├── docs/                # Living documentation (Sharpened OS)
-├── infra/              # Infrastructure configurations
-└── tools/              # Build and development tools
+│   ├── analytics/        # Analytics infrastructure
+│   ├── ui/              # Shared UI components (planned)
+│   └── config/          # Shared configurations
+├── docs/                # Business & technical documentation
+└── scripts/             # Build and deployment scripts
 ```
 
 ## 📚 Documentation
@@ -78,24 +78,35 @@ Comprehensive documentation organized by domain - architecture, business, develo
 - **Infrastructure**: Vercel, Cloudflare
 - **Tools**: pnpm workspaces, Turborepo, ESLint, Prettier
 
-## 🎯 Current Status
+## 🎯 Current Status (August 14, 2025)
 
-### Feel Sharper (Flagship Product)
-- ✅ Natural language workout parsing
-- ✅ Food logging with nutrition data
-- ✅ Weight tracking with trends
-- 🚧 AI coach integration
-- 🚧 Weekly review cycles
-- 📅 Mobile app (planned)
+### Products Built (Not Yet Launched)
 
-### Website
-- ✅ Landing page
-- 🚧 Conversion optimization
-- 📅 Blog and content
+#### Feel Sharper (Flagship Product)
+- ✅ Natural language workout parsing implemented
+- ✅ Food logging with nutrition database
+- ✅ Weight tracking with analytics
+- ✅ PWA support ready
+- 🚧 Needs deployment and user testing
+- 📅 Targeting September 2025 public launch
 
-### Study Sharper
-- ✅ Basic structure
-- 📅 Feature development
+#### Study Sharper
+- ✅ RAG pipeline implemented
+- ✅ Spaced repetition system built
+- ✅ PDF upload and processing ready
+- 🚧 Needs Supabase deployment
+- 📅 October 2025 launch target
+
+#### SharpLens (Computer Vision)
+- ✅ UI prototype complete
+- 🚧 Backend integration needed
+- 📅 Q4 2025 alpha release
+
+### Business Status
+- **Users**: 0 (pre-launch)
+- **Revenue**: $0 MRR
+- **Team**: 1 founder (solo)
+- **Funding**: Bootstrapped, seeking seed round Q4 2025
 
 ## 🔐 Environment Setup
 

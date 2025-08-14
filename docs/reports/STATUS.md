@@ -52,17 +52,20 @@ Created 14 core documents establishing the Sharpened Operating System:
 7. **DG-007**: Email service (Resend recommended)
 8. **DG-008**: First hire timing and role
 
-## Owner Actions Required 📋
+## Critical Actions Required (August 2025) 📋
 
-### Immediate (Blocking Progress)
-1. Add environment variables to Vercel/local
-2. Review and approve pending decisions
-3. Create service accounts (Vercel, Supabase, GitHub)
+### Immediate (This Week)
+1. Deploy FeelSharper to Vercel
+2. Get Supabase production instance
+3. Configure production environment variables
+4. Launch to first 10 beta users
 
-### This Week
-4. Record product demo video
-5. Review outreach templates
-6. Set up Stripe account
+### Next 2 Weeks
+1. Gather user feedback
+2. Fix critical bugs
+3. Set up Stripe for payments
+4. Create landing page content
+5. Prepare Product Hunt launch
 
 ## Next Steps (Phase 2)
 

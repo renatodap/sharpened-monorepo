@@ -1,6 +1,11 @@
 # StudySharper
 
+*Last Updated: August 14, 2025*
+*Status: Development Complete - Needs Deployment*
+
 > AI-powered study assistant that transforms learning through personalized study plans, intelligent spaced repetition, and data-driven insights.
+
+**Current State**: 🚧 Built with RAG pipeline, spaced repetition, and PDF processing. Requires Supabase deployment and API keys for production.
 
 ## 🚀 Quick Start
 
@@ -27,8 +32,8 @@
 
 ```bash
 # Clone and install dependencies
-git clone <your-repo>
-cd studysharper
+# NOTE: Repository in monorepo at apps/studysharper
+cd apps/studysharper
 pnpm install
 
 # Start Supabase (Docker required)

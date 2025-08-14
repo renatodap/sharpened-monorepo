@@ -1,8 +1,11 @@
 # Feel Sharper 🏋️‍♂️
 
+*Last Updated: August 14, 2025*
+*Status: Development Complete - Awaiting Deployment*
+
 A comprehensive, dark-first fitness tracker for logging food, workouts, and weight with intelligent analytics and progress tracking.
 
-[![Deploy](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/renatodap/feelsharper)
+**Current State**: 🚧 Ready for production deployment but not yet live
 
 ## 🚀 Quick Start
 
@@ -10,13 +13,16 @@ A comprehensive, dark-first fitness tracker for logging food, workouts, and weig
 - Node.js 20+ (recommended: use [nvm](https://github.com/nvm-sh/nvm))
 - npm or pnpm
 - Git
+- Supabase account (for database)
 
 ### One-Command Setup
 
+⚠️ **Note**: Repository not yet public. Contact founder for access.
+
 **Windows (PowerShell):**
 ```powershell
-# Clone and setup
-git clone https://github.com/renatodap/feelsharper.git
+# Clone and setup (requires access)
+git clone [private-repo-url]
 cd feelsharper
 ./scripts/bootstrap.ps1
 ```

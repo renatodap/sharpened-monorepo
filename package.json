@@ -6,11 +6,17 @@
   },
   "scripts": {
     "dev": "cd apps/website && npm run dev",
+    "dev:study": "cd apps/studysharper/apps/web && npm run dev",
+    "dev:feel": "cd apps/feelsharper && npm run dev",
+    "dev:all": "turbo run dev --parallel",
     "build": "cd apps/website && npm ci --legacy-peer-deps && npm run build && cp -r .next ../../.next",
     "build:turbo": "turbo run build",
+    "build:study": "cd apps/studysharper/apps/web && npm run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
+    "typecheck:study": "cd apps/studysharper/apps/web && npm run typecheck",
     "test": "turbo run test",
+    "test:all": "npm run typecheck && npm run lint && npm run test",
     "test:unit": "turbo run test:unit",
     "test:integration": "turbo run test:integration",
     "test:e2e": "turbo run test:e2e",
@@ -19,7 +25,9 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ci": "npm run typecheck && npm run lint && npm run test",
+    "ci:study": "cd apps/studysharper/apps/web && npm run typecheck && npm run lint"
   },
   "dependencies": {
     "next": "15.4.6",

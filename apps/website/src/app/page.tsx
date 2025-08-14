@@ -365,34 +365,33 @@ export default function Home() {
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+              className="flex flex-col items-center gap-6 mb-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <motion.a
-                href="https://feelsharper.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-electric-blue hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all inline-flex items-center justify-center gap-3 group shadow-2xl shadow-electric-blue/25"
+              <motion.button
+                onClick={() => setShowWaitlist(true)}
+                className="bg-gradient-to-r from-electric-blue to-cyan-pulse hover:from-blue-600 hover:to-cyan-600 text-white px-12 py-5 rounded-2xl font-bold text-xl transition-all inline-flex items-center justify-center gap-3 group shadow-2xl shadow-electric-blue/30"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Activity className="w-5 h-5" />
-                Try FeelSharper Live
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-              <motion.a
-                href="https://studysharper.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-cyan-500 hover:bg-cyan-500/10 bg-zinc-900/50 backdrop-blur text-cyan-300 hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all inline-flex items-center gap-3"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <BookOpen className="w-5 h-5" />
-                Try StudySharper Live
-              </motion.a>
+                <Sparkles className="w-6 h-6" />
+                Get Early Access
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+              
+              <div className="flex flex-col sm:flex-row gap-4 text-sm text-zinc-400">
+                <a href="https://feelsharper.vercel.app" target="_blank" rel="noopener noreferrer" 
+                   className="hover:text-electric-blue transition-colors underline underline-offset-4">
+                  Try FeelSharper Demo
+                </a>
+                <span className="hidden sm:inline">•</span>
+                <a href="https://studysharper.vercel.app" target="_blank" rel="noopener noreferrer"
+                   className="hover:text-cyan-400 transition-colors underline underline-offset-4">
+                  Try StudySharper Demo
+                </a>
+              </div>
             </motion.div>
 
             {/* Stats Row */}

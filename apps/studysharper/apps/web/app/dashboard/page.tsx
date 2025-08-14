@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { BookOpen, Calendar, Target, TrendingUp, Plus } from 'lucide-react'
 import { DashboardLayout } from '@/components/layout/dashboard-layout'
+import { PassiveFocusTracker } from '@/components/focus-tracking/PassiveFocusTracker'
+import { MicroLeagueSystem } from '@/components/leagues/MicroLeagueSystem'
 
 export const metadata: Metadata = {
   title: 'Dashboard - StudySharper',
@@ -120,6 +122,12 @@ export default async function DashboardPage() {
                 <p className="text-xs text-muted-foreground">Ready for review</p>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Focus Tracking and Leagues Row */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <PassiveFocusTracker />
+            <MicroLeagueSystem />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

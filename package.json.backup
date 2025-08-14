@@ -1,0 +1,42 @@
+{
+  "name": "sharpened",
+  "private": true,
+  "packageManager": "pnpm@8.15.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0",
+    "npm": "please-use-pnpm"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:unit": "turbo run test:unit",
+    "test:integration": "turbo run test:integration",
+    "test:e2e": "turbo run test:e2e",
+    "test:coverage": "turbo run test:coverage",
+    "test:affected": "turbo run test --filter=[HEAD^1]",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "turbo": "latest",
+    "prettier": "^3.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{md,json}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@9.0.0"
+}

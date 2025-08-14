@@ -1,6 +1,4 @@
 {
-  "installCommand": "npm install -g pnpm@9.0.0 && pnpm install --no-frozen-lockfile",
-  "buildCommand": "pnpm run build --filter=sharpened-website",
-  "framework": "nextjs",
-  "outputDirectory": "apps/website/.next"
+  "rootDirectory": "apps/website",
+  "framework": "nextjs"
 }

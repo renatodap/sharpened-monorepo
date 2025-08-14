@@ -240,6 +240,7 @@ export default function Home() {
   const [manifestoExpanded, setManifestoExpanded] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null)
+  const [showWaitlist, setShowWaitlist] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {

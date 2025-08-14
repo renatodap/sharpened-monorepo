@@ -8,8 +8,8 @@
     "npm": "please-use-pnpm"
   },
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "cd apps/website && npm install --legacy-peer-deps && npm run build",
+    "dev": "cd apps/website && npm run dev",
+    "build": "cd apps/website && npm install --legacy-peer-deps && npm run build && cp -r .next ../../.next",
     "build:turbo": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
@@ -25,7 +25,9 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "next": "15.4.6"
+    "next": "15.4.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "turbo": "latest",

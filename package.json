@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "turbo run dev",
-    "build": "turbo run build",
+    "build": "cd apps/website && npm install --legacy-peer-deps && npm run build",
+    "build:turbo": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
@@ -22,6 +23,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
     "prepare": "husky install"
+  },
+  "dependencies": {
+    "next": "15.4.6"
   },
   "devDependencies": {
     "turbo": "latest",

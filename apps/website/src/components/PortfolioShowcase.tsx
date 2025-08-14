@@ -18,8 +18,10 @@ import {
   Award,
   Code,
   Layers,
+  Mail,
   Shield,
-  Rocket
+  Rocket,
+  CheckCircle
 } from 'lucide-react'
 
 interface Project {

@@ -275,7 +275,7 @@ export default function BusinessMetrics() {
                         metric.trend === 'down' ? 'text-red-400' : 
                         'text-gray-400'
                       }`}>
-                        {metric.change > 0 ? '+' : ''}{metric.change}%
+                        {metric.change && metric.change > 0 ? '+' : ''}{metric.change}%
                       </span>
                     </div>
                   )}

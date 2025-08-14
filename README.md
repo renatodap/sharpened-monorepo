@@ -168,23 +168,48 @@ We use [Conventional Commits](https://www.conventionalcommits.org/):
 ### North Star Metric
 **Weekly Active Users** - Users who log at least 3 items per week
 
-### Current Goals
-- 🎯 100 beta users (Month 1)
-- 🎯 $1K MRR (Month 3)
-- 🎯 10K users (Month 6)
-- 🎯 Default alive (Month 4)
+## 📈 Path to $100M ARR
 
-## 🔗 Links
+### Phase 1: Launch (Now - Oct 2025)
+- Ship FeelSharper → 1,000 users
+- Launch StudySharper → 2,000 users  
+- Hit $10K MRR
+- Raise $500K seed
 
-- [Documentation Hub](./docs/) - All documentation
-- [Changelog](./docs/development/CHANGELOG.md)
-- [Migration Notes](./MIGRATION.md)
-- [Current Status](./docs/reports/STATUS.md)
+### Phase 2: Scale (Nov 2025 - Jun 2026)
+- Launch 5 more products
+- Reach 25,000 users
+- Hit $100K MRR
+- Raise $5M Series A
 
-## 📄 License
+### Phase 3: Dominate (Jul 2026 - Dec 2027)
+- 15+ products live
+- 1 million users
+- $8.3M MRR ($100M ARR)
+- IPO or acquisition
 
-Proprietary - All rights reserved
+## 🔥 Why Sharpened Will Win
+
+1. **AI-Native**: Built for AI from day one, not retrofitted
+2. **Speed**: Ship daily with Claude Code assistance
+3. **Focus**: Personal improvement only, done perfectly
+4. **Timing**: 12-18 month window before Big Tech enters
+5. **Mission**: Genuinely help people become better
+
+## 🎆 The Vision
+
+**One million people improving themselves measurably every single day.**
+
+In an era where AI replaces jobs, Sharpened gives people the tools to level up. We're not building apps - we're building the infrastructure for human potential.
+
+## 📧 Contact
+
+**Founder**: [Your Name]  
+**Updates**: Every Sunday to investors  
+**Metrics**: [sharpened.app/metrics](https://sharpened.app/metrics)  
 
 ---
 
-*Building the future of personal improvement, one commit at a time.*
+**THE TIME IS NOW. SHIP TODAY.**
+
+*"The best time to plant a tree was 20 years ago. The second best time is now."*

@@ -1,11 +1,13 @@
 # Sharpened Business Strategy 2025-2027
 
 *Last Updated: August 14, 2025*
-*Status: Active Execution - Q3 2025*
+*Status: Pre-Launch - Critical Execution Phase*
 
 ## Executive Summary
 
-Sharpened is positioned to become the dominant AI-powered personal improvement platform by 2027, targeting $100M ARR through a portfolio of specialized AI coaches. Our strategy focuses on rapid product expansion, viral growth mechanics, and building insurmountable competitive moats.
+**Reality Check**: We have 3 products built, 0 users, $0 revenue. This document transforms that into a $100M ARR business by 2027.
+
+Sharpened will dominate the AI-powered personal improvement market through hyper-focused execution, viral product design, and relentless user obsession. We're not building apps - we're building the infrastructure for human potential in the AI age.
 
 ## Vision & Mission
 
@@ -17,37 +19,41 @@ Harness AI to remove friction from self-improvement across every aspect of life,
 
 ## Market Opportunity
 
-### Total Addressable Market (TAM)
-- **2025 Current**: $18.8B global personal improvement software
-- **2029 Projected**: $43.8B (23.5% CAGR)
-- **Our Target**: Capture 1% of TAM by 2027 = $438M
+### The AI Transformation Window
+**Critical Insight**: We have 12-18 months before Big Tech fully enters this space. Speed is survival.
 
-### Market Segments
-1. **Fitness & Wellness**: $6.8B (FeelSharper)
-2. **Education & Learning**: $4.1B (StudySharper)
-3. **Productivity Tools**: $2.9B (SharpFlow)
-4. **Mental Wellness**: $1.4B (MindSharper)
-5. **Financial Management**: $26B+ (WealthSharper)
+### Total Addressable Market (TAM)
+- **2025 Current**: $67B personal development market
+- **AI-Enhanced Segment**: $18.8B and growing 45% YoY
+- **2030 Projected**: $156B (AI will be 80% of market)
+- **Our Target**: 0.1% by 2026 ($67M), 1% by 2030 ($1.56B)
+
+### Why Now Is Perfect
+1. **AI Capability Threshold**: GPT-4/Claude finally good enough for real coaching
+2. **Consumer Readiness**: Post-COVID, everyone wants self-improvement
+3. **Distribution Shift**: TikTok/Instagram made education viral
+4. **Economic Pressure**: People need skills to stay relevant
+5. **Mental Health Crisis**: 70% of adults actively seeking help
 
 ## Strategic Pillars
 
 ### 1. Product Portfolio Expansion
 **Objective**: Launch 15+ specialized AI products by 2027
 
-#### Phase 1 (Q1-Q2 2025) - Foundation ✅ COMPLETED
-- ✅ FeelSharper: Development complete, seeking users
-- ✅ StudySharper: Development complete, needs deployment
-- ✅ SharpLens: UI prototype built
-- 🚧 SharpFlow: Concept stage only
+#### Phase 1: RIGHT NOW (August-September 2025) 🔥
+**30 Days to First Revenue**
+- Week 1: Deploy FeelSharper to production
+- Week 2: Get first 100 users from Reddit/Twitter
+- Week 3: Launch paid tier, get first 10 customers
+- Week 4: Hit $1K MRR or pivot hard
 
-#### Phase 2 (Q3-Q4 2025) - Acceleration 🚀 CURRENT PHASE
-- Launch 4 new products:
-  - TuneSharper (Music)
-  - WealthSharper (Finance)
-  - MindSharper (Mental wellness)
-  - ChefSharper (Cooking)
-- Target: 10,000 total users (Currently at 0 - pre-launch)
-- Revenue: $50K MRR (Currently at $0 - no monetization yet)
+#### Phase 2: Rapid Iteration (October-December 2025)
+**90 Days to Product-Market Fit**
+- Month 1: Daily user interviews, ship hourly
+- Month 2: Launch StudySharper to universities
+- Month 3: Viral features, referral program
+- Target: 5,000 users, $10K MRR
+- If we miss this, we're dead in the water
 
 #### Phase 3 (2026) - Scale
 - Launch 6 additional products
@@ -199,16 +205,21 @@ Harness AI to remove friction from self-improvement across every aspect of life,
 
 ## Funding Strategy
 
-### Bootstrap Phase (2025) 🚧 IN PROGRESS
-- Revenue reinvestment: N/A - no revenue yet
-- Founder investment: Personal time only
-- Status: Pre-revenue, bootstrapping
+### Bootstrap Phase (August-October 2025) 💰
+**Goal: Prove we can make money**
+- Target: $10K MRR by October 31
+- Method: Presales, lifetime deals, manual everything
+- Constraint: $0 external capital
+- Success = We can raise on our terms
+- Failure = Shut down or pivot completely
 
-### Seed Round (Q4 2025) 📋 PLANNED
-- Amount: $500K target
-- Valuation: TBD based on traction
-- Use: Product development, marketing, first hires
-- Status: Need to build traction first before approaching investors
+### Seed Round (November 2025) 🎯
+**Only raise if we hit $10K MRR**
+- Amount: $500K-$1M
+- Valuation: $5-10M (depends on growth rate)
+- Terms: SAFE note, no board seats
+- Use: 2 engineers, paid acquisition tests
+- Investors: Angels only, no VCs yet
 
 ### Series A (Q2 2026)
 - Amount: $5M
@@ -224,16 +235,17 @@ Harness AI to remove friction from self-improvement across every aspect of life,
 
 ## Team & Organization
 
-### Current Team (August 2025)
-- Founder: Solo, handling all roles
-- Contractors: 0 (budget constraints)
-- Total: 1 person
+### Current Reality (August 2025)
+- **Founder**: Solo, doing everything
+- **Time Split**: 70% product, 20% marketing, 10% ops
+- **Burn Rate**: $0 (living on savings)
+- **Runway**: Infinite at current burn
 
-### 2025 Hiring Plan
-- Q1: ❌ Not hired (no budget)
-- Q2: ❌ Not hired (no budget)
-- Q3: 📋 Planning first contractor when revenue allows
-- Q4: 📋 Hoping to hire 1-2 people if funding secured
+### Immediate Hiring Strategy
+- **Month 1**: Stay solo, prove concept
+- **Month 2**: If $5K MRR, hire part-time developer ($2K/mo)
+- **Month 3**: If $10K MRR, hire full-time engineer (equity heavy)
+- **Month 4**: Post-funding, hire 2 engineers + 1 growth
 
 ### 2026-2027 Scaling
 - 2026: 25 employees

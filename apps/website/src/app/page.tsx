@@ -280,24 +280,32 @@ export default function Home() {
             </motion.div>
             <div className="hidden md:flex items-center space-x-8">
               <button 
+                onClick={() => scrollToSection('demo')}
+                className="hover:text-electric-blue transition-colors"
+              >
+                Demo
+              </button>
+              <button 
                 onClick={() => scrollToSection('products')}
                 className="hover:text-electric-blue transition-colors"
               >
-                Ecosystem
+                Products
               </button>
               <button 
-                onClick={() => scrollToSection('manifesto')}
+                onClick={() => scrollToSection('faq')}
                 className="hover:text-electric-blue transition-colors"
               >
-                Manifesto
+                FAQ
               </button>
               <motion.a 
-                href={`mailto:${BRAND.contact?.email || 'hello@sharpened.ai'}`}
+                href="https://feelsharper.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-electric-blue hover:bg-blue-600 px-4 py-2 rounded-lg font-medium transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact
+                Try Now
               </motion.a>
             </div>
           </div>
@@ -339,9 +347,9 @@ export default function Home() {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-none">
-              <span className="block mb-4">The Future of</span>
+              <span className="block mb-4">AI Coaching That</span>
               <span className="block bg-gradient-to-r from-electric-blue via-cyan-pulse to-electric-blue bg-clip-text text-transparent">
-                Personal Mastery
+                Actually Works
               </span>
             </h1>
             
@@ -351,8 +359,9 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Progressive Web Apps that work offline, install instantly, and deliver expert-level guidance without app store friction. 
-              <span className="text-electric-blue font-semibold"> Start improving immediately</span> with our live fitness and study coaches.
+              Turn proven techniques into personalized AI-powered plans you can measure. 
+              <span className="text-electric-blue font-semibold">Know what works, do it well, see the gains</span>. 
+              No app store needed - works instantly on any device.
             </motion.p>
 
             <motion.div 
@@ -418,6 +427,121 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works Demo Section */}
+      <section id="demo" className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-6 relative">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+              See It In Action
+            </h2>
+            <p className="text-xl text-zinc-300 max-w-3xl mx-auto">
+              Watch how our AI coaches turn your goals into measurable results in 3 simple steps
+            </p>
+          </motion.div>
+
+          {/* Interactive Demo Steps */}
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
+            {[
+              {
+                step: "1",
+                title: "Tell Us Your Goal",
+                desc: "Whether it's losing 20 lbs, running a marathon, or acing exams - just type what you want to achieve",
+                demo: "Try: 'I want to lose 20 pounds in 3 months'",
+                color: "from-electric-blue/20 to-cyan-pulse/20"
+              },
+              {
+                step: "2",
+                title: "Get Your Personalized Plan",
+                desc: "AI analyzes your situation and creates a science-backed plan tailored specifically to you",
+                demo: "See: Daily workouts, meal plans, progress milestones",
+                color: "from-cyan-pulse/20 to-purple-500/20"
+              },
+              {
+                step: "3",
+                title: "Track Real Progress",
+                desc: "See measurable improvements with detailed analytics, not just feel-good metrics",
+                demo: "Track: Weight loss, strength gains, study scores",
+                color: "from-purple-500/20 to-pink-500/20"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className={`bg-gradient-to-br ${item.color} backdrop-blur border border-zinc-700 rounded-2xl p-8 hover:border-electric-blue/50 transition-all`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className="text-4xl font-bold text-electric-blue mb-4">Step {item.step}</div>
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-zinc-300 mb-4">{item.desc}</p>
+                <div className="bg-charcoal/50 rounded-lg p-3 border border-zinc-700">
+                  <p className="text-sm text-cyan-400 font-mono">{item.demo}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Live Demo Preview */}
+          <motion.div
+            className="bg-gradient-to-r from-deep-gray/30 via-deep-gray/50 to-deep-gray/30 backdrop-blur border border-zinc-700 rounded-3xl p-8 mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3 className="text-2xl font-bold text-center mb-8">Try A Real Example</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold mb-4 text-red-400">FeelSharper Demo</h4>
+                <div className="bg-charcoal/50 rounded-lg p-4 border border-zinc-700 space-y-3">
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "I'm a beginner and want to get stronger"</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "Based on your fitness level, I recommend Starting Strength program. 3x/week, focusing on compound movements..."</p>
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "Show me today's workout"</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "Today: Squats 3x5, Bench Press 3x5, Deadlift 1x5. Here's proper form videos and weight progression..."</p>
+                </div>
+                <motion.a
+                  href="https://feelsharper.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 bg-red-500/20 hover:bg-red-500/30 border border-red-500/40 text-red-300 px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Try Full Demo <ArrowRight className="w-4 h-4" />
+                </motion.a>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4 text-cyan-400">StudySharper Demo</h4>
+                <div className="bg-charcoal/50 rounded-lg p-4 border border-zinc-700 space-y-3">
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "I need to memorize 200 medical terms"</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "I'll create a spaced repetition schedule. Let's start with 20 terms today using memory palace technique..."</p>
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "Test me on cardiovascular terms"</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "Quiz starting: Define 'Atherosclerosis'... Great! You've improved 40% since last week..."</p>
+                </div>
+                <motion.a
+                  href="https://studysharper.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 px-4 py-2 rounded-lg font-medium inline-flex items-center gap-2 transition-all"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Try Full Demo <ArrowRight className="w-4 h-4" />
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-6 relative">
@@ -429,7 +553,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
-              Why Progressive Web Apps?
+              Why It's Different
             </h2>
           </motion.div>
 
@@ -787,6 +911,65 @@ export default function Home() {
               </div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 relative">
+        <div className="max-w-4xl mx-auto px-6 relative">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
+              Common Questions
+            </h2>
+          </motion.div>
+
+          <div className="space-y-6">
+            {[
+              {
+                q: "How is this different from ChatGPT or other AI?",
+                a: "Our coaches are specialized experts trained on real professional knowledge - exercise science, cognitive psychology, etc. Not generic AI, but domain-specific expertise that gives you proven methods, not guesses."
+              },
+              {
+                q: "Do I need to download an app?",
+                a: "No! It works instantly in your browser. You can also install it like an app with one click - no app store needed. Works on iPhone, Android, and computers."
+              },
+              {
+                q: "How much does it cost?",
+                a: "$9.99/month for access to ALL coaches. Compare that to a single personal trainer session at $100+ or a nutritionist at $200/hour."
+              },
+              {
+                q: "Is my data private?",
+                a: "Yes. We use bank-level encryption and never sell your data. Your fitness and study information stays completely private."
+              },
+              {
+                q: "What if I'm not tech-savvy?",
+                a: "It's as simple as texting. Just type what you want, and the AI responds. No complicated setup or learning curve."
+              },
+              {
+                q: "Can I try it before paying?",
+                a: "Yes! Both FeelSharper and StudySharper have free demos you can try right now. Click the buttons above to start."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-deep-gray/40 backdrop-blur border border-zinc-700 rounded-2xl p-6 hover:border-electric-blue/30 transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                whileHover={{ y: -2 }}
+              >
+                <h3 className="text-lg font-semibold mb-3 text-electric-blue">{item.q}</h3>
+                <p className="text-zinc-300">{item.a}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

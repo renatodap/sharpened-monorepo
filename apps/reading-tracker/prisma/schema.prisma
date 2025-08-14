@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  books     Book[]
+  sessions  ReadingSession[]
+  streaks   ReadingStreak[]
+}
+
+model Book {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  title       String
+  author      String?
+  isbn        String?
+  url         String?
+  totalPages  Int?
+  currentPage Int      @default(0)
+  status      String   @default("reading") // reading, completed, paused, wishlist
+  rating      Int?     // 1-5 stars
+  notes       String?
+  
+  dateAdded   DateTime @default(now())
+  dateStarted DateTime?
+  dateFinished DateTime?
+  
+  sessions    ReadingSession[]
+  
+  @@index([userId, status])
+}
+
+model ReadingSession {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookId      String
+  book        Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  
+  startTime   DateTime
+  endTime     DateTime?
+  minutes     Int?
+  pagesRead   Int      @default(0)
+  notes       String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([userId, startTime])
+  @@index([bookId, startTime])
+}
+
+model ReadingStreak {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  startDate   DateTime
+  endDate     DateTime?
+  currentDays Int      @default(1)
+  maxDays     Int      @default(1)
+  isActive    Boolean  @default(true)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([userId, isActive])
+}

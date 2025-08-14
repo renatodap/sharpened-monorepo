@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String           @id @default(uuid())
+  email           String           @unique
+  name            String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  focusSessions   FocusSession[]
+  weeklyScores    WeeklyScore[]
+  groupMembership GroupMember[]
+  preferences     UserPreferences?
+}
+
+model UserPreferences {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  focusTrackingEnabled Boolean @default(false)
+  privacyAccepted   Boolean  @default(false)
+  dataRetentionDays Int      @default(30)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model FocusSession {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  startTime       DateTime
+  endTime         DateTime?
+  duration        Int?     // in seconds
+  category        String?  // study, work, coding, etc
+  
+  tabVisible      Boolean  @default(true)
+  idleEvents      Int      @default(0)
+  productiveScore Float    @default(1.0)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([userId, startTime])
+}
+
+model StudyGroup {
+  id          String        @id @default(uuid())
+  name        String
+  code        String        @unique
+  maxMembers  Int           @default(10)
+  
+  weekStart   DateTime
+  weekEnd     DateTime
+  
+  members     GroupMember[]
+  scores      WeeklyScore[]
+  
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model GroupMember {
+  id        String      @id @default(uuid())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  groupId   String
+  group     StudyGroup  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  
+  joinedAt  DateTime    @default(now())
+  role      String      @default("member") // member, admin
+  
+  @@unique([userId, groupId])
+}
+
+model WeeklyScore {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  groupId       String?
+  group         StudyGroup? @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  
+  weekStart     DateTime
+  weekEnd       DateTime
+  
+  totalMinutes  Int         @default(0)
+  totalSessions Int         @default(0)
+  streakDays    Int         @default(0)
+  points        Int         @default(0)
+  rank          Int?
+  
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  @@unique([userId, weekStart])
+  @@index([groupId, weekStart])
+}

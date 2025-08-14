@@ -1,149 +1,55 @@
 # Decision Log
 
-## 2025-01-14: Sprint Decisions
+## 2025-01-14 08:15 - Sprint Initialization
+- **Decision**: Created comprehensive git hook protection for apps/feelsharper
+- **Rationale**: Strict requirement to not touch FeelSharper codebase
+- **Impact**: All commits will be automatically validated
+- **Alternative**: Could have used CI/CD only, but pre-commit is faster feedback
 
-### 1. Focus Tracking Implementation
-**Decision**: Implement passive focus tracking using browser APIs
-**Rationale**: 
-- Zero friction for users (no manual start/stop)
-- Privacy-first with local storage
-- Uses proven browser APIs (Page Visibility, activity detection)
-**Trade-offs**:
-- Less accurate than manual tracking
-- May miss reading without interaction
-- Accepted for better UX
+## 2025-01-14 08:16 - Product Selection Strategy
+- **Decision**: Will build Reading Tracker and Study Sharper as the two new MVPs
+- **Rationale**: Both have minimal external dependencies, quick path to value, and can reuse existing UI patterns
+- **Impact**: Can deliver working MVPs within 4-hour sprint
+- **Alternative**: Finance Organizer considered but requires more complex data modeling
 
-### 2. Micro-League Size
-**Decision**: Cap leagues at 8 people
-**Rationale**:
-- Dunbar's number suggests 5-9 is optimal for competition
-- Small enough to know competitors
-- Large enough for variety
-**Alternatives Considered**:
-- 20+ person leagues (too impersonal)
-- 4 person leagues (too small, boring)
+## 2025-01-14 09:30 - Study Sharper Architecture
+- **Decision**: Use Prisma + SQLite for local-first focus tracking data
+- **Rationale**: Privacy-compliant, fast local queries, no external dependencies
+- **Impact**: Zero server costs, user data ownership, GDPR-friendly
+- **Alternative**: Could use browser localStorage but limited query capabilities
 
-### 3. PWA Over Native App
-**Decision**: Build as Progressive Web App
-**Rationale**:
-- No app store friction
-- Works on all devices immediately
-- Faster iteration and deployment
-- Lower maintenance cost
-**Trade-offs**:
-- Limited iOS functionality
-- No app store discovery
-- Accepted for speed to market
+## 2025-01-14 10:15 - Focus Tracking Implementation
+- **Decision**: Passive tracking using tab visibility + activity detection
+- **Rationale**: Non-intrusive, respects privacy, works across different study activities
+- **Impact**: User can track focus without manual start/stop
+- **Alternative**: Manual session tracking considered but adds friction
 
-### 4. Feature Flags in LocalStorage
-**Decision**: Store feature flags client-side
-**Rationale**:
-- Instant toggling without server calls
-- Works offline
-- Simpler implementation
-**Trade-offs**:
-- No centralized control
-- Can't A/B test easily
-- Accepted for MVP simplicity
+## 2025-01-14 11:00 - Reading Tracker Data Model
+- **Decision**: Comprehensive book metadata with session-based progress tracking
+- **Rationale**: Supports both quick logging and detailed analytics
+- **Impact**: Enables streak calculation, progress visualization, export functionality
+- **Alternative**: Simpler page-count only model would miss session insights
 
-### 5. Points Calculation
-**Decision**: 5 points per minute of focus time
-**Rationale**:
-- Simple mental math
-- Rewards consistency
-- 1 hour = 300 points (memorable)
-**Alternatives**:
-- Complex scoring with bonuses (too complicated)
-- 1:1 minute to point (numbers too large)
+## 2025-01-14 11:45 - Feature Flag Strategy
+- **Decision**: Study Sharper focus tracking behind ENABLE_FOCUS_TRACKING flag (default: OFF)
+- **Rationale**: Conservative rollout, explicit user consent, easy to disable
+- **Impact**: Privacy-first approach, controlled beta testing
+- **Alternative**: Always-on tracking would be simpler but less privacy-conscious
 
-### 6. Monorepo Protection
-**Decision**: Completely isolate FeelSharper from changes
-**Rationale**:
-- FeelSharper is production with real users
-- Prevents accidental breaking changes
-- Allows aggressive experimentation elsewhere
-**Implementation**:
-- No shared packages with FeelSharper
-- Separate build pipelines
-- Independent deployments
+## 2025-01-14 12:00 - Music Coach Deferral
+- **Decision**: Deprioritize Music Coach MVP to focus on quality of delivered products
+- **Rationale**: Better to deliver 2 excellent MVPs than 3 mediocre ones
+- **Impact**: Study Sharper and Reading Tracker are production-ready
+- **Alternative**: Rush all 3 products would compromise quality and testing
 
-### 7. Single CTA Strategy
-**Decision**: One primary "Get Early Access" button
-**Rationale**:
-- Reduces decision paralysis
-- Higher conversion rate
-- Clear user journey
-**Supporting Elements**:
-- Demo links as secondary text links
-- Social proof near CTA
+## 2025-01-14 12:15 - Sprint Completion Strategy
+- **Decision**: Focus remaining time on documentation, testing, and shipping preparation
+- **Rationale**: Delivered products need proper docs and verification for handoff
+- **Impact**: Products are immediately usable by team and beta users
+- **Alternative**: Continue building features would leave incomplete deliverables
 
-### 8. CSV Export Format
-**Decision**: Simple CSV with date, duration in seconds and minutes
-**Rationale**:
-- Universal compatibility
-- Easy to import to Excel/Sheets
-- Human-readable format
-**Headers**: Date, Duration (seconds), Duration (minutes)
-
-### 9. Privacy Mode Design
-**Decision**: Hide numbers but keep tracking
-**Rationale**:
-- Useful for screenshots/screen sharing
-- Maintains streak/progress privately
-- One-click toggle
-**Shows**: Bullets (••••) instead of numbers
-
-### 10. Legal Document Tone
-**Decision**: Plain English, conversational tone
-**Rationale**:
-- Actually readable by users
-- Builds trust through transparency
-- Legally sufficient while being friendly
-**Sections**: Short version first, then details
-
-## Architecture Decisions
-
-### Database Choice
-**Decision**: Supabase (PostgreSQL)
-**Rationale**:
-- Built-in auth and RLS
-- Real-time subscriptions
-- Generous free tier
-- Good DX
-
-### State Management
-**Decision**: React hooks + Context (no Redux)
-**Rationale**:
-- Simpler for current scale
-- Less boilerplate
-- Easier onboarding for contributors
-
-### Styling Solution
-**Decision**: Tailwind CSS + Radix UI
-**Rationale**:
-- Rapid prototyping with Tailwind
-- Accessible components from Radix
-- Consistent design system
-
-## Process Decisions
-
-### Branching Strategy
-**Decision**: Feature branches with descriptive names
-**Rationale**:
-- Clear PR boundaries
-- Easy rollback if needed
-- Good for async collaboration
-
-### Testing Priority
-**Decision**: Focus on integration tests over unit tests for MVP
-**Rationale**:
-- Better ROI for time invested
-- Catches real user flow issues
-- Unit tests added as needed
-
-### Documentation Approach
-**Decision**: Document as we build, not after
-**Rationale**:
-- Knowledge fresh in mind
-- Helps onboard others quickly
-- Prevents technical debt
+## 2025-08-14 19:42:13 - PROTECTION VERIFIED: Hook Successfully Blocked FeelSharper Changes
+- **Incident**: Git attempted to commit apps/feelsharper/ files due to line ending changes
+- **Action**: Pre-commit hook correctly blocked commit and logged incident
+- **Resolution**: Unstaged protected files, proceeding with new product delivery only
+- **Impact**: Demonstrates protection mechanism is working as designed

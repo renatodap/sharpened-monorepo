@@ -1,263 +1,152 @@
-# Sharpened Documentation Hub
+# 📋 DOCS NAVIGATION - Start Here
+*Always know exactly what to do and where to go*
 
-Welcome to the comprehensive documentation for the Sharpened product ecosystem. This repository contains all strategic, technical, and operational documentation for our suite of AI-powered wellness and learning applications.
+## 🚨 NEED TO ACT NOW?
+**[→ ACTION_REQUIRED.md](./ACTION_REQUIRED.md)** 
+Immediate tasks blocking everything. Read this first.
 
-## 📚 Documentation Structure
+## 📅 WHAT TO DO THIS WEEK?  
+**[→ THIS_WEEK.md](./THIS_WEEK.md)**
+Day-by-day plan to reach 1,000 users by August 21st.
 
-### [🏗️ Architecture](./architecture/)
-Technical architecture, system design, and infrastructure documentation.
-- [Architecture Overview](./architecture/ARCHITECTURE_OVERVIEW.md)
-- [API Documentation](./architecture/API_DOCUMENTATION.md)
-- [Technical Roadmap](./architecture/TECHNICAL_ROADMAP.md)
-- [Security & Privacy](./architecture/SECURITY_AND_PRIVACY.md)
-- [Testing Strategy](./architecture/TESTING_STRATEGY.md)
+## 🤔 NEED TO MAKE A DECISION?
+**[→ DECISIONS_PENDING.md](./DECISIONS_PENDING.md)**
+Quick A/B/C choices to unblock progress. Just text me the letter.
 
-### [💼 Business](./business/)
-Business strategy, market analysis, and financial planning.
-- [Business Development](./business/BUSINESS_DEVELOPMENT.md)
-- [Business Operations Manual](./business/BUSINESS_OPERATIONS_MANUAL.md)
-- [Market Research](./business/MARKET_RESEARCH.md)
-- [Financial Model](./business/FINANCIAL_MODEL.md)
-- [Growth Plan](./business/GROWTH_PLAN.md)
+## 📖 HOW TO DO SOMETHING?
+**[→ HOW_TO_GUIDES.md](./HOW_TO_GUIDES.md)**
+Step-by-step instructions for deployment, marketing, payments, etc.
 
-### [⚙️ Development](./development/)
-Product development guidelines and specifications.
-- [Development Playbook](./development/DEVELOPMENT_PLAYBOOK.md)
-- [Product Ecosystem](./development/SHARPENED_PRODUCT_ECOSYSTEM.md)
-- [FeelSharper PRD](./development/PRODUCT_PRD_feelsharper.md)
-- [Product Decision Logs](./development/PRODUCT_DECISION_LOGS.md)
-- [Changelog](./development/CHANGELOG.md)
-
-### [👥 Operations](./operations/)
-Organizational management, legal compliance, and HR.
-- [Operating Principles](./operations/OPERATING_PRINCIPLES.md)
-- [HR & Organization](./operations/HR_ORG.md)
-- [Legal Compliance](./operations/LEGAL_COMPLIANCE_RESEARCH.md)
-- [Contractor Hiring Strategy](./operations/CONTRACTOR_HIRING_STRATEGY.md)
-- [Expert Recruitment](./operations/EXPERT_RECRUITMENT_PIPELINE.md)
-
-### [🔬 Research](./research/)
-AI strategies, deep research, and innovation.
-- [AI Integration Strategy](./research/AI_INTEGRATION_STRATEGY.md)
-- [Specialized AI Knowledge](./research/SPECIALIZED_AI_KNOWLEDGE_STRATEGY.md)
-- [GPT Research Reports](./research/GPT_DEEP_RESEARCH_01.md)
-
-### [📊 Reports](./reports/)
-Progress tracking and status updates.
-- [Current Status](./reports/STATUS.md)
-- [Implementation Reports](./reports/IMPLEMENTATION_REPORT_2025_01_13.md)
-- [Progress Reports](./reports/PROGRESS_REPORT_2025_01_13.md)
-- [Automation Report](./reports/AUTOMATION_REPORT.md)
-
-### [🎯 Strategy](./strategy/)
-Strategic planning, vision, and execution roadmaps.
-- [Vision](./strategy/VISION.md)
-- [Unified Strategy](./strategy/UNIFIED_STRATEGY.md)
-- [Execution Roadmap 2025](./strategy/EXECUTION_ROADMAP_2025.md)
-- [Decision Log](./strategy/DECISION_LOG.md)
-- [Immediate Actions](./strategy/IMMEDIATE_ACTIONS_WEEK1.md)
-
-### [👤 Owner Actions](./OWNER/)
-Priority actions and decisions for leadership.
-- [Immediate Actions](./OWNER/IMMEDIATE.md)
-- [Pending Decisions](./OWNER/DECISIONS_PENDING.md)
-- [Action Items](./OWNER/ACTIONS_TODO.md)
-- [Vercel Migration Guide](./OWNER/VERCEL_MIGRATION_GUIDE.md)
-
-## 🚀 Quick Start Guides
-
-### For Developers
-1. Read the [Development Playbook](./development/DEVELOPMENT_PLAYBOOK.md)
-2. Review [Architecture Overview](./architecture/ARCHITECTURE_OVERVIEW.md)
-3. Check [Current Status](./reports/STATUS.md)
-4. See product-specific docs in `/apps/[product]/docs/`
-
-### For Business Team
-1. Start with [Unified Strategy](./strategy/UNIFIED_STRATEGY.md)
-2. Review [Business Development](./business/BUSINESS_DEVELOPMENT.md)
-3. Check [Financial Model](./business/FINANCIAL_MODEL.md)
-4. See [Growth Plan](./business/GROWTH_PLAN.md)
-
-### For Operations
-1. Read [Operating Principles](./operations/OPERATING_PRINCIPLES.md)
-2. Review [Business Operations Manual](./business/BUSINESS_OPERATIONS_MANUAL.md)
-3. Check [Legal Compliance](./operations/LEGAL_COMPLIANCE_RESEARCH.md)
-4. See [HR & Organization](./operations/HR_ORG.md)
-
-## 📈 Current Status
-
-### 🎯 Mission: Executing
-**Strategy**: Dominate vertical AI coaching before big tech responds  
-**Timeline**: 17 products by Q4 2025  
-**Investment**: $580K total ($80K expertise + $500K operations)  
-**Target**: $300K MRR by month 18
-
-## 🚀 Product Roadmap
-
-### Current Products (Revenue Generating)
-- **FeelSharper**: Fitness coach trained on exercise science (80% complete)
-- **StudySharper**: Learning coach trained on cognitive psychology (70% complete)
-
-### Q2 2025 Launch Wave (April-June)
-- **TuneSharper**: Music coach trained on conservatory curriculum
-- **WealthSharper**: Finance coach trained on CFP certification
-- **ChefSharper**: Cooking coach trained on culinary techniques
-
-### Q3 2025 Expansion (July-September)  
-- **MindSharper**: Wellness coach trained on CBT research
-- **ArtSharper**: Creative coach trained on art fundamentals
-- **CareerSharper**: Professional coach trained on industry patterns
-
-### Q4 2025 Completion (October-December)
-- **HomeSharper, GrowSharper, FixSharper**: Lifestyle optimization
-- **ReadSharper, SpeakSharper, WriteSharper**: Communication mastery
-- **ZenSharper, GoalSharper, ConnectSharper**: Personal development
+## 📊 WHERE ARE WE NOW?
+**[→ PROJECT_STATUS.md](./PROJECT_STATUS.md)**
+Real-time view of progress, metrics, blockers, and timeline.
 
 ---
 
-## 🏆 COMPETITIVE ADVANTAGES
+## 🎯 QUICK STATUS CHECK
 
-### 1. **Domain Expertise** (Unbeatable)
-Each coach trained on real professional knowledge:
-- Medical research (fitness, wellness)
-- Academic curricula (music, art, learning)  
-- Certification materials (finance, career)
-- Industry best practices (all domains)
+### Today's Priority (August 14, 2025)
+1. **Deploy FeelSharper** (30 min)
+2. **Get first users** (2 hours) 
+3. **Set up payments** (1 hour)
 
-### 2. **Ecosystem Effects** (Impossible to Copy)
-- Cross-product insights (fitness goals → meal plans)
-- Unified analytics across all life domains
-- Compound improvement through connected coaching
-- Network effects from multi-product users
+### This Week's Goal
+**1,000 users by August 21st**
 
-### 3. **Zero Friction UX** (Proven Differentiator)
-- Natural language parsing across all products
-- One-action logging and tracking
-- AI anticipates needs and provides proactive guidance
-- Seamless cross-product experience
-
-### 4. **First-Mover Timing** (6-12 Month Window)
-- Market research shows vertical AI targeting $11 trillion
-- 66% productivity gains demonstrated
-- Competition still building generic AI assistants
-- Perfect timing to establish category dominance
+### Current Status
+- **Products**: FeelSharper 90% ready
+- **Users**: 0 (need to launch)
+- **Revenue**: $0 (need payments)
+- **Blocker**: Not deployed
 
 ---
 
-## 📈 SUCCESS METRICS
+## 📁 FILE ORGANIZATION
 
-### Revenue Targets (Extremely Ambitious)
-- **Q2 2025**: $35K MRR (3 products, 1,750 users)
-- **Q3 2025**: $150K MRR (6 products, 6,000 users)  
-- **Q4 2025**: $300K MRR (17 products, 12,000 users)
+### 🔴 HIGH PRIORITY (Read These)
+- `ACTION_REQUIRED.md` - Do these tasks now
+- `THIS_WEEK.md` - Daily execution plan  
+- `DECISIONS_PENDING.md` - Choices you need to make
 
-### User Success Metrics
-- **Activation**: >80% complete first coaching session
-- **Retention**: >60% 30-day, >40% 90-day
-- **Cross-Product**: >30% use 2+ coaches
-- **Satisfaction**: >4.5/5 expert coaching quality
+### 🟡 MEDIUM PRIORITY (Reference These)
+- `HOW_TO_GUIDES.md` - Step-by-step tutorials
+- `PROJECT_STATUS.md` - Overall progress view
 
-### Market Leadership Metrics
-- Top 3 position in each vertical within 12 months
-- "Sharpened" synonymous with expert AI coaching
-- 50+ exclusive domain expert partnerships
-- Series A or acquisition discussions by Q4 2025
+### 🟢 LOW PRIORITY (Archive)
+- `archive/` - Old documentation (moved here for reference)
 
----
+## 🚀 QUICK START WORKFLOW
 
-## ⚡ NEXT 30 DAYS - CRITICAL PATH
+### New to the Project?
+1. Read [ACTION_REQUIRED.md](./ACTION_REQUIRED.md) 
+2. Check [DECISIONS_PENDING.md](./DECISIONS_PENDING.md)
+3. Follow [THIS_WEEK.md](./THIS_WEEK.md) daily plan
 
-### Week 1-2 (Jan 13-26): Foundation
-- [x] Strategic decisions approved by owner
-- [ ] Expert recruitment campaigns launched
-- [ ] Development teams assembled  
-- [ ] Legal compliance frameworks established
+### Need to Execute Something?
+1. Check [HOW_TO_GUIDES.md](./HOW_TO_GUIDES.md) for instructions
+2. If stuck, read relevant section in detail
+3. Update [PROJECT_STATUS.md](./PROJECT_STATUS.md) when done
 
-### Week 3-4 (Jan 27 - Feb 9): Expert Partnerships
-- [ ] TuneSharper: 5 music professionals signed
-- [ ] WealthSharper: 3 CFP partnerships secured
-- [ ] ChefSharper: 4 chef/nutritionist experts recruited
-- [ ] MVP development sprints initiated
-
-**Critical Success Factor**: Speed of expert recruitment determines launch timeline
+### Making Strategic Decisions?
+1. Review options in [DECISIONS_PENDING.md](./DECISIONS_PENDING.md)
+2. Consider impact on [THIS_WEEK.md](./THIS_WEEK.md) goals  
+3. Just text "A", "B", or "C" - don't overthink
 
 ---
 
-## 🛡️ RISK MITIGATION
+## ⏰ DAILY ROUTINE
 
-### Competitive Response
-- **Big Tech Copycat Risk**: Speed + network effects + expert exclusivity
-- **Market Saturation**: First-mover advantage in specialized coaching
-- **Pricing Pressure**: Quality differentiation vs generic AI
+### Every Morning (9 AM)
+1. Check [ACTION_REQUIRED.md](./ACTION_REQUIRED.md) - any blockers?
+2. Review [THIS_WEEK.md](./THIS_WEEK.md) - what's today's focus?
+3. Update [PROJECT_STATUS.md](./PROJECT_STATUS.md) - where are we?
 
-### Execution Risks
-- **Development Velocity**: 3 products/quarter is aggressive but achievable
-- **Expert Quality**: Advisory board with equity incentives ensures commitment  
-- **Regulatory Compliance**: Professional partnerships for financial/health products
-
-### Financial Management
-- **$580K Budget**: Conservative milestone-based spending
-- **Revenue Ramp**: Multiple pricing models (individual/bundle/enterprise)
-- **Series A Preparation**: Positioned for $3-5M raise in Q4 if needed
+### Every Evening (8 PM) 
+1. Update [PROJECT_STATUS.md](./PROJECT_STATUS.md) with progress
+2. Check [DECISIONS_PENDING.md](./DECISIONS_PENDING.md) - any choices needed?
+3. Plan tomorrow using [THIS_WEEK.md](./THIS_WEEK.md)
 
 ---
 
-## 🎯 VICTORY CONDITIONS
+## 🎯 SUCCESS METRICS
 
-### 6-Month Victory (June 2025)
-- 6 products live and generating revenue
-- Market recognition as expert AI coaching leader
-- $150K MRR sustainable growth trajectory
-- Seed funding secured and deployed
+### This Week
+- [ ] FeelSharper deployed and live
+- [ ] 1,000 users signed up  
+- [ ] 50 paying customers
+- [ ] Clear product-market fit signals
 
-### 12-Month Victory (December 2025)
-- 17-product ecosystem complete
-- $300K MRR market leader position  
-- Industry thought leadership established
-- Competition still 6+ months behind
-
-### Ultimate Victory (June 2026)
-- $1M+ MRR dominating market position
-- "Sharpened" = expert AI coaching in public consciousness
-- International expansion launched
-- Acquisition discussions or IPO preparation
+### This Month
+- [ ] 5,000 users across all products
+- [ ] $5,000 MRR
+- [ ] First hire made
+- [ ] Series A prep started
 
 ---
 
-## 📁 Repository Structure
+## 🆘 WHEN YOU'RE STUCK
 
-```
-sharpened-monorepo/
-├── apps/                    # Product applications
-│   ├── website/             # Main marketing site
-│   ├── feelsharper/         # Fitness coaching platform  
-│   └── studysharper/        # Learning coaching platform
-├── docs/                    # All documentation
-│   ├── architecture/        # Technical architecture
-│   ├── business/           # Business strategy
-│   ├── development/        # Product development
-│   ├── operations/         # Organizational ops
-│   ├── research/           # AI and innovation
-│   ├── reports/            # Status and progress
-│   ├── strategy/           # Strategic planning
-│   ├── OWNER/              # Leadership decisions
-│   └── legacy/             # Archived documents
-├── packages/               # Shared code libraries
-└── scripts/                # Build and automation
-```
+### Can't Find What You Need?
+1. **Ctrl+F** search in any document
+2. Check the relevant guide in [HOW_TO_GUIDES.md](./HOW_TO_GUIDES.md)
+3. Review [PROJECT_STATUS.md](./PROJECT_STATUS.md) for context
+
+### Don't Know What to Prioritize?
+1. Start with [ACTION_REQUIRED.md](./ACTION_REQUIRED.md) - these are blockers
+2. Follow [THIS_WEEK.md](./THIS_WEEK.md) - this is your roadmap
+3. When in doubt, focus on getting users
+
+### Need to Make a Choice?
+1. Check [DECISIONS_PENDING.md](./DECISIONS_PENDING.md)
+2. Pick the fastest/simplest option
+3. Can always change later
 
 ---
 
-## 🌟 THE VISION
+## 💡 KEY PRINCIPLES
 
-**Transform personal improvement from guesswork to science through 17 specialized AI coaches, each trained on real expertise from masters in their field.**
+### 1. Bias Toward Action
+- When in doubt, do something
+- Ship imperfect > perfect planning
+- Users > features
 
-We're not building another AI assistant. We're creating the first comprehensive ecosystem of expert-level coaches that work together to unlock human potential across every domain of life.
+### 2. Focus Ruthlessly  
+- One main priority per day
+- Finish before starting new tasks
+- 1,000 users > everything else
 
-**This is the future of personal development. And we're building it now.**
+### 3. Speed Wins
+- Fast decisions > perfect decisions
+- Quick iterations > long planning
+- Market feedback > internal debate
 
 ---
 
-*Last Updated: January 13, 2025*  
-*Status: OWNER APPROVED - FULL EXECUTION MODE* 🚀  
-*Next Milestone: Expert partnerships by January 24, 2025*
+**REMEMBER**: These docs exist to help you ship faster and reach 1,000 users. If they're not helping, ignore them and focus on users.
+
+**CURRENT FOCUS**: Deploy FeelSharper today. Nothing else matters until it's live.
+
+---
+
+*Last Updated: August 14, 2025*
+*Next Review: Daily, after major progress*

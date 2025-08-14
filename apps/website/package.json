@@ -21,10 +21,7 @@
     "lucide-react": "^0.294.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0",
-    "@sharpened/analytics": "workspace:*",
-    "@sharpened/payments": "workspace:*",
-    "@sharpened/email": "workspace:*"
+    "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
     "typescript": "^5.0.0",

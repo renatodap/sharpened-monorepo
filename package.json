@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "cd apps/website && npm run dev",
-    "build": "cd apps/website && npm install --legacy-peer-deps && npm run build && cp -r .next ../../.next",
+    "build": "cd apps/website && npm ci --legacy-peer-deps && npm run build && cp -r .next ../../.next",
     "build:turbo": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",

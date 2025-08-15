@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Loader2, Zap, Edit3, Check, X } from 'lucide-react';
+import { Loader2, Zap, Edit3, Check, X, Mic } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Textarea } from '@/components/ui/textarea';
 import { PremiumGate, FeatureUsageIndicator } from '@/components/premium/PremiumGate';
-import { trackFeatureUsage } from '@/lib/hooks/useFeatureAccess';
+import { VoiceInputField } from '@/components/voice/VoiceInputButton';
+import { useWorkoutParser } from '@/hooks/useWorkoutParser';
 import type { Exercise, WorkoutTypeEnum } from '@/lib/types/database';
 
 interface ParseResult {
@@ -37,75 +38,71 @@ export default function NaturalLanguageInput({
   className = '' 
 }: NaturalLanguageInputProps) {
   const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [parseResult, setParseResult] = useState<ParseResult | null>(null);
   const [showPreview, setShowPreview] = useState(false);
-
-  const examples = [
-    'ran 5k easy',
-    'bench press 3x8 @ 135lbs',
-    '30min bike ride',
-    'squats 5x5 185',
-    'swam 1000m',
-    'deadlift 1x5 225lbs + pushups 3x15',
-  ];
+  const [useVoice, setUseVoice] = useState(false);
+  
+  const { 
+    parseWorkout, 
+    isLoading, 
+    error, 
+    clearError, 
+    lastResult,
+    parseExamples,
+    isHighConfidence,
+    formatConfidence
+  } = useWorkoutParser();
 
   const handleParse = async () => {
     if (!input.trim()) return;
 
-    setIsLoading(true);
-    setParseResult(null);
+    clearError();
+    const result = await parseWorkout(input, false); // Don't save, just parse for preview
     
-    try {
-      const response = await fetch('/api/workouts/parse', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: input.trim() }),
-      });
-      
-      const result: ParseResult = await response.json();
-      setParseResult(result);
-      
-      if (result.success && result.workout) {
-        setShowPreview(true);
-        // Track usage for billing/limits
-        await trackFeatureUsage('workout_parse', {
-          exercise_count: result.workout.exercises.length,
-          confidence: result.workout.confidence,
-          original_text: input.trim(),
-        });
-      }
-    } catch (error) {
-      console.error('Failed to parse workout:', error);
-      setParseResult({
-        success: false,
-        message: 'Failed to parse workout. Please try again.',
-      });
-    } finally {
-      setIsLoading(false);
+    if (result) {
+      setShowPreview(true);
+    }
+  };
+
+  const handleVoiceInput = (transcript: string) => {
+    setInput(transcript);
+    setUseVoice(false);
+    
+    // Auto-parse if transcript is substantial
+    if (transcript.length > 10) {
+      setTimeout(() => handleParse(), 500);
     }
   };
 
   const handleConfirm = () => {
-    if (parseResult?.success && parseResult.workout) {
+    if (lastResult?.workout) {
+      // Convert AI types to database types
+      const exercises: Exercise[] = lastResult.workout.exercises.map(ex => ({
+        name: ex.name,
+        sets: ex.sets ? [{
+          reps: ex.reps || 0,
+          weight_kg: ex.weight_kg,
+          duration_seconds: ex.duration_minutes ? ex.duration_minutes * 60 : undefined,
+          distance_km: ex.distance_km,
+          rest_seconds: ex.rest_seconds
+        }] : []
+      }));
+
       onWorkoutParsed({
-        workout_type: parseResult.workout.workout_type,
-        exercises: parseResult.workout.exercises,
+        workout_type: (lastResult.workout.workout_type as WorkoutTypeEnum) || 'strength',
+        exercises,
       });
+      
       setInput('');
-      setParseResult(null);
       setShowPreview(false);
     }
   };
 
   const handleReject = () => {
     setShowPreview(false);
-    setParseResult(null);
   };
 
   const fillExample = (example: string) => {
     setInput(example);
-    setParseResult(null);
     setShowPreview(false);
   };
 
@@ -120,32 +117,64 @@ export default function NaturalLanguageInput({
             </label>
             <FeatureUsageIndicator feature="workout_parse" />
           </div>
-        <div className="flex gap-2">
-          <Textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="ran 5k easy, bench press 3x8 @ 135lbs, 30min bike ride..."
-            className="flex-1 bg-surface-2 border-border text-text-primary placeholder:text-text-muted resize-none"
-            rows={3}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault();
-                handleParse();
-              }
-            }}
-          />
-          <Button
-            onClick={handleParse}
-            disabled={!input.trim() || isLoading}
-            className="bg-navy hover:bg-navy/80 h-fit self-start mt-1"
-          >
-            {isLoading ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : (
-              <Zap className="h-4 w-4" />
-            )}
-          </Button>
-        </div>
+        {useVoice ? (
+          <div className="space-y-3">
+            <VoiceInputField
+              onTranscript={handleVoiceInput}
+              onError={(error) => console.error('Voice error:', error)}
+              label="Speak your workout (e.g., 'bench press 3 sets of 8 at 135 pounds')"
+            />
+            <div className="flex gap-2">
+              <Button
+                onClick={() => setUseVoice(false)}
+                variant="ghost"
+                className="flex-1"
+              >
+                Use Text Input
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-2">
+            <div className="flex gap-2">
+              <Textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="ran 5k easy, bench press 3x8 @ 135lbs, 30min bike ride..."
+                className="flex-1 bg-surface-2 border-border text-text-primary placeholder:text-text-muted resize-none"
+                rows={3}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                    e.preventDefault();
+                    handleParse();
+                  }
+                }}
+              />
+              <div className="flex flex-col gap-2">
+                <Button
+                  onClick={handleParse}
+                  disabled={!input.trim() || isLoading}
+                  className="bg-navy hover:bg-navy/80 h-fit"
+                >
+                  {isLoading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Zap className="h-4 w-4" />
+                  )}
+                </Button>
+                <Button
+                  onClick={() => setUseVoice(true)}
+                  variant="outline"
+                  size="sm"
+                  className="h-fit"
+                  title="Use voice input"
+                >
+                  <Mic className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
         <p className="text-xs text-text-muted">
           Press Cmd/Ctrl + Enter to parse • Be specific with exercises, sets, reps, and weight
         </p>
@@ -155,56 +184,42 @@ export default function NaturalLanguageInput({
       <div className="space-y-2">
         <p className="text-sm font-medium text-text-secondary">Examples:</p>
         <div className="flex flex-wrap gap-2">
-          {examples.map((example, index) => (
+          {Object.entries(parseExamples).map(([key, example]) => (
             <button
-              key={index}
+              key={key}
               onClick={() => fillExample(example)}
               className="px-2 py-1 text-xs bg-surface hover:bg-surface-2 text-text-secondary rounded border border-border hover:border-border/60 transition-colors"
             >
-              {example}
+              {key}: {example.slice(0, 30)}...
             </button>
           ))}
         </div>
       </div>
 
-      {/* Parse Result */}
-      {parseResult && !showPreview && (
-        <div className={`p-3 rounded border ${
-          parseResult.success 
-            ? 'bg-green-500/10 border-green-500/20 text-green-400' 
-            : 'bg-red-500/10 border-red-500/20 text-red-400'
-        }`}>
-          {parseResult.success ? (
-            <div className="space-y-2">
-              <p className="text-sm font-medium">✓ Workout parsed successfully!</p>
-              {parseResult.metadata && (
-                <p className="text-xs text-green-300">
-                  Found {parseResult.metadata.parsed_exercises_count} exercise(s) 
-                  • {Math.round(parseResult.metadata.parsing_confidence * 100)}% confidence
-                </p>
-              )}
-            </div>
-          ) : (
-            <div className="space-y-2">
-              <p className="text-sm font-medium">Could not parse workout</p>
-              {parseResult.message && (
-                <p className="text-xs text-red-300">{parseResult.message}</p>
-              )}
-              {parseResult.suggestions && (
-                <div className="space-y-1">
-                  <p className="text-xs font-medium">Try these formats:</p>
-                  {parseResult.suggestions.map((suggestion, index) => (
-                    <p key={index} className="text-xs text-red-300">• {suggestion}</p>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+      {/* Error Display */}
+      {error && (
+        <div className="p-3 rounded border bg-red-500/10 border-red-500/20 text-red-400">
+          <p className="text-sm font-medium">Parse Error</p>
+          <p className="text-xs text-red-300">{error}</p>
+        </div>
+      )}
+
+      {/* Success Display */}
+      {lastResult && !showPreview && !error && (
+        <div className="p-3 rounded border bg-green-500/10 border-green-500/20 text-green-400">
+          <div className="space-y-2">
+            <p className="text-sm font-medium">✓ Workout parsed successfully!</p>
+            <p className="text-xs text-green-300">
+              Found {lastResult.workout.exercises.length} exercise(s) 
+              • {formatConfidence(lastResult.confidence)} confidence
+              • {lastResult.tokens_used} tokens used
+            </p>
+          </div>
         </div>
       )}
 
       {/* Preview */}
-      {showPreview && parseResult?.success && parseResult.workout && (
+      {showPreview && lastResult && (
         <div className="p-4 bg-surface border border-border rounded space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="font-medium text-text-primary flex items-center gap-2">
@@ -236,21 +251,21 @@ export default function NaturalLanguageInput({
             <div className="flex items-center gap-2 text-sm">
               <span className="text-text-secondary">Type:</span>
               <span className="px-2 py-1 bg-navy/20 text-navy border border-navy/20 rounded text-xs font-medium">
-                {parseResult.workout.workout_type}
+                {lastResult.workout.workout_type || 'strength'}
               </span>
               <span className="text-text-secondary">•</span>
               <span className="text-text-secondary">
-                {Math.round(parseResult.workout.confidence * 100)}% confidence
+                {formatConfidence(lastResult.confidence)} confidence
               </span>
             </div>
 
             <div className="space-y-2">
-              {parseResult.workout.exercises.map((exercise, index) => (
+              {lastResult.workout.exercises.map((exercise, index) => (
                 <div key={index} className="p-2 bg-bg border border-border rounded">
                   <div className="flex items-center justify-between">
                     <h4 className="font-medium text-text-primary capitalize">{exercise.name}</h4>
                     <span className="text-xs text-text-secondary px-2 py-1 bg-surface-2 rounded">
-                      {exercise.type}
+                      {lastResult.workout.workout_type || 'strength'}
                     </span>
                   </div>
                   

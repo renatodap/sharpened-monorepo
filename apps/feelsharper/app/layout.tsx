@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { UpgradeBanner } from "@/components/premium/UpgradePrompt";
 import { PWAProvider } from "@/components/pwa/PWAProvider";
+import { OfflineIndicator } from "@/components/offline/OfflineIndicator";
+import { FeedbackButton } from "@/components/feedback/FeedbackButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -136,6 +138,8 @@ export default function RootLayout({
           <PWAProvider>
             <UpgradeBanner />
             {children}
+            <OfflineIndicator />
+            <FeedbackButton />
           </PWAProvider>
         </ThemeProvider>
       </body>

@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createSupabaseServer } from '@/lib/supabase/server';
 import { Anthropic } from '@anthropic-ai/sdk';
-import type { AIMessage, AIConversation } from '@/lib/types/database';
+
+interface AIConversation {
+  id: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+}
 
 export const runtime = 'edge';
 

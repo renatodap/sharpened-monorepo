@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Camera, Loader2, Sparkles, AlertCircle } from 'lucide-react';
 
 interface AIFoodInputProps {

@@ -38,7 +38,7 @@ type TimeRange = '7D' | '30D' | '90D' | 'YTD' | 'All';
 
 export default function InsightsPage() {
   const [activeTimeRange, setActiveTimeRange] = useState<TimeRange>('30D');
-  const [activeTab, setActiveTab] = useState<'food' | 'workouts' | 'weight'>('food');
+  const [activeTab, setActiveTab] = useState<'weight'>('weight');
 
   const timeRanges: TimeRange[] = ['7D', '30D', '90D', 'YTD', 'All'];
 
@@ -71,150 +71,17 @@ export default function InsightsPage() {
           </div>
         </div>
 
-        {/* Tab Navigation */}
+        {/* Tab Navigation - MVP: Only Weight */}
         <div className="flex space-x-1 bg-surface border border-border rounded-xl p-1 mb-8 w-fit">
           <button
-            onClick={() => setActiveTab('food')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-              activeTab === 'food'
-                ? 'bg-success text-white'
-                : 'text-text-secondary hover:text-text-primary hover:bg-surface-2'
-            }`}
-          >
-            <Apple className="w-4 h-4" />
-            Food
-          </button>
-          <button
-            onClick={() => setActiveTab('workouts')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-              activeTab === 'workouts'
-                ? 'bg-navy text-white'
-                : 'text-text-secondary hover:text-text-primary hover:bg-surface-2'
-            }`}
-          >
-            <Dumbbell className="w-4 h-4" />
-            Workouts
-          </button>
-          <button
             onClick={() => setActiveTab('weight')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
-              activeTab === 'weight'
-                ? 'bg-info text-white'
-                : 'text-text-secondary hover:text-text-primary hover:bg-surface-2'
-            }`}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-info text-white"
           >
             <Activity className="w-4 h-4" />
-            Weight
+            Weight Progress
           </button>
         </div>
 
-        {/* Food Insights */}
-        {activeTab === 'food' && (
-          <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">Avg Daily Calories</h3>
-                <div className="text-3xl font-bold">2,186</div>
-                <div className="text-success text-sm">+2.3% from last period</div>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">Avg Protein</h3>
-                <div className="text-3xl font-bold">142g</div>
-                <div className="text-success text-sm">+5.1% from last period</div>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">Avg Carbs</h3>
-                <div className="text-3xl font-bold">248g</div>
-                <div className="text-text-muted text-sm">-1.2% from last period</div>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">Avg Fat</h3>
-                <div className="text-3xl font-bold">75g</div>
-                <div className="text-success text-sm">+0.8% from last period</div>
-              </div>
-            </div>
-
-            <div className="bg-surface border border-border rounded-xl p-6">
-              <h3 className="text-xl font-semibold mb-6">Nutrition Trends</h3>
-              <div className="h-80">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={nutritionData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#23272E" />
-                    <XAxis 
-                      dataKey="date" 
-                      stroke="#8B9096"
-                      tick={{ fontSize: 12 }}
-                      tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                    />
-                    <YAxis stroke="#8B9096" tick={{ fontSize: 12 }} />
-                    <Tooltip 
-                      contentStyle={{ 
-                        backgroundColor: '#161A1F', 
-                        border: '1px solid #23272E', 
-                        borderRadius: '8px',
-                        color: '#FFFFFF'
-                      }}
-                    />
-                    <Line type="monotone" dataKey="calories" stroke="#10B981" strokeWidth={2} dot={{ fill: '#10B981', strokeWidth: 2 }} />
-                    <Line type="monotone" dataKey="protein" stroke="#0B2A4A" strokeWidth={2} dot={{ fill: '#0B2A4A', strokeWidth: 2 }} />
-                    <Line type="monotone" dataKey="carbs" stroke="#F59E0B" strokeWidth={2} dot={{ fill: '#F59E0B', strokeWidth: 2 }} />
-                    <Line type="monotone" dataKey="fat" stroke="#EF4444" strokeWidth={2} dot={{ fill: '#EF4444', strokeWidth: 2 }} />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Workout Insights */}
-        {activeTab === 'workouts' && (
-          <div className="space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">Sessions This Week</h3>
-                <div className="text-3xl font-bold">4</div>
-                <div className="text-success text-sm">+1 from last week</div>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">Total Volume</h3>
-                <div className="text-3xl font-bold">17,200kg</div>
-                <div className="text-text-muted text-sm">-5.1% from last week</div>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">Avg Duration</h3>
-                <div className="text-3xl font-bold">68min</div>
-                <div className="text-success text-sm">+3.2% from last week</div>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-6">
-                <h3 className="text-text-secondary text-sm font-medium mb-2">PRs This Month</h3>
-                <div className="text-3xl font-bold">3</div>
-                <div className="text-success text-sm">New personal records!</div>
-              </div>
-            </div>
-
-            <div className="bg-surface border border-border rounded-xl p-6">
-              <h3 className="text-xl font-semibold mb-6">Weekly Training Volume</h3>
-              <div className="h-80">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={workoutData}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#23272E" />
-                    <XAxis dataKey="week" stroke="#8B9096" tick={{ fontSize: 12 }} />
-                    <YAxis stroke="#8B9096" tick={{ fontSize: 12 }} />
-                    <Tooltip 
-                      contentStyle={{ 
-                        backgroundColor: '#161A1F', 
-                        border: '1px solid #23272E', 
-                        borderRadius: '8px',
-                        color: '#FFFFFF'
-                      }}
-                    />
-                    <Bar dataKey="volume" fill="#0B2A4A" radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Weight Insights */}
         {activeTab === 'weight' && (
@@ -287,23 +154,9 @@ export default function InsightsPage() {
               Start tracking to see insights
             </h3>
             <p className="text-text-muted mb-6">
-              Log your food, workouts, and weight to generate meaningful progress charts
+              Log your weight to generate meaningful progress charts
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <a
-                href="/food/add"
-                className="inline-flex items-center px-4 py-2 bg-success text-white rounded-lg hover:bg-success/90 transition-colors"
-              >
-                <Apple className="w-4 h-4 mr-2" />
-                Log Food
-              </a>
-              <a
-                href="/workouts/add"
-                className="inline-flex items-center px-4 py-2 bg-navy text-white rounded-lg hover:bg-navy-600 transition-colors"
-              >
-                <Dumbbell className="w-4 h-4 mr-2" />
-                Log Workout
-              </a>
               <a
                 href="/weight"
                 className="inline-flex items-center px-4 py-2 bg-info text-white rounded-lg hover:bg-info/90 transition-colors"

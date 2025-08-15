@@ -3,6 +3,28 @@
 ## Project Overview
 Dark-first, free fitness tracker for logging food, workouts, and weight with progress graphs.
 
+## MVP PRIORITY (CURRENT FOCUS)
+**Target**: Deliverable MVP for friends/family testing in 1 week
+
+### MVP Core Features (ONLY THESE)
+1. **Food Logging** (`/food`, `/food/add`) - USDA verified search & logging
+2. **Weight Entry** (`/weight`) - One-tap daily weight tracking  
+3. **Today Dashboard** (`/today`) - Today's food + weight summary
+4. **Basic Progress** (`/insights`) - Simple weight trend chart
+
+### MVP Exclusions (DO NOT WORK ON)
+- ❌ **Workout Tracking** - Too complex for MVP, remove entirely
+- ❌ **Advanced Analytics** - Keep only basic weight trends
+- ❌ **Goals/Streaks** - Not essential for core value
+- ❌ **Social Features** - Future enhancement only
+
+### MVP Operating Rules
+1. **Feature Requests**: Only work on MVP core features above
+2. **Bug Priority**: Food logging > Weight entry > Today dashboard > Progress
+3. **UI Focus**: Make existing flows perfect vs adding new features
+4. **Testing**: Every MVP feature must have working user flow
+5. **Deployment**: Must be ready for real user testing within 1 week
+
 ## Core Tech Stack
 - Next.js 15.4.5 + React 19.1.0 + TypeScript
 - Supabase (auth + database)
@@ -27,17 +49,26 @@ npm run seed         # Database seeding
 - **NO** purple, indigo, pink, or other colors
 
 ## Core Features (Implemented)
+### MVP Features (Priority)
 1. **Food Logging** (`/food`, `/food/add`) - USDA verified food database
-2. **Workout Tracking** (`/workouts`, `/workouts/add`) - Deterministic AI parser
-3. **Weight Logging** (`/weight`) - One-tap weight entry
-4. **Progress Graphs** (`/insights`) - Recharts visualizations
-5. **Today Dashboard** (`/today`) - Quick action hub
+2. **Weight Logging** (`/weight`) - One-tap weight entry
+3. **Today Dashboard** (`/today`) - Quick action hub
+4. **Basic Progress** (`/insights`) - Weight trend visualization
+
+### Post-MVP Features (Disabled for MVP)
+- **Workout Tracking** (`/workouts`, `/workouts/add`) - Deterministic AI parser
+- **Advanced Analytics** - Complex insights and goal tracking
 
 ## Database Architecture
+### MVP Tables (Priority)
 - `foods` table (USDA verified, 8000+ entries)
-- `workouts` table (sets/reps/weight tracking)
 - `body_weight` table (daily weight logs)
-- Row-Level Security enabled for multi-tenant safety
+- `food_logs` table (user food entries)
+
+### Post-MVP Tables (Exists but Disabled)
+- `workouts` table (sets/reps/weight tracking)
+
+Row-Level Security enabled for multi-tenant safety
 
 ## Key File Locations
 - **Pages**: `app/[route]/page.tsx` (Next.js App Router)
@@ -47,11 +78,18 @@ npm run seed         # Database seeding
 - **Styles**: `app/globals.css` + Tailwind utilities
 
 ## Development Rules
-1. **Always dark-first** - Default to dark theme, black backgrounds
-2. **No fake content** - Only real, verified data
-3. **No fluff text** - Simple, clear, functional copy only
-4. **Test everything** - Write Jest tests for new features
-5. **Type everything** - Full TypeScript coverage required
+### MVP Rules (Enforced)
+1. **MVP ONLY** - Work only on Food/Weight/Today/Basic Progress
+2. **No workout features** - Ignore all workout-related requests until post-MVP
+3. **Perfect existing flows** - Fix bugs in MVP features vs adding new ones
+4. **1-week deadline** - Prioritize shipping over feature completeness
+
+### General Rules
+5. **Always dark-first** - Default to dark theme, black backgrounds
+6. **No fake content** - Only real, verified data
+7. **No fluff text** - Simple, clear, functional copy only
+8. **Test everything** - Write Jest tests for new features
+9. **Type everything** - Full TypeScript coverage required
 
 ## Testing Strategy
 - Component tests in `__tests__/components/`

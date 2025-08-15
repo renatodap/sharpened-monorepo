@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     // Get user from session if not provided
     let currentUserId = userId;
     if (!currentUserId) {
-      const supabase = createServerClient();
+      const supabase = await createServerClient();
       const { data: { user }, error: authError } = await supabase.auth.getUser();
       
       if (authError || !user) {

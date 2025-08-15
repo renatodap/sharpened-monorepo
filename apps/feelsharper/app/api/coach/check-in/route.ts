@@ -185,11 +185,11 @@ export async function GET(request: NextRequest) {
 
     // Calculate averages
     const averages = checkIns && checkIns.length > 0 ? {
-      energy: checkIns.reduce((acc, c) => acc + (c.energy_level || 0), 0) / checkIns.length,
-      motivation: checkIns.reduce((acc, c) => acc + (c.motivation_level || 0), 0) / checkIns.length,
-      stress: checkIns.reduce((acc, c) => acc + (c.stress_level || 0), 0) / checkIns.length,
-      recovery: checkIns.reduce((acc, c) => acc + (c.recovery_status || 0), 0) / checkIns.length,
-      adherence: checkIns.reduce((acc, c) => acc + (c.adherence_percentage || 0), 0) / checkIns.length
+      energy: checkIns.reduce((acc, c: any) => acc + (c.energy_level || 0), 0) / checkIns.length,
+      motivation: checkIns.reduce((acc, c: any) => acc + (c.motivation_level || 0), 0) / checkIns.length,
+      stress: checkIns.reduce((acc, c: any) => acc + (c.stress_level || 0), 0) / checkIns.length,
+      recovery: checkIns.reduce((acc, c: any) => acc + (c.recovery_status || 0), 0) / checkIns.length,
+      adherence: checkIns.reduce((acc, c: any) => acc + (c.adherence_percentage || 0), 0) / checkIns.length
     } : null;
 
     return NextResponse.json({
@@ -234,9 +234,9 @@ async function analyzeCheckInPatterns(userId: string, supabase: any) {
   if (!recentCheckIns || recentCheckIns.length < 3) return;
 
   // Calculate trends
-  const avgStress = recentCheckIns.reduce((acc, c) => acc + (c.stress_level || 5), 0) / recentCheckIns.length;
-  const avgRecovery = recentCheckIns.reduce((acc, c) => acc + (c.recovery_status || 5), 0) / recentCheckIns.length;
-  const avgEnergy = recentCheckIns.reduce((acc, c) => acc + (c.energy_level || 5), 0) / recentCheckIns.length;
+  const avgStress = recentCheckIns.reduce((acc: number, c: any) => acc + (c.stress_level || 5), 0) / recentCheckIns.length;
+  const avgRecovery = recentCheckIns.reduce((acc: number, c: any) => acc + (c.recovery_status || 5), 0) / recentCheckIns.length;
+  const avgEnergy = recentCheckIns.reduce((acc: number, c: any) => acc + (c.energy_level || 5), 0) / recentCheckIns.length;
 
   // Create insights based on patterns
   if (avgStress > 7) {

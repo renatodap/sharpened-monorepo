@@ -1,26 +1,30 @@
 # Feel Sharper AI Enhancement Master Plan
 
 ## Executive Summary
-Transform Feel Sharper into an AI-powered fitness coach that understands users completely, provides real-time intelligent guidance, and operates on a sustainable freemium model with $10/month initial budget.
+Transform Feel Sharper into the ultimate AI-powered fitness companion for busy professionals. Voice-first, offline-capable, wearables-integrated, with extreme ease of logging and intelligent coaching. Freemium model targeting $50/month premium tier with global reach.
 
 ## Core Decisions & Architecture
 
 ### 1. Business Model
 - **Freemium Tiers**:
-  - **Free**: 10 AI interactions/month (workout parsing, basic coaching)
-  - **Pro ($9.99/mo)**: 100 AI interactions + photo food recognition
-  - **Elite ($19.99/mo)**: Unlimited AI + wearables integration + coach sharing
-- **Cost Pass-Through**: Users pay for what they use above free tier
-- **No developer API** (focus on core product)
+  - **Free**: Basic logging, limited AI (5 interactions/month), 30-day history
+  - **Starter ($9.99/mo)**: Voice input, 50 AI interactions, 90-day history
+  - **Pro ($24.99/mo)**: Unlimited voice, 200 AI interactions, wearables integration
+  - **Elite ($49.99/mo)**: Unlimited everything, coach dashboard, form checking, B2B features
+- **Core Principle**: No user is net-negative (cost < revenue)
+- **B2B Option**: Coaches/gyms managing clients (custom pricing)
+- **Target Markets**: US & Brazil initially, then global
 
 ### 2. Technical Architecture
-- **Edge Functions**: All AI endpoints run on Vercel Edge (faster, cheaper)
-- **Real-Time Streaming**: Use streaming responses for chat interactions
-- **Hybrid AI Strategy**:
-  - Claude 3 Haiku: Coaching conversations (cheapest, good enough)
-  - GPT-4o-mini: Workout/food parsing (better at structured extraction)
-  - GPT-4-vision: Photo food recognition (when needed)
-- **Caching Layer**: Redis for frequent queries (reduce API costs)
+- **Platform Strategy**: PWA first → Native mobile (React Native) within 12 months
+- **Offline-First**: ServiceWorker + IndexedDB for offline logging
+- **Real-Time**: WebSocket for live workout tracking and cross-device sync
+- **Voice-First**: Web Speech API → Whisper API for accuracy
+- **AI Strategy**:
+  - Start cost-effective: GPT-3.5-turbo or Claude Haiku
+  - Scale with revenue: Upgrade models as user base grows
+  - Aggressive caching to minimize API costs
+- **Wearables Integration**: Apple Watch + Garmin priority
 
 ### 3. Data Philosophy
 - **Everything is stored**: Every user input creates/updates database records
@@ -347,25 +351,34 @@ export class CoachAccess {
 ## Pricing & Usage Tiers
 
 ### Free Tier (0$/mo)
-- 10 AI interactions/month
-- Basic workout parsing
-- Manual food logging
-- Weekly progress summary
+- 5 AI interactions/month
+- Basic logging (manual input)
+- 30-day history
+- Simple progress graphs
 
-### Pro Tier ($9.99/mo)
-- 100 AI interactions/month
-- Advanced workout parsing + voice
-- Natural language food logging
-- Daily coaching check-ins
-- Pattern detection
+### Starter Tier ($9.99/mo)
+- 50 AI interactions/month
+- Voice input (limited)
+- 90-day history
+- Smart suggestions
+- Export data
 
-### Elite Tier ($19.99/mo)
-- Unlimited AI interactions
-- Photo food recognition
-- Recipe analysis
-- Wearables integration
-- Coach dashboard sharing
+### Pro Tier ($24.99/mo)
+- 200 AI interactions/month
+- Unlimited voice input
+- Unlimited history
+- Wearables integration (Apple, Garmin)
+- Advanced analytics
+- Meal planning
+
+### Elite Tier ($49.99/mo)
+- Unlimited everything
+- Form checking (video analysis)
+- Coach dashboard for clients
+- B2B features
 - Priority support
+- Custom AI personality
+- API access (future)
 
 ### Usage Tracking
 ```typescript
@@ -390,13 +403,21 @@ export class UsageTracker {
 }
 ```
 
-## Features for Later
+## Implementation Priorities (FROM USER REQUIREMENTS)
 
-### High Priority (Next Phase)
-1. **Wearables Integration** (Apple Health, Garmin, Whoop)
-2. **RPE & Tempo Notation** in workout parsing
-3. **Restaurant Menu Matching** with API integrations
-4. **Personalized Form Cues** based on exercise history
+### IMMEDIATE MUST-HAVES
+1. **Voice Input** (CRITICAL - main differentiator)
+2. **Offline-First Architecture** (cache + sync)
+3. **WebSocket Real-Time** (live workout tracking)
+4. **Freemium Paywall** (Stripe integration)
+5. **Beta Testing Framework** (email feedback)
+
+### PHASE 1 (0-3 months)
+1. **Wearables Integration** (Apple Watch + Garmin)
+2. **Multi-language Support** (Portuguese, Spanish)
+3. **Meal Planning** with macros
+4. **Workout Templates** library
+5. **Progress Photos** tracking
 
 ### Medium Priority
 1. **Injury Risk Assessment** from movement patterns

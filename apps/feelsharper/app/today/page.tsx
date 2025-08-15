@@ -55,7 +55,7 @@ export default function TodayPage() {
         {/* Today's Summary */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-text-primary">Today's Summary</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Food Card */}
             <div className="bg-surface border border-border rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
@@ -70,20 +70,6 @@ export default function TodayPage() {
               </div>
             </div>
 
-            {/* Workout Card */}
-            <div className="bg-surface border border-border rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <Dumbbell className="w-6 h-6 text-navy" />
-                <h3 className="text-lg font-semibold">Workout</h3>
-              </div>
-              <div className="space-y-2 text-text-secondary">
-                <p>No workout logged yet</p>
-                <a href="/workouts/add" className="text-navy hover:underline text-sm">
-                  Log your workout →
-                </a>
-              </div>
-            </div>
-
             {/* Weight Card */}
             <div className="bg-surface border border-border rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
@@ -92,11 +78,12 @@ export default function TodayPage() {
               </div>
               <div className="space-y-2 text-text-secondary">
                 <p>No weight logged yet</p>
-                <a href="/weight/add" className="text-navy hover:underline text-sm">
+                <a href="/weight" className="text-navy hover:underline text-sm">
                   Add your weight →
                 </a>
               </div>
             </div>
+
           </div>
         </section>
 
@@ -109,7 +96,7 @@ export default function TodayPage() {
               Start tracking to see your progress
             </h3>
             <p className="text-text-muted mb-6">
-              Once you log food, workouts, or weight, your recent activity will appear here.
+              Once you log food or weight, your recent activity will appear here.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
               <a
@@ -120,14 +107,7 @@ export default function TodayPage() {
                 Log Food
               </a>
               <a
-                href="/workouts/add"
-                className="inline-flex items-center px-4 py-2 bg-navy text-white rounded-lg hover:bg-navy-600 transition-colors"
-              >
-                <Dumbbell className="w-4 h-4 mr-2" />
-                Log Workout
-              </a>
-              <a
-                href="/weight/add"
+                href="/weight"
                 className="inline-flex items-center px-4 py-2 bg-info text-white rounded-lg hover:bg-info/90 transition-colors"
               >
                 <Activity className="w-4 h-4 mr-2" />

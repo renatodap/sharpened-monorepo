@@ -7,7 +7,7 @@ export const runtime = 'edge';
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     // Check authentication
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       if (saveError) {
         console.error('Failed to save food log:', saveError);
       } else {
-        result.data = { ...result.data, id: saved.id };
+        (result.data as any).id = saved.id;
       }
     }
 

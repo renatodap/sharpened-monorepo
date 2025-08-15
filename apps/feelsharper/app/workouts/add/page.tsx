@@ -4,6 +4,9 @@ import { useState, useCallback, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowLeft, Plus, Trash2, Dumbbell, Bot, Edit3, Save } from 'lucide-react';
 import NaturalLanguageInput from '@/components/workouts/NaturalLanguageInput';
+import { VoiceInputButton } from '@/components/voice/VoiceInputButton';
+import { CrossDeviceSyncIndicator } from '@/components/realtime/CrossDeviceSyncIndicator';
+import { LiveWorkoutTracker, QuickWorkoutTimer } from '@/components/workouts/LiveWorkoutTracker';
 import type { Exercise as DatabaseExercise, WorkoutTypeEnum } from '@/lib/types/database';
 
 interface Exercise {
@@ -49,6 +52,8 @@ function AddWorkoutContent() {
   const [workoutType, setWorkoutType] = useState<WorkoutTypeEnum>('strength');
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [isAiMode, setIsAiMode] = useState(aiMode);
+  const [showLiveTracker, setShowLiveTracker] = useState(false);
+  const [userId] = useState('user-1'); // TODO: Get from auth context
 
   const handleWorkoutParsed = (parsed: { workout_type: WorkoutTypeEnum; exercises: DatabaseExercise[] }) => {
     const localExercises = convertDatabaseExercisesToLocal(parsed.exercises);
@@ -186,14 +191,63 @@ function AddWorkoutContent() {
             <h1 className="text-3xl font-bold">Log Workout</h1>
             <p className="text-text-secondary">Track your exercises, sets, and reps</p>
           </div>
-          <button
-            onClick={() => setIsAiMode(true)}
-            className="inline-flex items-center px-4 py-2 bg-surface border border-border text-text-primary rounded-lg hover:bg-surface-2 transition-colors"
-          >
-            <Bot className="w-4 h-4 mr-2" />
-            Natural Language
-          </button>
+          <div className="flex items-center gap-3">
+            <CrossDeviceSyncIndicator userId={userId} />
+            <button
+              onClick={() => setShowLiveTracker(!showLiveTracker)}
+              className={`inline-flex items-center px-4 py-2 border rounded-lg transition-colors ${
+                showLiveTracker 
+                  ? 'bg-primary text-white border-primary' 
+                  : 'bg-surface border-border text-text-primary hover:bg-surface-2'
+              }`}
+            >
+              <Dumbbell className="w-4 h-4 mr-2" />
+              Live Mode
+            </button>
+            <button
+              onClick={() => setIsAiMode(true)}
+              className="inline-flex items-center px-4 py-2 bg-surface border border-border text-text-primary rounded-lg hover:bg-surface-2 transition-colors"
+            >
+              <Bot className="w-4 h-4 mr-2" />
+              Natural Language
+            </button>
+          </div>
         </div>
+
+        {/* Live Workout Tracker */}
+        {showLiveTracker && (
+          <div className="mb-8">
+            <LiveWorkoutTracker
+              userId={userId}
+              workoutId={generateId()}
+              workout={exercises.length > 0 ? {
+                id: generateId(),
+                title: workoutTitle || 'Current Workout',
+                exercises: exercises.map(ex => ({
+                  id: ex.id,
+                  name: ex.name,
+                  sets: ex.sets.length,
+                  reps: ex.sets[0]?.reps,
+                  weight: ex.sets[0]?.weight
+                }))
+              } : undefined}
+              onComplete={() => setShowLiveTracker(false)}
+            />
+          </div>
+        )}
+
+        {/* Quick Timer for Rest Periods */}
+        {!showLiveTracker && exercises.length > 0 && (
+          <div className="mb-8">
+            <QuickWorkoutTimer
+              userId={userId}
+              onRestComplete={() => {
+                // Could trigger notification or sound
+                console.log('Rest period complete!');
+              }}
+            />
+          </div>
+        )}
 
         {/* Workout Details */}
         <div className="bg-surface border border-border rounded-xl p-6 mb-8">
@@ -202,13 +256,21 @@ function AddWorkoutContent() {
               <label className="block text-text-secondary text-sm font-medium mb-2">
                 Workout Title
               </label>
-              <input
-                type="text"
-                value={workoutTitle}
-                onChange={(e) => setWorkoutTitle(e.target.value)}
-                placeholder="e.g., Push Day, Leg Day, Cardio"
-                className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-focus"
-              />
+              <div className="relative">
+                <input
+                  type="text"
+                  value={workoutTitle}
+                  onChange={(e) => setWorkoutTitle(e.target.value)}
+                  placeholder="e.g., Push Day, Leg Day, Cardio"
+                  className="w-full px-3 py-2 pr-12 bg-surface-2 border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-focus"
+                />
+                <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                  <VoiceInputButton
+                    onTranscript={(text) => setWorkoutTitle(text)}
+                    placeholder="Voice input for workout title"
+                  />
+                </div>
+              </div>
             </div>
             <div>
               <label className="block text-text-secondary text-sm font-medium mb-2">
@@ -240,12 +302,20 @@ function AddWorkoutContent() {
             <label className="block text-text-secondary text-sm font-medium mb-2">
               Notes (optional)
             </label>
-            <textarea
-              value={workoutNotes}
-              onChange={(e) => setWorkoutNotes(e.target.value)}
-              placeholder="How did the workout feel?"
-              className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-focus h-24 resize-none"
-            />
+            <div className="relative">
+              <textarea
+                value={workoutNotes}
+                onChange={(e) => setWorkoutNotes(e.target.value)}
+                placeholder="How did the workout feel?"
+                className="w-full px-3 py-2 pr-12 bg-surface-2 border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-focus h-24 resize-none"
+              />
+              <div className="absolute right-2 top-2">
+                <VoiceInputButton
+                  onTranscript={(text) => setWorkoutNotes(text)}
+                  placeholder="Voice input for workout notes"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -256,14 +326,20 @@ function AddWorkoutContent() {
               
               {/* Exercise Header */}
               <div className="flex items-center gap-4 mb-6">
-                <div className="flex-1">
+                <div className="flex-1 relative">
                   <input
                     type="text"
                     value={exercise.name}
                     onChange={(e) => updateExercise(exercise.id, 'name', e.target.value)}
                     placeholder="Exercise name (e.g., Bench Press)"
-                    className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-focus font-medium"
+                    className="w-full px-3 py-2 pr-12 bg-surface-2 border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-focus font-medium"
                   />
+                  <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                    <VoiceInputButton
+                      onTranscript={(text) => updateExercise(exercise.id, 'name', text)}
+                      placeholder="Voice input for exercise name"
+                    />
+                  </div>
                 </div>
                 <button
                   onClick={() => removeExercise(exercise.id)}

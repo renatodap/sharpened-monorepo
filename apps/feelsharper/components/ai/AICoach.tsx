@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Send, Loader2, Bot, User, AlertCircle } from 'lucide-react';
 
 interface Message {

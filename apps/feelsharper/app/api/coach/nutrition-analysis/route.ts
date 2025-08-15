@@ -171,7 +171,7 @@ export async function POST(request: NextRequest) {
           carbs: dailyAverages.carbs,
           fat: dailyAverages.fat,
           fiber: dailyAverages.fiber,
-          water: dailyAverages.water || 0
+          water: (dailyAverages as any).water || 0
         },
         macroDistribution: {
           proteinPercent: macroDistribution.proteinPercent,

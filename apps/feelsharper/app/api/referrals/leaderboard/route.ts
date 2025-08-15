@@ -3,7 +3,7 @@ import { createServerClient } from '@/lib/supabase/server';
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createServerClient();
     const { searchParams } = new URL(request.url);
     const timeframe = searchParams.get('timeframe') || 'all-time'; // all-time, monthly, weekly
 
@@ -82,7 +82,7 @@ export async function GET(request: NextRequest) {
 // Create the database function if it doesn't exist
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createServerClient();
     
     // Create the stored procedure for referral leaderboard
     const { error } = await supabase.rpc('create_referral_leaderboard_function');

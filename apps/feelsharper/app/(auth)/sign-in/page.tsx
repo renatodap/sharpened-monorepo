@@ -1,5 +1,5 @@
 "use client";
-import { useState, Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import SimpleHeader from "@/components/navigation/SimpleHeader";

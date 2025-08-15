@@ -5,7 +5,7 @@ import type { UserMetrics } from '@/lib/types/database';
 export async function GET(request: NextRequest) {
   try {
     const user = await getSessionUser();
-    if (!user?.is_admin) {
+    if (!user?.user_metadata?.is_admin) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
     }
 

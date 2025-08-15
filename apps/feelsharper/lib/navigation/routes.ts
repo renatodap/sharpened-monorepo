@@ -31,7 +31,7 @@ export interface NavigationItem {
   desktopOnly?: boolean;
 }
 
-// Main navigation items - Fitness-focused IA
+// Main navigation items - MVP focused only
 export const mainNavigation: NavigationItem[] = [
   { 
     name: 'Home', 
@@ -57,14 +57,6 @@ export const mainNavigation: NavigationItem[] = [
     showInFooter: false
   },
   { 
-    name: 'Workouts', 
-    href: '/workouts', 
-    icon: Dumbbell,
-    requiresAuth: true,
-    showInMenu: true,
-    showInFooter: false
-  },
-  { 
     name: 'Weight', 
     href: '/weight', 
     icon: Activity,
@@ -73,15 +65,7 @@ export const mainNavigation: NavigationItem[] = [
     showInFooter: false
   },
   { 
-    name: 'Body', 
-    href: '/body', 
-    icon: Scale,
-    requiresAuth: true,
-    showInMenu: true,
-    showInFooter: false
-  },
-  { 
-    name: 'Insights', 
+    name: 'Progress', 
     href: '/insights', 
     icon: TrendingUp,
     requiresAuth: true,
@@ -189,7 +173,7 @@ export const blogCategories = [
   { name: 'Nutrition', slug: 'nutrition' },
 ];
 
-// Quick action items for /today page
+// Quick action items for /today page - MVP only
 export const quickActions = [
   { 
     label: 'Log Food', 
@@ -198,14 +182,8 @@ export const quickActions = [
     color: 'bg-success' 
   },
   { 
-    label: 'Log Workout', 
-    href: '/workouts/add', 
-    icon: Dumbbell, 
-    color: 'bg-navy' 
-  },
-  { 
     label: 'Add Weight', 
-    href: '/weight/add', 
+    href: '/weight', 
     icon: Activity, 
     color: 'bg-info' 
   },

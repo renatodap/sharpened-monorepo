@@ -4,6 +4,7 @@ import { useRequireAuth } from '@/hooks/useAuth'
 import { Button } from '@/components/ui/Button'
 import { Card } from '@/components/ui/Card'
 import { LoadingSkeleton } from '@/components/ui/LoadingSkeleton'
+import Link from 'next/link'
 
 export default function DashboardPage() {
   const { user, loading } = useRequireAuth()
@@ -81,7 +82,7 @@ export default function DashboardPage() {
               description="Upload and analyze practice and match videos"
               icon="📹"
               href="/video"
-              status="Coming Soon"
+              status="Available"
             />
             
             <FeatureCard
@@ -89,15 +90,15 @@ export default function DashboardPage() {
               description="Build intelligence on upcoming opponents"
               icon="🔍"
               href="/scouting"
-              status="Coming Soon"
+              status="Available"
             />
             
             <FeatureCard
               title="Travel Planning"
               description="Coordinate team travel and accommodations"
-              icon="🚌"
+              icon="🧳"
               href="/travel"
-              status="Coming Soon"
+              status="Available"
             />
             
             <FeatureCard
@@ -105,7 +106,7 @@ export default function DashboardPage() {
               description="Internal messaging and announcements"
               icon="💬"
               href="/communication"
-              status="Coming Soon"
+              status="Available"
             />
           </div>
 
@@ -156,7 +157,7 @@ function FeatureCard({
 }) {
   const isAvailable = status === 'Available'
   
-  return (
+  const CardContent = (
     <Card className={`p-6 transition-colors ${
       isAvailable 
         ? 'hover:border-navy/50 cursor-pointer' 
@@ -189,5 +190,13 @@ function FeatureCard({
         </div>
       </div>
     </Card>
+  )
+
+  return isAvailable ? (
+    <Link href={href}>
+      {CardContent}
+    </Link>
+  ) : (
+    CardContent
   )
 }

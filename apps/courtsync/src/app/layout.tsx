@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { AuthProvider } from '@/hooks/useAuth'
 import { Analytics } from '@/components/analytics/Analytics'
 import { PWAProvider } from '@/components/pwa/PWAProvider'
+import { BottomNav } from '@/components/navigation/BottomNav'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -77,7 +78,10 @@ export default function RootLayout({
         <PWAProvider>
           <AuthProvider>
             <div className="min-h-screen bg-bg">
-              {children}
+              <BottomNav />
+              <main className="lg:pl-64">
+                {children}
+              </main>
             </div>
             <Analytics />
           </AuthProvider>

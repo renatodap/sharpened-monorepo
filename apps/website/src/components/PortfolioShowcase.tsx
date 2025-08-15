@@ -185,7 +185,7 @@ export default function PortfolioShowcase() {
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Cutting-edge AI products built with modern technologies. From fitness tracking to computer vision, 
-            we're pushing the boundaries of what's possible.
+            we&apos;re pushing the boundaries of what&apos;s possible.
           </p>
         </motion.div>
 

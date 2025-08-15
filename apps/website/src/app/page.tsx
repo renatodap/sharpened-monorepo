@@ -502,10 +502,10 @@ export default function Home() {
               <div>
                 <h4 className="text-lg font-semibold mb-4 text-red-400">FeelSharper Demo</h4>
                 <div className="bg-charcoal/50 rounded-lg p-4 border border-zinc-700 space-y-3">
-                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "I'm a beginner and want to get stronger"</p>
-                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "Based on your fitness level, I recommend Starting Strength program. 3x/week, focusing on compound movements..."</p>
-                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "Show me today's workout"</p>
-                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "Today: Squats 3x5, Bench Press 3x5, Deadlift 1x5. Here's proper form videos and weight progression..."</p>
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> &ldquo;I&apos;m a beginner and want to get stronger&rdquo;</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> &ldquo;Based on your fitness level, I recommend Starting Strength program. 3x/week, focusing on compound movements...&rdquo;</p>
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> &ldquo;Show me today&apos;s workout&rdquo;</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> &ldquo;Today: Squats 3x5, Bench Press 3x5, Deadlift 1x5. Here&apos;s proper form videos and weight progression...&rdquo;</p>
                 </div>
                 <motion.a
                   href="https://feelsharper.vercel.app"
@@ -521,10 +521,10 @@ export default function Home() {
               <div>
                 <h4 className="text-lg font-semibold mb-4 text-cyan-400">StudySharper Demo</h4>
                 <div className="bg-charcoal/50 rounded-lg p-4 border border-zinc-700 space-y-3">
-                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "I need to memorize 200 medical terms"</p>
-                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "I'll create a spaced repetition schedule. Let's start with 20 terms today using memory palace technique..."</p>
-                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> "Test me on cardiovascular terms"</p>
-                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> "Quiz starting: Define 'Atherosclerosis'... Great! You've improved 40% since last week..."</p>
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> &ldquo;I need to memorize 200 medical terms&rdquo;</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> &ldquo;I&apos;ll create a spaced repetition schedule. Let&apos;s start with 20 terms today using memory palace technique...&rdquo;</p>
+                  <p className="text-sm text-zinc-300"><span className="text-cyan-400">You:</span> &ldquo;Test me on cardiovascular terms&rdquo;</p>
+                  <p className="text-sm text-zinc-300"><span className="text-green-400">AI:</span> &ldquo;Quiz starting: Define &apos;Atherosclerosis&apos;... Great! You&apos;ve improved 40% since last week...&rdquo;</p>
                 </div>
                 <motion.a
                   href="https://studysharper.vercel.app"
@@ -553,7 +553,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent">
-              Why It's Different
+              Why It&apos;s Different
             </h2>
           </motion.div>
 
@@ -803,9 +803,9 @@ export default function Home() {
                         The Vision
                       </h3>
                       <p className="text-xl text-zinc-200 leading-relaxed">
-                        We believe every person contains infinite potential. Traditional self-improvement fails because it's generic. 
+                        We believe every person contains infinite potential. Traditional self-improvement fails because it&apos;s generic. 
                         <span className="text-electric-blue font-semibold"> Sharpened succeeds because each coach is an expert</span>, 
-                        trained on real knowledge from professionals who've mastered their craft.
+                        trained on real knowledge from professionals who&apos;ve mastered their craft.
                       </p>
                     </div>
                     
@@ -1047,8 +1047,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-zinc-300 italic">
-                "FeelSharper's training plans are better than my previous $200/month personal trainer. 
-                The biomechanics analysis is incredible."
+                &ldquo;FeelSharper&apos;s training plans are better than my previous $200/month personal trainer. 
+                The biomechanics analysis is incredible.&rdquo;
               </p>
             </motion.div>
             
@@ -1069,8 +1069,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-zinc-300 italic">
-                "StudySharper helped me increase my retention rate by 40%. 
-                The spaced repetition system is backed by real cognitive science."
+                &ldquo;StudySharper helped me increase my retention rate by 40%. 
+                The spaced repetition system is backed by real cognitive science.&rdquo;
               </p>
             </motion.div>
           </div>

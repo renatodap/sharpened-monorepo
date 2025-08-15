@@ -1,33 +1,55 @@
 {
-  "name": "sharpened",
+  "name": "sharpened-monorepo",
   "private": true,
+  "description": "Sharpened business ecosystem - AI-powered productivity and wellness platforms",
+  "version": "1.0.0",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
   },
   "scripts": {
-    "dev": "cd apps/website && npm run dev",
-    "dev:study": "cd apps/studysharper/apps/web && npm run dev",
-    "dev:feel": "cd apps/feelsharper && npm run dev",
+    "dev": "pnpm --filter feelsharper dev",
+    "dev:feel": "pnpm --filter feelsharper dev",
+    "dev:study": "pnpm --filter studysharper dev",
+    "dev:reading": "pnpm --filter reading-tracker dev", 
+    "dev:website": "pnpm --filter website dev",
     "dev:all": "turbo run dev --parallel",
-    "build": "cd apps/website && npm run build && cp -r .next ../../.next",
-    "build:turbo": "turbo run build",
-    "build:study": "cd apps/studysharper/apps/web && npm run build",
-    "lint": "turbo run lint",
+    
+    "build": "pnpm --filter feelsharper build",
+    "build:feel": "pnpm --filter feelsharper build",
+    "build:study": "pnpm --filter studysharper build",
+    "build:reading": "pnpm --filter reading-tracker build",
+    "build:website": "pnpm --filter website build",
+    "build:all": "turbo run build",
+    
     "typecheck": "turbo run typecheck",
-    "typecheck:study": "cd apps/studysharper/apps/web && npm run typecheck",
+    "typecheck:feel": "pnpm --filter feelsharper typecheck",
+    "lint": "turbo run lint",
+    "lint:feel": "pnpm --filter feelsharper lint",
+    
     "test": "turbo run test",
-    "test:all": "npm run typecheck && npm run lint && npm run test",
-    "test:unit": "turbo run test:unit",
-    "test:integration": "turbo run test:integration",
-    "test:e2e": "turbo run test:e2e",
-    "test:coverage": "turbo run test:coverage",
-    "test:affected": "turbo run test --filter=[HEAD^1]",
+    "test:feel": "pnpm --filter feelsharper test",
+    "test:e2e": "pnpm --filter feelsharper test:e2e",
+    "test:all": "pnpm run typecheck && pnpm run lint && pnpm run test",
+    
+    "deploy:feel": "pnpm --filter feelsharper build && vercel --prod",
+    "deploy:website": "pnpm --filter website build && vercel --prod",
+    
     "clean": "turbo run clean && rm -rf node_modules",
+    "clean:deep": "pnpm run clean && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,json}\"",
+    
+    "setup": "pnpm install && pnpm --filter feelsharper run setup",
+    "setup:db": "pnpm --filter feelsharper run setup:db",
+    "seed": "pnpm --filter feelsharper run seed",
+    
+    "ai:embeddings": "pnpm --filter feelsharper run generate-embeddings",
+    "ai:test": "pnpm --filter feelsharper run test-assistant",
+    
     "prepare": "husky install",
-    "ci": "npm run typecheck && npm run lint && npm run test",
-    "ci:study": "cd apps/studysharper/apps/web && npm run typecheck && npm run lint"
+    "ci": "pnpm run typecheck && pnpm run lint && pnpm run test",
+    "ci:feel": "pnpm --filter feelsharper run ci"
   },
   "dependencies": {
     "next": "15.4.6",

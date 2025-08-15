@@ -62,3 +62,12 @@
 \n## 2025-08-14 21:44:14 - BLOCKED: Attempted modification to protected path
 - File: apps/feelsharper/app/api/achievements/route.ts
 - Action: Blocked by pre-commit hook
+\n## 2025-08-14 23:17:21 - BLOCKED: Attempted modification to protected path
+- File: apps/feelsharper/app/api/referrals/route.ts
+- Action: Blocked by pre-commit hook
+\n## 2025-08-15 10:21:20 - BLOCKED: Attempted modification to protected path
+- File: apps/feelsharper/__tests__/integration/food-logging-flow.test.tsx
+- Action: Blocked by pre-commit hook
+\n## 2025-08-15 10:21:54 - BLOCKED: Attempted modification to protected path
+- File: apps/feelsharper/package-lock.json
+- Action: Blocked by pre-commit hook

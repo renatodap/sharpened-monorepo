@@ -1,25 +1,26 @@
-# 📋 DOCS NAVIGATION - Start Here
-*Always know exactly what to do and where to go*
+# Sharpened Business Documentation
 
-## 🚨 NEED TO ACT NOW?
-**[→ ACTION_REQUIRED.md](./ACTION_REQUIRED.md)** 
-Immediate tasks blocking everything. Read this first.
+Essential business and technical documentation for the Sharpened ecosystem.
 
-## 📅 WHAT TO DO THIS WEEK?  
-**[→ THIS_WEEK.md](./THIS_WEEK.md)**
-Day-by-day plan to reach 1,000 users by August 21st.
+## 🎯 Current Focus
 
-## 🤔 NEED TO MAKE A DECISION?
-**[→ DECISIONS_PENDING.md](./DECISIONS_PENDING.md)**
-Quick A/B/C choices to unblock progress. Just text me the letter.
+**Primary Business**: FeelSharper - AI-powered fitness platform
+**Status**: Production-ready, scaling phase
+**Goal**: Sustainable revenue growth through freemium SaaS model
 
-## 📖 HOW TO DO SOMETHING?
-**[→ HOW_TO_GUIDES.md](./HOW_TO_GUIDES.md)**
-Step-by-step instructions for deployment, marketing, payments, etc.
+## 📋 Key Documents
 
-## 📊 WHERE ARE WE NOW?
-**[→ PROJECT_STATUS.md](./PROJECT_STATUS.md)**
-Real-time view of progress, metrics, blockers, and timeline.
+### Immediate Action Items
+**[→ ACTION_REQUIRED.md](./ACTION_REQUIRED.md)** - Critical tasks and blockers
+
+### Development & Operations  
+**[→ PROJECT_STATUS.md](./PROJECT_STATUS.md)** - Current project status
+**[→ HOW_TO_GUIDES.md](./HOW_TO_GUIDES.md)** - Development workflows
+**[→ CONTRIBUTING.md](./CONTRIBUTING.md)** - Contribution guidelines
+
+### Strategic Planning
+**[→ DECISION_LOG.md](./DECISION_LOG.md)** - Architecture and business decisions
+**[→ THIS_WEEK.md](./THIS_WEEK.md)** - Weekly execution plan
 
 ---
 

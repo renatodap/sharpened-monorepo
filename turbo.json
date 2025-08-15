@@ -1,15 +1,56 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local", "**/next.config.*", "**/tailwind.config.*"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**"]
+      "dependsOn": ["^build", "typecheck", "lint"],
+      "outputs": [".next/**", "dist/**", "out/**", "build/**"],
+      "env": ["NODE_ENV", "NEXT_PUBLIC_*", "SUPABASE_*", "ANTHROPIC_API_KEY", "OPENAI_API_KEY"]
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": ["NODE_ENV", "NEXT_PUBLIC_*", "SUPABASE_*", "ANTHROPIC_API_KEY", "OPENAI_API_KEY"]
     },
-    "lint": {},
-    "typecheck": {}
+    "lint": {
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": ["**/*.tsbuildinfo"]
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:unit": {
+      "outputs": ["coverage/**"]
+    },
+    "test:integration": {
+      "dependsOn": ["build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build"],
+      "outputs": ["test-results/**", "playwright-report/**"]
+    },
+    "clean": {
+      "cache": false
+    },
+    "setup": {
+      "cache": false
+    },
+    "setup:db": {
+      "cache": false
+    },
+    "seed": {
+      "cache": false
+    },
+    "generate-embeddings": {
+      "outputs": ["data/embeddings.json"]
+    },
+    "test-assistant": {
+      "cache": false
+    }
   }
 }

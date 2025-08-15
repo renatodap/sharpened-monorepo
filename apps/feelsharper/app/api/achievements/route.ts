@@ -4,7 +4,7 @@ import { getSessionUser } from '@/lib/auth/getSessionUser';
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createServerClient();
     const user = await getSessionUser();
     
     if (!user) {
@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createServerClient();
     const user = await getSessionUser();
     
     if (!user) {

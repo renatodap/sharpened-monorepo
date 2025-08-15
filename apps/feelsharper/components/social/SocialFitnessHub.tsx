@@ -521,7 +521,7 @@ export default function SocialFitnessHub() {
                   <div className="flex justify-between items-center">
                     <div className="flex gap-2">
                       <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                        <Image className="w-4 h-4" />
+                        <Image className="w-4 h-4" alt="Photo" />
                         Photo
                       </Button>
                       <Button variant="ghost" size="sm" className="flex items-center gap-2">
@@ -618,7 +618,7 @@ export default function SocialFitnessHub() {
                     {/* Progress Photo */}
                     {post.type === 'progress' && post.image_url && (
                       <div className="bg-surface rounded-lg p-4 text-center">
-                        <Image className="w-12 h-12 mx-auto mb-2 text-text-secondary" />
+                        <Image className="w-12 h-12 mx-auto mb-2 text-text-secondary" alt="Upload" />
                         <p className="text-text-secondary">Progress photo would display here</p>
                       </div>
                     )}

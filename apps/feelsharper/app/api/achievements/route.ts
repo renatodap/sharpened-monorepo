@@ -138,15 +138,15 @@ async function getUserStats(supabase: any, userId: string) {
 
   // Calculate stats
   const totalWorkouts = workouts?.length || 0;
-  const workoutStreak = streaks?.find(s => s.streak_type === 'workout')?.current_streak || 0;
-  const longestStreak = streaks?.find(s => s.streak_type === 'workout')?.longest_streak || 0;
+  const workoutStreak = streaks?.find((s: any) => s.streak_type === 'workout')?.current_streak || 0;
+  const longestStreak = streaks?.find((s: any) => s.streak_type === 'workout')?.longest_streak || 0;
   
-  const morningWorkouts = workouts?.filter(w => {
+  const morningWorkouts = workouts?.filter((w: any) => {
     const hour = new Date(w.created_at).getHours();
     return hour < 8;
   }).length || 0;
 
-  const recentWorkouts = workouts?.filter(w => {
+  const recentWorkouts = workouts?.filter((w: any) => {
     const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     return new Date(w.created_at) > weekAgo;
   }).length || 0;

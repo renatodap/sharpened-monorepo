@@ -1,0 +1,385 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sharpened Brand System Base Styles */
+@layer base {
+  :root {
+    /* Sharpened Brand Colors */
+    --color-navy: 11 42 74;
+    --color-navy-light: 26 59 92;
+    --color-navy-dark: 5 26 47;
+    
+    --color-bg: 10 10 10;
+    --color-surface: 21 21 21;
+    --color-surface-elevated: 31 31 31;
+    
+    --color-text-primary: 255 255 255;
+    --color-text-secondary: 199 203 209;
+    --color-text-muted: 139 144 150;
+    --color-text-dark: 74 74 74;
+    
+    --color-success: 16 185 129;
+    --color-warning: 245 158 11;
+    --color-error: 239 68 68;
+    --color-info: 59 130 246;
+    
+    /* Court Colors */
+    --color-court-outdoor: 16 185 129;
+    --color-court-indoor: 59 130 246;
+    --color-court-bubble: 139 92 246;
+  }
+
+  /* Dark theme (default) */
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Base typography */
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text-primary));
+    line-height: 1.6;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid rgb(var(--color-navy));
+    outline-offset: 2px;
+  }
+
+  /* Remove default focus styles */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Selection styles */
+  ::selection {
+    background-color: rgb(var(--color-navy) / 0.3);
+  }
+}
+
+/* Component layer for reusable styles */
+@layer components {
+  /* Button base styles */
+  .btn-base {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-colors;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply min-h-touch min-w-touch;
+  }
+
+  /* Input base styles */
+  .input-base {
+    @apply w-full px-3 py-2 bg-surface border border-gray-600 rounded-lg;
+    @apply text-text-primary placeholder-text-muted;
+    @apply focus:outline-none focus:ring-2 focus:ring-navy focus:border-navy;
+    @apply transition-colors;
+  }
+
+  /* Card base styles */
+  .card-base {
+    @apply bg-surface rounded-lg border border-gray-600;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Court type indicators */
+  .court-outdoor {
+    @apply bg-gradient-to-br from-success to-green-600;
+  }
+
+  .court-indoor {
+    @apply bg-gradient-to-br from-info to-blue-700;
+  }
+
+  .court-bubble {
+    @apply bg-gradient-to-br from-purple-500 to-purple-700;
+  }
+
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 1s infinite;
+  }
+}
+
+/* Utility layer for helper classes */
+@layer utilities {
+  /* Touch-friendly utilities */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Safe area utilities for mobile */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Scrollbar utilities */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: rgb(var(--color-surface));
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgb(var(--color-text-muted));
+    border-radius: 2px;
+  }
+
+  /* Text utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Layout utilities */
+  .container-mobile {
+    @apply mx-auto px-4 max-w-sm;
+  }
+
+  .container-tablet {
+    @apply mx-auto px-6 max-w-4xl;
+  }
+
+  .container-desktop {
+    @apply mx-auto px-8 max-w-7xl;
+  }
+
+  /* Tennis-specific utilities */
+  .event-practice {
+    @apply border-l-4 border-info bg-info/10;
+  }
+
+  .event-match {
+    @apply border-l-4 border-error bg-error/10;
+  }
+
+  .event-travel {
+    @apply border-l-4 border-success bg-success/10;
+  }
+
+  .event-meeting {
+    @apply border-l-4 border-warning bg-warning/10;
+  }
+
+  /* Status indicators */
+  .status-available {
+    @apply bg-success text-white;
+  }
+
+  .status-unavailable {
+    @apply bg-error text-white;
+  }
+
+  .status-maybe {
+    @apply bg-warning text-black;
+  }
+
+  .status-confirmed {
+    @apply bg-info text-white;
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* PWA-specific styles */
+@media (display-mode: standalone) {
+  body {
+    /* Adjust for PWA standalone mode */
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: 255 255 255;
+    --color-text-secondary: 255 255 255;
+    --color-bg: 0 0 0;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-surface));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-text-muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-text-secondary));
+}
+
+/* Form validation styles */
+.form-error {
+  @apply border-error focus:ring-error;
+}
+
+.form-success {
+  @apply border-success focus:ring-success;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--color-surface)) 0%,
+    rgb(var(--color-surface-elevated)) 50%,
+    rgb(var(--color-surface)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Video player controls */
+.video-controls {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Calendar grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1px;
+}
+
+/* Court grid */
+.court-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .container-mobile {
+    @apply px-3;
+  }
+
+  /* Larger touch targets on mobile */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Full-width cards on mobile */
+  .card-mobile {
+    @apply rounded-none border-x-0;
+  }
+}

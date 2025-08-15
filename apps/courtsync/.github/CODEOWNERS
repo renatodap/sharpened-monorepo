@@ -1,0 +1,47 @@
+# CourtSync Code Owners
+# These users will be automatically requested for review when PRs are created
+
+# Global owners for all files
+* @pradord
+
+# Core application code
+/apps/courtsync/ @pradord
+
+# Documentation
+/apps/courtsync/docs/ @pradord
+/apps/courtsync/README.md @pradord
+/apps/courtsync/CLAUDE.md @pradord
+
+# Database and schema
+/apps/courtsync/src/lib/db/ @pradord
+/apps/courtsync/docs/api/DATABASE_SCHEMA.sql @pradord
+/apps/courtsync/drizzle/ @pradord
+
+# Critical configuration files
+/apps/courtsync/package.json @pradord
+/apps/courtsync/next.config.ts @pradord
+/apps/courtsync/tailwind.config.ts @pradord
+/apps/courtsync/tsconfig.json @pradord
+
+# Security and environment
+/apps/courtsync/.env.example @pradord
+/apps/courtsync/src/middleware.ts @pradord
+
+# CI/CD and automation
+/apps/courtsync/.github/ @pradord
+/apps/courtsync/.husky/ @pradord
+
+# API routes
+/apps/courtsync/src/app/api/ @pradord
+
+# Authentication and authorization
+/apps/courtsync/src/lib/auth/ @pradord
+/apps/courtsync/src/lib/supabase/ @pradord
+
+# Component library and design system
+/apps/courtsync/src/components/ui/ @pradord
+
+# Critical business logic
+/apps/courtsync/src/lib/court-booking/ @pradord
+/apps/courtsync/src/lib/video/ @pradord
+/apps/courtsync/src/lib/scouting/ @pradord

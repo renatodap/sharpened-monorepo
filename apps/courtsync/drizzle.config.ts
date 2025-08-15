@@ -15,14 +15,14 @@ if (!databaseUrl) {
 export default {
   schema: './src/lib/db/schema/*',
   out: './drizzle/migrations',
-  driver: 'pg',
+  dialect: 'postgresql',
   dbCredentials: {
-    connectionString: databaseUrl,
+    url: databaseUrl,
   },
   verbose: true,
   strict: true,
   // Enable introspection for existing databases
-  introspect: {
-    casing: 'snake_case',
-  },
+  // introspect: {
+  //   casing: 'snake_case',
+  // },
 } satisfies Config

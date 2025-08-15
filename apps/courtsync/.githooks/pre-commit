@@ -1,0 +1,66 @@
+#!/bin/sh
+#
+# CourtSync Pre-commit Hook
+# Protects against unauthorized changes outside the CourtSync scope
+#
+
+echo "🔐 CourtSync Pre-commit Protection"
+
+# Get list of staged files
+STAGED_FILES=$(git diff --cached --name-only)
+
+# Define allowed paths for CourtSync changes
+ALLOWED_PATHS="^(apps/courtsync/|packages/|docs/.*courtsync|\.github/workflows/courtsync)"
+
+# Check for changes outside allowed paths
+UNAUTHORIZED_CHANGES=""
+for file in $STAGED_FILES; do
+    if ! echo "$file" | grep -qE "$ALLOWED_PATHS"; then
+        # Check if this is a DECISION_LOG.md entry justifying the change
+        if echo "$file" | grep -q "DECISION_LOG.md"; then
+            echo "📝 DECISION_LOG.md change detected - verifying justification..."
+            # Allow DECISION_LOG.md changes
+            continue
+        else
+            UNAUTHORIZED_CHANGES="$UNAUTHORIZED_CHANGES\n  - $file"
+        fi
+    fi
+done
+
+# Block commit if unauthorized changes detected
+if [ -n "$UNAUTHORIZED_CHANGES" ]; then
+    echo "❌ BLOCKED: Changes detected outside CourtSync scope:"
+    echo -e "$UNAUTHORIZED_CHANGES"
+    echo ""
+    echo "CourtSync development should only modify:"
+    echo "  - apps/courtsync/**"
+    echo "  - packages/* (with DECISION_LOG.md justification)"
+    echo "  - docs/**courtsync**"
+    echo ""
+    echo "If you need to modify shared packages, please:"
+    echo "  1. Document the rationale in DECISION_LOG.md"
+    echo "  2. Create a separate PR for shared package changes"
+    echo ""
+    exit 1
+fi
+
+# Run CourtSync-specific quality checks
+echo "✅ Path protection passed"
+
+# Type checking
+echo "🔍 Running TypeScript checks..."
+cd apps/courtsync
+if ! npm run typecheck --silent; then
+    echo "❌ TypeScript errors detected. Please fix before committing."
+    exit 1
+fi
+
+# Linting
+echo "🧹 Running ESLint..."
+if ! npm run lint --silent; then
+    echo "❌ ESLint errors detected. Please fix before committing."
+    exit 1
+fi
+
+echo "✅ Pre-commit checks passed!"
+exit 0

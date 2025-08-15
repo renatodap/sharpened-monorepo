@@ -108,13 +108,18 @@ export default function MealTemplateDetailPage() {
     let totalFat = 0;
 
     template.meal_template_items.forEach(item => {
-      const food = item.foods || item.custom_foods;
-      if (food) {
-        const multiplier = item.amount / 100; // Convert to per gram
-        totalCalories += (food.calories || 0) * multiplier;
-        totalProtein += (food.protein || 0) * multiplier;
-        totalCarbs += (food.carbs || 0) * multiplier;
-        totalFat += (food.fat || 0) * multiplier;
+      if (item.foods) {
+        const multiplier = item.quantity / 100; // Convert to per gram
+        totalCalories += (item.foods.calories_per_100g || 0) * multiplier;
+        totalProtein += (item.foods.protein_g || 0) * multiplier;
+        totalCarbs += (item.foods.carbs_g || 0) * multiplier;
+        totalFat += (item.foods.fat_g || 0) * multiplier;
+      } else if (item.custom_foods) {
+        const multiplier = item.quantity / (item.custom_foods.serving_size || 100); // Convert based on serving
+        totalCalories += (item.custom_foods.calories_per_serving || 0) * multiplier;
+        totalProtein += (item.custom_foods.protein_g || 0) * multiplier;
+        totalCarbs += (item.custom_foods.carbs_g || 0) * multiplier;
+        totalFat += (item.custom_foods.fat_g || 0) * multiplier;
       }
     });
 
@@ -194,9 +199,6 @@ export default function MealTemplateDetailPage() {
                     {MEAL_TYPE_LABELS[template.meal_type as keyof typeof MEAL_TYPE_LABELS]}
                   </p>
                 )}
-                {template.description && (
-                  <p className="text-text-secondary mt-2">{template.description}</p>
-                )}
               </div>
             </div>
             <div className="flex gap-2">
@@ -274,9 +276,9 @@ export default function MealTemplateDetailPage() {
                 
                 if (!food && !recipe) return null;
 
-                const name = food?.name || food?.description || recipe?.name || 'Unknown item';
-                const brand = food?.brand;
-                const amount = item.amount;
+                const name = (item.foods?.description) || (item.custom_foods?.name) || (item.recipes?.name) || 'Unknown item';
+                const brand = (item.foods?.brand_name) || (item.custom_foods?.brand);
+                const amount = item.quantity;
                 const unit = item.unit || 'g';
 
                 // Calculate nutrition for this item
@@ -285,12 +287,18 @@ export default function MealTemplateDetailPage() {
                 let itemCarbs = 0;
                 let itemFat = 0;
 
-                if (food) {
+                if (item.foods) {
                   const multiplier = amount / 100;
-                  itemCalories = (food.calories || 0) * multiplier;
-                  itemProtein = (food.protein || 0) * multiplier;
-                  itemCarbs = (food.carbs || 0) * multiplier;
-                  itemFat = (food.fat || 0) * multiplier;
+                  itemCalories = (item.foods.calories_per_100g || 0) * multiplier;
+                  itemProtein = (item.foods.protein_g || 0) * multiplier;
+                  itemCarbs = (item.foods.carbs_g || 0) * multiplier;
+                  itemFat = (item.foods.fat_g || 0) * multiplier;
+                } else if (item.custom_foods) {
+                  const multiplier = amount / (item.custom_foods.serving_size || 100);
+                  itemCalories = (item.custom_foods.calories_per_serving || 0) * multiplier;
+                  itemProtein = (item.custom_foods.protein_g || 0) * multiplier;
+                  itemCarbs = (item.custom_foods.carbs_g || 0) * multiplier;
+                  itemFat = (item.custom_foods.fat_g || 0) * multiplier;
                 }
 
                 return (
@@ -318,9 +326,6 @@ export default function MealTemplateDetailPage() {
         {/* Template Meta */}
         <div className="mt-8 text-center text-text-muted text-sm">
           Created on {new Date(template.created_at).toLocaleDateString()}
-          {template.updated_at !== template.created_at && (
-            <> • Updated on {new Date(template.updated_at).toLocaleDateString()}</>
-          )}
         </div>
       </div>
     </div>

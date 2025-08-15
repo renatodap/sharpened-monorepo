@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, Suspense } from 'react';
+import React, { useState, useCallback, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, ArrowLeft, Plus, Apple, Calculator, Utensils } from 'lucide-react';
 import CustomFoodModal from '@/components/food/CustomFoodModal';

@@ -554,7 +554,7 @@ export function HumanVerificationQueue() {
                 Submit Corrections
               </Button>
               <Button 
-                variant="destructive"
+                variant="secondary"
                 onClick={rejectItem}
               >
                 <XCircle className="h-4 w-4 mr-2" />

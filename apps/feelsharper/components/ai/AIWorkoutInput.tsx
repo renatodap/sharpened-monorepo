@@ -151,7 +151,7 @@ Examples:
             
             <Button
               onClick={handleVoiceRecord}
-              variant={isRecording ? 'destructive' : 'outline'}
+              variant={isRecording ? 'secondary' : 'outline'}
               disabled={isLoading}
               className="px-3"
               title={isRecording ? 'Stop recording' : 'Start voice recording'}
@@ -172,7 +172,7 @@ Examples:
               <p className="text-sm text-red-500">{error}</p>
               {showUpgrade && (
                 <Button
-                  variant="link"
+                  variant="ghost"
                   className="p-0 h-auto text-primary hover:text-primary/80 text-sm mt-1"
                   onClick={() => window.location.href = '/settings/subscription'}
                 >

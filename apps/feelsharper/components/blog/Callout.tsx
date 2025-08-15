@@ -1,8 +1,8 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { AlertTriangle, Info, CheckCircle, XCircle, Lightbulb } from 'lucide-react'
 
 interface CalloutProps {
-  children: ReactNode
+  children: React.ReactNode
   type?: 'info' | 'warning' | 'success' | 'error' | 'tip'
   title?: string
 }

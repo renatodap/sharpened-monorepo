@@ -68,6 +68,27 @@ export function CardHeader({
 }
 
 /**
+ * Card title component for main headings
+ */
+export function CardTitle({ 
+  children, 
+  className,
+  ...props 
+}: React.HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h3
+      className={cn(
+        'text-lg font-semibold text-sharp-blue',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </h3>
+  );
+}
+
+/**
  * Card content area with proper spacing
  */
 export function CardContent({ 

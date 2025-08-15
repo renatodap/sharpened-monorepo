@@ -3,8 +3,8 @@
 
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
-import { getAnalytics, PostHogAnalytics, POSTHOG_CONFIG } from '@/packages/analytics/posthog-config';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { getAnalytics, PostHogAnalytics, POSTHOG_CONFIG } from '../../../../packages/analytics/posthog-config';
 import { useUser } from '@/lib/auth/useUser';
 import { createClient } from '@/lib/supabase/client';
 
@@ -160,11 +160,17 @@ export function AnalyticsProvider({ children }: AnalyticsProviderProps) {
     // Apply privacy settings to PostHog
     if (config.disable_recordings) {
       // PostHog method to disable recordings
-      analytics['posthog']?.config?.disable_session_recording = true;
+      const posthog = (analytics as any)['posthog'];
+      if (posthog?.config) {
+        posthog.config.disable_session_recording = true;
+      }
     }
 
     if (config.disable_autocapture) {
-      analytics['posthog']?.config?.autocapture = false;
+      const posthog = (analytics as any)['posthog'];
+      if (posthog?.config) {
+        posthog.config.autocapture = false;
+      }
     }
 
     // Track privacy level change

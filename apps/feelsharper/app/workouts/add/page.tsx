@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, Suspense } from 'react';
+import React, { useState, useCallback, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowLeft, Plus, Trash2, Dumbbell, Bot, Edit3, Save } from 'lucide-react';
 import NaturalLanguageInput from '@/components/workouts/NaturalLanguageInput';

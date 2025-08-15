@@ -1,9 +1,4 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Offline - Feel Sharper',
-  description: 'You are currently offline. Feel Sharper will work again when your connection is restored.',
-};
+'use client'
 
 export default function OfflinePage() {
   return (

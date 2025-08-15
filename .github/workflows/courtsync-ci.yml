@@ -1,0 +1,219 @@
+name: CourtSync CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, master, feature/courtsync-*]
+    paths:
+      - 'apps/courtsync/**'
+      - '.github/workflows/courtsync-ci.yml'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'apps/courtsync/**'
+      - '.github/workflows/courtsync-ci.yml'
+
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8'
+
+jobs:
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/courtsync
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type checking
+        run: pnpm typecheck
+
+      - name: Linting
+        run: pnpm lint
+
+      - name: Format checking
+        run: pnpm format:check
+
+      - name: Unit tests
+        run: pnpm test --coverage
+
+      - name: Build application
+        run: pnpm build
+        env:
+          DATABASE_ADAPTER: local
+          STORAGE_ADAPTER: local
+          NODE_ENV: production
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          directory: apps/courtsync/coverage
+          flags: courtsync
+
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    needs: quality-gate
+    defaults:
+      run:
+        working-directory: apps/courtsync
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Build application
+        run: pnpm build
+        env:
+          DATABASE_ADAPTER: local
+          STORAGE_ADAPTER: local
+
+      - name: Run E2E tests
+        run: pnpm e2e
+        env:
+          DATABASE_ADAPTER: local
+          STORAGE_ADAPTER: local
+          PLAYWRIGHT_BASE_URL: http://localhost:3001
+
+      - name: Upload E2E test results
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: playwright-report
+          path: apps/courtsync/playwright-report/
+          retention-days: 30
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/courtsync
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run security audit
+        run: pnpm audit --audit-level moderate
+
+      - name: Dependency vulnerability scan
+        run: |
+          npx retire --path .
+          npx better-npm-audit audit
+
+  performance-budget:
+    name: Performance Budget
+    runs-on: ubuntu-latest
+    needs: quality-gate
+    defaults:
+      run:
+        working-directory: apps/courtsync
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build with bundle analysis
+        run: pnpm analyze
+        env:
+          DATABASE_ADAPTER: local
+          STORAGE_ADAPTER: local
+
+      - name: Check bundle size
+        run: |
+          # Fail if main bundle exceeds 200KB
+          BUNDLE_SIZE=$(du -k .next/static/chunks/pages/_app*.js | cut -f1)
+          if [ $BUNDLE_SIZE -gt 200 ]; then
+            echo "❌ Main bundle size ($BUNDLE_SIZE KB) exceeds 200KB budget"
+            exit 1
+          fi
+          echo "✅ Bundle size check passed ($BUNDLE_SIZE KB)"
+
+  deployment-ready:
+    name: Deployment Ready Check
+    runs-on: ubuntu-latest
+    needs: [quality-gate, e2e-tests, security-scan, performance-budget]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deployment ready notification
+        run: |
+          echo "🚀 CourtSync is ready for deployment!"
+          echo "✅ All quality gates passed"
+          echo "✅ E2E tests passed"
+          echo "✅ Security scan clean"
+          echo "✅ Performance budget met"

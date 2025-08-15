@@ -1,8 +1,8 @@
 // Integration test for the complete workout flow
-import { render, screen, waitFor } from '@/test-utils/test-helpers';
+import { render, screen, waitFor } from '../test-utils/test-helpers';
 import { userEvent } from '@testing-library/user-event';
 import { QueryClient } from '@tanstack/react-query';
-import { testDb, mockSupabase, mockAI } from '@/test-utils/test-helpers';
+import { testDb, mockSupabase, mockAI } from '../test-utils/test-helpers';
 import WorkoutPage from '@/app/workouts/page';
 
 // Mock the Supabase client

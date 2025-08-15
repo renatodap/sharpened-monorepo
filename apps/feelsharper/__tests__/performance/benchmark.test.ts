@@ -1,5 +1,5 @@
 // Performance benchmarking tests for Feel Sharper
-import { BenchmarkSuite, PerformanceBenchmark } from '@/test-utils/performance-testing';
+import { BenchmarkSuite, PerformanceBenchmark } from '../test-utils/performance-testing';
 
 describe('Feel Sharper Performance Benchmarks', () => {
   let benchmarkSuite: BenchmarkSuite;

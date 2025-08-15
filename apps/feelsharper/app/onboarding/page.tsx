@@ -1,11 +1,7 @@
-import type { Metadata } from 'next';
-import FrictionlessOnboardingManager from '@/components/onboarding/FrictionlessOnboardingManager';
-import { Suspense } from 'react';
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Get Started — Feel Sharper',
-  description: 'Set your goals and customize your experience',
-};
+import FrictionlessOnboardingManager from '@/components/onboarding/FrictionlessOnboardingManager';
+import React, { Suspense } from 'react';
 
 export default function OnboardingPage() {
   return (

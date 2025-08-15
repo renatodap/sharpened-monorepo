@@ -1,8 +1,8 @@
 // Integration test for the complete food logging flow
-import { render, screen, waitFor } from '@/test-utils/test-helpers';
+import { render, screen, waitFor } from '../test-utils/test-helpers';
 import { userEvent } from '@testing-library/user-event';
 import { QueryClient } from '@tanstack/react-query';
-import { testDb, mockSupabase, mockAI } from '@/test-utils/test-helpers';
+import { testDb, mockSupabase, mockAI } from '../test-utils/test-helpers';
 import FoodPage from '@/app/food/page';
 
 // Mock the Supabase client

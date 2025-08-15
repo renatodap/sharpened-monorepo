@@ -1,0 +1,206 @@
+{
+  "name": "CourtSync AI Sprint Commands",
+  "version": "1.0.0",
+  "description": "Custom Claude Code commands for ultra-fast AI development",
+  "commands": {
+    "ai-video": {
+      "description": "Implement complete AI video analysis system",
+      "steps": [
+        "Install TensorFlow.js and MediaPipe",
+        "Create video upload with client-side processing",
+        "Implement pose detection for tennis strokes",
+        "Build stroke classification model",
+        "Generate technique scoring algorithm",
+        "Create auto-highlight extraction",
+        "Add performance tracking database",
+        "Build UI components for video analysis",
+        "Test with sample tennis videos"
+      ],
+      "files": [
+        "src/lib/ai/video/pose-detector.ts",
+        "src/lib/ai/video/stroke-classifier.ts",
+        "src/lib/ai/video/technique-scorer.ts",
+        "src/lib/ai/video/highlight-generator.ts",
+        "src/components/ai/VideoAnalyzer.tsx",
+        "src/app/api/ai/video/route.ts"
+      ],
+      "dependencies": [
+        "@tensorflow/tfjs",
+        "@tensorflow-models/pose-detection",
+        "@mediapipe/pose",
+        "cloudinary"
+      ]
+    },
+    "ai-schedule": {
+      "description": "Build intelligent scheduling engine with weather",
+      "steps": [
+        "Integrate OpenWeatherMap API",
+        "Create schedule optimization algorithm",
+        "Implement conflict prediction",
+        "Build preference learning system",
+        "Add dynamic rescheduling",
+        "Create weather-based recommendations",
+        "Build smart calendar UI",
+        "Test scheduling scenarios"
+      ],
+      "files": [
+        "src/lib/ai/scheduling/optimizer.ts",
+        "src/lib/ai/scheduling/weather-intelligence.ts",
+        "src/lib/ai/scheduling/conflict-predictor.ts",
+        "src/lib/ai/scheduling/preference-learner.ts",
+        "src/components/ai/SmartScheduler.tsx",
+        "src/app/api/ai/schedule/route.ts"
+      ],
+      "env": [
+        "OPENWEATHER_API_KEY"
+      ]
+    },
+    "ai-scout": {
+      "description": "Create AI-powered opponent scouting",
+      "steps": [
+        "Build pattern recognition system",
+        "Implement weakness detection algorithm",
+        "Create strategy generation engine",
+        "Build comparative analysis tools",
+        "Add confidence scoring",
+        "Create scouting insights UI",
+        "Test with match footage"
+      ],
+      "files": [
+        "src/lib/ai/scouting/pattern-detector.ts",
+        "src/lib/ai/scouting/weakness-analyzer.ts",
+        "src/lib/ai/scouting/strategy-generator.ts",
+        "src/components/ai/ScoutingInsights.tsx",
+        "src/app/api/ai/scouting/route.ts"
+      ]
+    },
+    "ai-performance": {
+      "description": "Build performance analytics and injury prediction",
+      "steps": [
+        "Create progress tracking algorithms",
+        "Build injury risk prediction model",
+        "Implement practice optimization",
+        "Add match preparation insights",
+        "Create performance dashboard",
+        "Test with player data"
+      ],
+      "files": [
+        "src/lib/ai/performance/progress-tracker.ts",
+        "src/lib/ai/performance/injury-predictor.ts",
+        "src/lib/ai/performance/practice-optimizer.ts",
+        "src/components/ai/PerformanceInsights.tsx",
+        "src/app/api/ai/performance/route.ts"
+      ]
+    },
+    "ai-chat": {
+      "description": "Implement conversational AI interface",
+      "steps": [
+        "Set up Claude/Ollama integration",
+        "Create natural language processor",
+        "Build context management",
+        "Implement proactive insights",
+        "Add voice command support",
+        "Create chat UI interface",
+        "Test conversation flows"
+      ],
+      "files": [
+        "src/lib/ai/conversational/nlp-processor.ts",
+        "src/lib/ai/conversational/context-manager.ts",
+        "src/lib/ai/conversational/insight-generator.ts",
+        "src/components/ai/ChatInterface.tsx",
+        "src/app/api/ai/chat/route.ts"
+      ],
+      "env": [
+        "ANTHROPIC_API_KEY"
+      ]
+    },
+    "ai-test": {
+      "description": "Run comprehensive AI feature tests",
+      "command": "npm run test:ai -- --coverage",
+      "files": [
+        "src/__tests__/ai/**/*.test.ts"
+      ]
+    },
+    "ai-deploy": {
+      "description": "Deploy AI-enhanced CourtSync",
+      "steps": [
+        "Build production bundles",
+        "Optimize AI models",
+        "Configure environment variables",
+        "Deploy to Vercel",
+        "Monitor performance"
+      ],
+      "command": "npm run build:ai && vercel --prod"
+    }
+  },
+  "agents": {
+    "video-ai-specialist": {
+      "role": "AI Video Analysis Expert",
+      "expertise": [
+        "TensorFlow.js",
+        "MediaPipe",
+        "Computer Vision",
+        "Tennis biomechanics"
+      ],
+      "focus": "Implement client-side video analysis with pose detection and stroke classification"
+    },
+    "scheduling-ai-specialist": {
+      "role": "Smart Scheduling Expert",
+      "expertise": [
+        "Constraint optimization",
+        "Weather APIs",
+        "Conflict resolution",
+        "Machine learning"
+      ],
+      "focus": "Build intelligent scheduling with weather integration and conflict prediction"
+    },
+    "scouting-ai-specialist": {
+      "role": "Pattern Recognition Expert",
+      "expertise": [
+        "Pattern detection",
+        "Statistical analysis",
+        "Strategy generation",
+        "Tennis tactics"
+      ],
+      "focus": "Create AI scouting system that identifies opponent patterns and weaknesses"
+    },
+    "analytics-ai-specialist": {
+      "role": "Performance Analytics Expert",
+      "expertise": [
+        "Predictive modeling",
+        "Injury prevention",
+        "Performance optimization",
+        "Data visualization"
+      ],
+      "focus": "Build performance tracking with injury prediction and practice optimization"
+    },
+    "conversational-ai-specialist": {
+      "role": "Natural Language Expert",
+      "expertise": [
+        "NLP",
+        "Claude/GPT integration",
+        "Context management",
+        "Voice interfaces"
+      ],
+      "focus": "Implement conversational AI for natural language team interactions"
+    }
+  },
+  "shortcuts": {
+    "ai-init": "npm install @tensorflow/tfjs @tensorflow-models/pose-detection @mediapipe/pose",
+    "ai-dev": "npm run dev -- --port 3001",
+    "ai-test": "npm run test:ai -- --watch",
+    "ai-build": "npm run build:ai",
+    "ai-analyze": "npm run analyze:ai-performance",
+    "ai-monitor": "npm run monitor:ai-usage"
+  },
+  "templates": {
+    "ai-component": {
+      "path": "src/components/ai/Template.tsx",
+      "content": "import { useState, useEffect } from 'react'\nimport * as tf from '@tensorflow/tfjs'\n\nexport function AI_COMPONENT_NAME() {\n  const [model, setModel] = useState<tf.LayersModel | null>(null)\n  const [processing, setProcessing] = useState(false)\n  \n  useEffect(() => {\n    // Load AI model\n  }, [])\n  \n  return <div>AI Component</div>\n}"
+    },
+    "ai-service": {
+      "path": "src/lib/ai/service.ts",
+      "content": "import * as tf from '@tensorflow/tfjs'\n\nexport class AI_SERVICE_NAME {\n  private model: tf.LayersModel | null = null\n  \n  async initialize() {\n    // Initialize AI model\n  }\n  \n  async process(input: any) {\n    // Process with AI\n  }\n}"
+    }
+  }
+}

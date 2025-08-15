@@ -2,9 +2,15 @@
 // Processes payment events and updates user subscriptions
 
 import { NextRequest, NextResponse } from 'next/server';
-// TODO: Re-implement LemonSqueezy payments without @sharpened/payments dependency
-// import { getLemonSqueezyClient } from '@sharpened/payments';
-import { createServerClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
+import crypto from 'crypto';
+
+// Verify webhook signature
+function verifyWebhookSignature(payload: string, signature: string, secret: string): boolean {
+  const hmac = crypto.createHmac('sha256', secret);
+  const digest = hmac.update(payload).digest('hex');
+  return digest === signature;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,7 +37,7 @@ export async function POST(request: NextRequest) {
     const { meta, data } = payload;
     
     // Initialize Supabase client
-    const supabase = createServerClient();
+    const supabase = await createClient();
     
     console.log(`Processing LemonSqueezy webhook event: ${meta.event_name}`);
     

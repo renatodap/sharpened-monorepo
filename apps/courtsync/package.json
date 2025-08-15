@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
+    "dev:ai": "NODE_ENV=development next dev --port 3001",
     "build": "next build",
+    "build:ai": "NODE_ENV=production next build && npm run optimize:ai",
     "start": "next start -p 3001",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
+    "test:ai": "vitest --config vitest.ai.config.ts",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
     "db:generate": "drizzle-kit generate:pg",
@@ -21,7 +24,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "pre-commit": "lint-staged",
-    "analyze": "ANALYZE=true npm run build"
+    "analyze": "ANALYZE=true npm run build",
+    "analyze:ai": "npx lighthouse http://localhost:3001 --view",
+    "monitor:ai": "node scripts/monitor-ai.js",
+    "optimize:ai": "node scripts/optimize-ai-models.js"
   },
   "dependencies": {
     "next": "15.4.5",
@@ -41,7 +47,19 @@
     "tailwind-merge": "^2.2.0",
     "lucide-react": "^0.303.0",
     "sonner": "^1.3.1",
-    "framer-motion": "^10.18.0"
+    "framer-motion": "^10.18.0",
+    "@tensorflow/tfjs": "^4.17.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.17.0",
+    "@tensorflow-models/pose-detection": "^2.1.3",
+    "@mediapipe/pose": "^0.5.1675469404",
+    "cloudinary": "^2.0.3",
+    "openweather-api-node": "^3.1.0",
+    "mapbox-gl": "^3.1.2",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1",
+    "react-webcam": "^7.2.0",
+    "posthog-js": "^1.96.1",
+    "resend": "^3.0.0"
   },
   "devDependencies": {
     "typescript": "^5.3.3",
